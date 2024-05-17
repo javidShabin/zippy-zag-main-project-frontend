@@ -1,17 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 
 const ProfilePage = () => {
-  // State for edit profile visibility
-  const [showEdit, setShowEdite] = useState(false);
-
   // State for user profile management
   const [isUser, setIsuser] = useState({});
-
-  // Navigate function for routing
-  const navigate = useNavigate();
 
   // Fetch user profile data
   const fetchUserProfile = async () => {
@@ -20,35 +13,11 @@ const ProfilePage = () => {
         method: "GET",
         url: "/user/user-profile",
       });
+      console.log(response.data);
       setIsuser(response.data);
     } catch (error) {
       toast.error("Failed to fetch user profile");
     }
-  };
-
-  // User logout function
-  const handleLogout = async () => {
-    try {
-      const response = await axiosInstance({
-        method: "POST",
-        url: "/user/logout",
-      });
-      toast.success("User logged out successfully");
-
-      // Clear user session data (if applicable)
-      localStorage.removeItem("authToken"); // Adjust if using a different key
-      sessionStorage.clear();
-
-      // Redirect to login page
-      navigate("/login-page");
-    } catch (error) {
-      console.error("Logout failed:", error);
-      toast.error("Failed to log out. Please try again.");
-    }
-  };
-
-  const handleEdite = () => {
-    setShowEdite(true);
   };
 
   // Fetch user profile on component mount
@@ -57,56 +26,41 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <>
-      <div className="relative flex justify-center">
-        <div className="flex justify-center items-center w-full h-[91vh]">
-          <div className="container py-7 flex flex-col items-center mt-5 w-[90%] shadow-lg rounded-lg">
+    <div className="flex justify-center items-center bg-gray-50 py-10">
+      <div className="w-full max-w-[500px] bg-white shadow-xl rounded-xl p-8 flex flex-col items-center">
+        <div className="relative mb-6">
+          <img
+            src={isUser.image || "/default-profile.png"}
+            alt="User profile"
+            className="rounded-full w-[160px] h-[160px] object-cover border-2 border-gray-200"
+          />
+        </div>
+        <div className="text-center">
+          <h1 className="text-3xl font-medium text-gray-800">{isUser.name}</h1>
+          <span className="block text-gray-500 mt-1">{isUser.email}</span>
+          <h4 className="text-gray-500 mt-1">{isUser.phone}</h4>
+        </div>
+
+        <div className="mt-6 w-full">
+          <div className="grid grid-cols-2 gap-6 text-center text-gray-600">
             <div>
-              <img
-                src={isUser.image}
-                alt="User profile"
-                className="rounded-full w-[180px]"
-              />
+              <h5 className="text-lg font-semibold text-gray-800">Joined</h5>
+              <p>{new Date(isUser.createdAt).toLocaleDateString()}</p>
             </div>
-            <div className="text-center">
-              <h1 className="text-[28px] font-semibold">{isUser.name}</h1>
-              <span className="font-medium">{isUser.email}</span>
-              <h4>{isUser.phone}</h4>
-            </div>
-            <div className="flex justify-between w-[90%]">
-              <button
-                onClick={handleLogout}
-                className="bg-orange-400 mt-5 rounded-md font-semibold py-1 px-4"
-              >
-                Logout
-              </button>
-              <button
-                className="border border-orange-400 mt-5 py-1 px-4 font-semibold rounded-md"
-                onClick={handleEdite}
-              >
-                Edit user
-              </button>
+            <div>
+              <h5 className="text-lg font-semibold text-gray-800">Location</h5>
+              <p>{isUser.location || "Not specified"}</p>
             </div>
           </div>
         </div>
-        {/* Profile editing section */}
-        {showEdit && (
-          <div className="absolute top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white p-5 rounded-lg">
-              <h2>Edit Profile</h2>
-              {/* Add your edit profile form here */}
-              <button
-                onClick={() => setShowEdite(false)}
-                className="mt-4 bg-red-500 text-white py-1 px-3 rounded"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        )}
+
+        <div className="mt-6 w-full">
+          <button className="w-full py-2 px-4 bg-orange-400 text-white rounded-md hover:bg-orange-500 transition duration-300">
+            Edit Profile
+          </button>
+        </div>
       </div>
-      
-    </>
+    </div>
   );
 };
 
