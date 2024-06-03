@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
     <header className="w-full py-5 shadow-lg bg-white">
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container w-[95%] mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <div className="logo">
           <h1 className="text-2xl font-bold text-orange-600">ZippyZag</h1>
