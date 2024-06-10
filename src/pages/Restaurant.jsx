@@ -41,7 +41,7 @@ const Restaurant = () => {
                 key={restaurant._id}
               >
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div className="absolute inset-0 bg-[#0000004f] bg-opacity-40"></div>
 
                 {/* Content */}
                 <div className="relative z-10 p-4 flex flex-col justify-end h-full text-white">

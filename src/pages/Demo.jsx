@@ -60,7 +60,7 @@ const Demo = () => {
               backgroundPosition: "center",
             }}
           >
-            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end text-left px-6 py-4">
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#00000085] bg-opacity-40 flex items-end text-left px-6 py-4">
               <div>
                 <p className="text-orange-500 text-lg font-medium">
                   Signup as a Rider
@@ -84,7 +84,7 @@ const Demo = () => {
               backgroundPosition: "center",
             }}
           >
-            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end text-left px-6 py-4">
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#00000085] bg-opacity-40 flex items-end text-left px-6 py-4">
               <div>
                 <p className="text-orange-500 text-lg font-medium">
                   Signup as a Business
