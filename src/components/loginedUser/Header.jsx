@@ -26,7 +26,7 @@ const UserHeader = () => {
   return (
     <header
       className={`fixed top-0 w-full z-50 ${
-        isScrolled ? "bg-[#fd84fb8c] shadow-md backdrop-blur-lg" : ""
+        isScrolled ? "bg-[#ffffff70] shadow-md backdrop-blur-lg" : ""
       } text-white transition duration-300`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6 md:px-10">
