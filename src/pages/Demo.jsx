@@ -3,11 +3,11 @@ import { food, order, place } from "../assets";
 
 const Demo = () => {
   return (
-    <main className="flex justify-center items-center w-full bg-gradient-to-r from-[#e0c3fc] to-[#8e44ad]">
+    <main className="flex justify-center items-center w-full ">
       <div className="container w-[90%] md:w-[80%] lg:w-[70%]">
         <div className="text-center">
-          <h1 className="text-[28px] sm:text-[32px] md:text-[36px] font-bold mt-5 text-white">
-            How It <span className="text-[#f7b8e1]">Works</span>
+          <h1 className="text-[28px] sm:text-[32px] md:text-[36px] font-bold mt-5 text-black">
+            How It <span className="text-[#eb97f1]">Works</span>
           </h1>
         </div>
 
