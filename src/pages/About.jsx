@@ -3,7 +3,7 @@ import { deliveredImage, orderImage } from "../assets";
 
 const About = () => {
   return (
-    <main className="min-h-screen flex items-center justify-center">
+    <main className="min-h-screen flex flex-col items-center justify-center">
       <div className="max-w-6xl mx-auto px-4 py-16">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="p-6 sm:p-8">

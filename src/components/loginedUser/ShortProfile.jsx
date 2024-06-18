@@ -2,17 +2,10 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
 import { Settings, X } from "lucide-react"; // Import Settings and Close (X) icons
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { hideProfile } from "../../redux/features/shortProfileSlice";
 import { Link } from "react-router-dom";
 
 const ShortProfile = () => {
   const [user, setUser] = useState(null);
-  const dispatch = useDispatch();
-
-  const closeShortProfile = () => {
-    dispatch(hideProfile());
-  };
 
   // Fetch user profile data
   const fetchUserProfile = async () => {

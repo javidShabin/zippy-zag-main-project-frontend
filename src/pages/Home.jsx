@@ -2,11 +2,8 @@ import React from "react";
 import { bannerImage, heroImage } from "../assets";
 import Demo from "./Demo";
 import Restaurant from "./Restaurant";
-import ShortProfile from "../components/loginedUser/ShortProfile";
-import { useSelector } from "react-redux";
 
 const Home = () => {
-  const { isUserShow } = useSelector((state) => state.visible);
   return (
     <>
       <main
@@ -17,7 +14,6 @@ const Home = () => {
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute right-5 top-20 sm:fixed z-30">{isUserShow ? <ShortProfile /> : ""}</div>
         <div className="container flex flex-col md:flex-row justify-between items-center rounded-lg px-6 sm:px-10 w-11/12 h-[80vh] sm:h-[70vh]">
           {/* Text Section */}
           <div className="text-[#0e092e] text-center md:text-left px-6 py-4 sm:py-6">
