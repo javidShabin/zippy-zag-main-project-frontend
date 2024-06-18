@@ -32,10 +32,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between py-4 px-6 md:px-10">
         {/* Logo */}
         <div className="logo">
-          <h1
-            className="text-2xl font-bold tracking-wide cursor-pointer text-black"
-              
-          >
+          <h1 className="text-2xl font-bold tracking-wide cursor-pointer text-black">
             ZippyZag
           </h1>
         </div>
@@ -44,34 +41,44 @@ const Header = () => {
         <nav
           className={`${
             isMenuOpen ? "block" : "hidden"
-          } absolute top-16 left-0 w-full bg-[#ffffff64] backdrop-blur-md text-black md:static md:block md:w-auto md:bg-transparent md:backdrop-blur-none`}
+          } absolute top-16 left-0 w-full bg-[#ffffffc7] backdrop-blur-xl text-black md:static md:block md:w-auto md:bg-transparent md:backdrop-blur-none`}
           aria-label="Main Navigation"
         >
           <ul className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-6">
             <Link to={"/"}>
-              <li onClick={toggleMenu} className="block font-semibold py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white">
+              <li
+                onClick={toggleMenu}
+                className="block font-semibold py-1 px-3 rounded-full relative overflow-hidden group"
+              >
                 Home
+                <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </li>
             </Link>
             <Link to={"/about"}>
-              <li onClick={toggleMenu} className="block font-semibold py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white">
+              <li
+                onClick={toggleMenu}
+                className="block font-semibold py-1 px-3 rounded-full relative overflow-hidden group"
+              >
                 About
+                <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </li>
             </Link>
-            <li onClick={toggleMenu}>
+            <li onClick={toggleMenu} className="relative overflow-hidden group">
               <a
                 href="#"
-                className="block font-semibold py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
+                className="block font-semibold py-1 px-3 rounded-full"
               >
                 Restaurants
+                <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </a>
             </li>
-            <li onClick={toggleMenu}>
+            <li onClick={toggleMenu} className="relative overflow-hidden group">
               <a
                 href="#"
-                className="block font-semibold py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
+                className="block font-semibold py-1 px-3 rounded-full"
               >
                 Contact
+                <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </a>
             </li>
             {/* Chat and Join Us for Small Screens */}
