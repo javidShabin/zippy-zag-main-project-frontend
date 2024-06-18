@@ -26,16 +26,15 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 w-full z-50 ${
-        isScrolled ? "bg-[#3d3d3db3] backdrop-blur-sm" : "bg-[#ffffff80]"
+        isScrolled ? "bg-[#fd84fb8c] shadow-md backdrop-blur-lg" : ""
       } text-white transition duration-300`}
     >
       <div className="container mx-auto flex items-center justify-between py-4 px-6 md:px-10">
         {/* Logo */}
         <div className="logo">
           <h1
-            className={`text-2xl font-bold tracking-wide cursor-pointer ${
-              isScrolled ? "text-white" : "text-black"
-            }`}
+            className="text-2xl font-bold tracking-wide cursor-pointer text-black"
+              
           >
             ZippyZag
           </h1>
@@ -50,27 +49,27 @@ const Header = () => {
         >
           <ul className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-6">
             <Link to={"/"}>
-              <li className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white">
+              <li onClick={toggleMenu} className="block font-semibold py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white">
                 Home
               </li>
             </Link>
             <Link to={"/about"}>
-              <li className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white">
+              <li onClick={toggleMenu} className="block font-semibold py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white">
                 About
               </li>
             </Link>
-            <li>
+            <li onClick={toggleMenu}>
               <a
                 href="#"
-                className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
+                className="block font-semibold py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
               >
                 Restaurants
               </a>
             </li>
-            <li>
+            <li onClick={toggleMenu}>
               <a
                 href="#"
-                className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
+                className="block font-semibold py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
               >
                 Contact
               </a>
@@ -85,7 +84,7 @@ const Header = () => {
               </div>
               <a
                 href="#"
-                className="bg-orange-400 text-black py-2 px-4 rounded-md font-medium transition duration-300 hover:bg-black hover:text-white"
+                className="bg-orange-400 text-black py-2 px-4 rounded-md font-medium transition duration-300 hover:bg-[#dd63ff] hover:text-white"
               >
                 Join Us
               </a>
@@ -97,13 +96,13 @@ const Header = () => {
         <div className="hidden md:flex gap-5 items-center space-x-4">
           <div className="relative">
             <MessagesSquare className="w-7 h-7 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
-            <span className="absolute -top-2 -right-2 bg-orange-400 text-white text-xs font-bold py-0.5 px-1.5 rounded-full">
+            <span className="absolute -top-2 -right-2 bg-red-400 text-white text-xs font-bold py-0.5 px-1.5 rounded-full">
               3
             </span>
           </div>
           <a
             href="#"
-            className="bg-orange-400 text-black py-2 px-4 rounded-md font-medium transition duration-300 hover:bg-black hover:text-white"
+            className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200"
           >
             Join Us
           </a>

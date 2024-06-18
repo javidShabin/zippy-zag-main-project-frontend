@@ -18,7 +18,7 @@ const About = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-800">
-                  Our Mission
+                  Our Purpose
                 </h3>
                 <p className="text-gray-600">
                   At Zippy Zag, our mission is to make food ordering simple and

@@ -1,5 +1,6 @@
 import React from "react";
 import { bannerImage, heroImage } from "../assets";
+import Demo from "./Demo";
 
 const Home = () => {
   return (
@@ -39,6 +40,7 @@ const Home = () => {
           </div>
         </div>
       </main>
+      <Demo/>
     </>
   );
 };
