@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
+import ShortProfile from "../../components/loginedUser/ShortProfile";
 
 const ProfilePage = () => {
   // State for edit profile visibility
@@ -105,7 +106,9 @@ const ProfilePage = () => {
             </div>
           </div>
         )}
+        <ShortProfile/>
       </div>
+      
     </>
   );
 };
