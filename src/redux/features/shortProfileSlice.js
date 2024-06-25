@@ -7,7 +7,7 @@ const initialState = {
 
 export const shortProfileSlice = createSlice({
   // Renamed from 'userrSlice' to 'userSlice'
-  name: "profile",
+  name: "visible",
   initialState,
   reducers: {
     showProfile: (state, action) => {

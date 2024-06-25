@@ -1,14 +1,26 @@
 import { Menu, MessagesSquare, UserPen, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { showProfile } from "../../redux/features/shortProfileSlice";
 
 const UserHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const { isUserShow } = useSelector((state) => state.visible);
+
+  console.log(isUserShow);
+const dispatch = useDispatch()
   // Toggle the menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Show the short profile
+  const showShortProfile = () => {
+    
+    dispatch(showProfile())
   };
 
   // Handle scroll to change header color
@@ -104,11 +116,14 @@ const UserHeader = () => {
               3
             </span>
           </div>
-          <Link to={"/user/short-profile"}>
-            <div className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
-              <UserPen className="w-7 h-7 text-orange-400 " />
-            </div>
-          </Link>
+          <div
+            onClick={() => {
+              showShortProfile();
+            }}
+            className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200"
+          >
+            <UserPen className="w-7 h-7 text-orange-400 " />
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
