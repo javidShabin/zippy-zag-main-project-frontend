@@ -3,9 +3,10 @@ import UserLayout from "../layout/UserLayout";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Restaurant from "../pages/Restaurant";
-import RestDetails from "../components/RestDetails";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
+import AuthUser from "./protectedRoutes/AuthUser";
+import RestDetails from "../components/loginedUser/RestDetails";
 
 export const router = createBrowserRouter([
   {
@@ -18,25 +19,33 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/about",
+        path: "about", // Relative path
         element: <About />,
       },
       {
-        path: "/restaurant",
+        path: "restaurant", // Relative path
         element: <Restaurant />,
       },
       {
-        path: "/rest-details",
-        element: <RestDetails />,
+        path: "signup-page", // Relative path
+        element: <SignupPage />,
       },
       {
-        path: "/signup-page",
-        element: <SignupPage/>
+        path: "login-page", // Relative path
+        element: <LoginPage />,
       },
+
+      // Logged-in user
       {
-        path: "/login-page",
-        element: <LoginPage/>
-      }
+        path: "user",
+        element: <AuthUser />, // Ensure <AuthUser /> uses <Outlet /> to render children
+        children: [
+          {
+            path: "rest-details", // Relative path
+            element: <RestDetails />,
+          },
+        ],
+      },
     ],
   },
 ]);

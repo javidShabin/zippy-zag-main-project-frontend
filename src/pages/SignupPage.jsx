@@ -20,6 +20,7 @@ const SignupPage = () => {
         url: "/user/register",
         data,
       });
+      console.log(response)
       toast.success(response.data.message);
       setShowOtpForm(true);
     } catch (error) {
