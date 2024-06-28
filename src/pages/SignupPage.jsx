@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import { axiosInstants } from "../config/axiosInstents";
 import toast from "react-hot-toast";
 import VerifyOtp from "../components/VerifyOtp";
+import { useDispatch } from "react-redux";
+import { clearUser, saveUser } from "../redux/features/userSlice";
 
 const SignupPage = () => {
   const [showOtpForm, setShowOtpForm] = useState(false);
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
@@ -22,9 +25,11 @@ const SignupPage = () => {
       });
       console.log(response)
       toast.success(response.data.message);
+      dispatch(saveUser())
       setShowOtpForm(true);
     } catch (error) {
       console.log(error.response?.data?.message);
+      dispatch(clearUser())
       toast.error(error.response?.data?.message || "Something went wrong");
     }
   };
