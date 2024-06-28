@@ -6,7 +6,7 @@ import Restaurant from "../pages/Restaurant";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 import AuthUser from "./protectedRoutes/AuthUser";
-import RestDetails from "../components/loginedUser/RestDetails";
+import RestDetails from "../pages/loginesUser/RestDetails";
 
 export const router = createBrowserRouter([
   {

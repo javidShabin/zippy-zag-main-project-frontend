@@ -30,7 +30,7 @@ const Restaurant = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {restData.length > 0 ? (
           restData.map((restaurant) => (
-            <Link to={"/rest-details"}>
+            <Link to={"/user/rest-details"}>
               <div
                 className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
                 style={{
