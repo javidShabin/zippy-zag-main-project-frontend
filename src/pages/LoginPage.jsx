@@ -2,11 +2,11 @@ import { useForm } from "react-hook-form";
 import { axiosInstants } from "../config/axiosInstents";
 import { useDispatch } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -14,7 +14,7 @@ export default function LoginPage() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data)
+    console.log(data);
     try {
       await axiosInstants({
         method: "POST",
@@ -22,59 +22,93 @@ export default function LoginPage() {
         data,
       });
       dispatch(saveUser());
-      navigate("/")
+      navigate("/");
     } catch (error) {
       dispatch(clearUser());
-      
       console.log(error);
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-[87vh] bg-gray-100">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg flex flex-col"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-gray-700 text-center">
-          Login
-        </h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 to-[#dd63ff]">
+      <div className="bg-white shadow-2xl rounded-xl w-full max-w-md">
+        {/* Top Image */}
+        <div
+          className="h-40 bg-cover bg-center rounded-t-xl"
+          style={{
+            backgroundImage: `url('https://source.unsplash.com/800x600/?restaurant-food')`,
+          }}
+        ></div>
 
-        <input
-          className="mb-4 p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-          type="text"
-          placeholder="Name"
-          {...register("name", { required: true })}
-        />
+        {/* Form Section */}
+        <div className="p-6">
+          <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+            Welcome Back to Zippyzag!
+          </h2>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {/* Name Field */}
+            <div className="mb-4">
+              <input
+                type="text"
+                placeholder="Your Name"
+                {...register("name", { required: true })}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-[#dd63ff]"
+              />
+              {errors.name && (
+                <span className="text-red-500 text-sm">Name is required</span>
+              )}
+            </div>
 
-        <input
-          className="mb-4 p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-          type="email"
-          placeholder="Email"
-          {...register("email", { required: true })}
-        />
+            {/* Email Field */}
+            <div className="mb-4">
+              <input
+                type="email"
+                placeholder="Your Email"
+                {...register("email", { required: true })}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-[#dd63ff]"
+              />
+              {errors.email && (
+                <span className="text-red-500 text-sm">Email is required</span>
+              )}
+            </div>
 
-        <input
-          className="mb-4 p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-          type="password"
-          placeholder="Password"
-          {...register("password", { required: true })}
-        />
+            {/* Password Field */}
+            <div className="mb-4">
+              <input
+                type="password"
+                placeholder="Password"
+                {...register("password", { required: true })}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-[#dd63ff]"
+              />
+              {errors.password && (
+                <span className="text-red-500 text-sm">
+                  Password is required
+                </span>
+              )}
+            </div>
 
-        {errors.exampleRequired && (
-          <span className="text-red-500 mb-4">This field is required</span>
-        )}
+            {/* Error Message */}
+            {errors.exampleRequired && (
+              <span className="text-red-500 mb-4">This field is required</span>
+            )}
 
-        <p className="text-gray-500">
-          New user? <span className="text-orange-400">Signup</span>
-        </p>
+            <p className="text-sm text-gray-500 mb-6 text-center">
+              New user?{" "}
+              <Link to={"/signup-page"}>
+                <span className="text-[#dd63ff] hover:underline">Signup</span>
+              </Link>
+            </p>
 
-        <input
-          className="bg-orange-400 text-white font-semibold py-3 px-6 rounded-lg hover:bg-orange-500 cursor-pointer w-[100px] transition duration-300 mt-2"
-          type="submit"
-          value="Submit"
-        />
-      </form>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full bg-[#dd63ff] text-white py-3 rounded-lg hover:bg-purple-600 transition"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
