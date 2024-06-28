@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import UserHeader from "../components/loginedUser/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
+import { axiosInstants } from "../config/axiosInstents";
 
 const UserLayout = () => {
   const dispatch = useDispatch();

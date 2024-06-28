@@ -2,8 +2,11 @@ import { useForm } from "react-hook-form";
 import React from "react";
 import { axiosInstants } from "../config/axiosInstents";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { clearUser, saveUser } from "../redux/features/userSlice";
 
 const VerifyOtp = () => {
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
@@ -18,7 +21,9 @@ const VerifyOtp = () => {
         data,
       });
       toast.success(response.data.message);
+      dispatch(saveUser())
     } catch (error) {
+      dispatch(clearUser())
       console.log(error.response?.data?.message || "Something went wrong");
       toast.error(error.response?.data?.message || "OTP verification failed");
     }

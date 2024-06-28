@@ -2,9 +2,11 @@ import { useForm } from "react-hook-form";
 import { axiosInstants } from "../config/axiosInstents";
 import { useDispatch } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -20,7 +22,7 @@ export default function LoginPage() {
         data,
       });
       dispatch(saveUser());
-      
+      navigate("/")
     } catch (error) {
       dispatch(clearUser());
       
