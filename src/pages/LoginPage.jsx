@@ -15,7 +15,6 @@ export default function LoginPage() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       await axiosInstants({
         method: "POST",

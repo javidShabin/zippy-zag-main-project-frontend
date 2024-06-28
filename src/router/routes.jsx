@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
         element: <AuthUser />, // Ensure <AuthUser /> uses <Outlet /> to render children
         children: [
           {
-            path: "rest-details", // Relative path
+            path: "rest-details/:id", // Relative path
             element: <RestDetails />,
           },
         ],

@@ -17,14 +17,12 @@ const SignupPage = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const response = await axiosInstants({
         method: "POST",
         url: "/user/register",
         data,
       });
-      console.log(response);
       toast.success(response.data.message);
       dispatch(saveUser());
       setShowOtpForm(true);

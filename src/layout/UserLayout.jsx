@@ -11,14 +11,14 @@ const UserLayout = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(true); // Start as true and set to false after checking
   const { isUserExist } = useSelector((state) => state.user);
-console.log(isUserExist)
+
   const checkUser = async () => {
     try {
-      const response = await axiosInstants({
+      await axiosInstants({
         method: "GET",
         url: "/user/check-user",
       });
-      console.log(response)
+      
       dispatch(saveUser());
     } catch (error) {
       dispatch(clearUser());
