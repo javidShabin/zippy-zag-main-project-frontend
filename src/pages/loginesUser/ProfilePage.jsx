@@ -106,7 +106,6 @@ const ProfilePage = () => {
             </div>
           </div>
         )}
-        <ShortProfile/>
       </div>
       
     </>

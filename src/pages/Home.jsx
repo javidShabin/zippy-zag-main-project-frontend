@@ -10,16 +10,14 @@ const Home = () => {
   return (
     <>
       <main
-        className="w-full h-screen flex flex-col justify-center items-center"
+        className="w-full h-screen flex flex-col justify-center items-center relative"
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-        {
-          isUserShow ? <ShortProfile/> : ""
-        }
+        <div className="absolute right-5 top-20 sm:fixed z-30">{isUserShow ? <ShortProfile /> : ""}</div>
         <div className="container flex flex-col md:flex-row justify-between items-center rounded-lg px-6 sm:px-10 w-11/12 h-[80vh] sm:h-[70vh]">
           {/* Text Section */}
           <div className="text-[#0e092e] text-center md:text-left px-6 py-4 sm:py-6">
