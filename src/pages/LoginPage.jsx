@@ -30,8 +30,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 to-[#dd63ff]">
-      <div className="bg-white shadow-2xl rounded-xl w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="bg-white shadow-2xl shadow-[#dd63ff] rounded-xl w-full max-w-md">
         {/* Top Image */}
         <div
           className="h-40 bg-cover bg-center rounded-t-xl"
