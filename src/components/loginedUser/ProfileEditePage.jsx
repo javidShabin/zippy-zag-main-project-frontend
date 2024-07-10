@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../../config/axiosInstance";
 
-
 export default function EditProfile() {
   const [userData, setUserData] = useState(null); // Store the user's current data
   const {
