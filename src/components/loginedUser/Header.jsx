@@ -1,4 +1,4 @@
-import { Menu, MessagesSquare, X } from "lucide-react";
+import { Menu, MessagesSquare, UserPen, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -89,7 +89,9 @@ const UserHeader = () => {
                   3
                 </span>
               </div>
-              
+              <div className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
+                <UserPen className="w-7 h-7 text-orange-400 " />
+              </div>
             </li>
           </ul>
         </nav>
@@ -101,6 +103,9 @@ const UserHeader = () => {
             <span className="absolute -top-2 -right-2 bg-red-400 text-white text-xs font-bold py-0.5 px-1.5 rounded-full">
               3
             </span>
+          </div>
+          <div className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
+            <UserPen className="w-7 h-7 text-orange-400 " />
           </div>
         </div>
 
