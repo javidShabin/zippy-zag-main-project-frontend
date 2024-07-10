@@ -2,7 +2,7 @@ import { Menu, MessagesSquare, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const UserHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -39,7 +39,7 @@ const Header = () => {
 
         {/* Navigation Links */}
         <nav
-          className={`${ 
+          className={`${
             isMenuOpen ? "block" : "hidden"
           } absolute top-16 left-0 w-full backdrop-blur-xl text-black md:static md:block md:w-auto md:bg-transparent md:backdrop-blur-none`}
           aria-label="Main Navigation"
@@ -83,24 +83,25 @@ const Header = () => {
             </li>
             {/* Chat and Join Us for Small Screens */}
             <li className="flex flex-col items-center space-y-4 md:hidden">
-              <a
-            href="#"
-            className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200"
-          >
-            Join Us
-          </a>
+              <div className="relative">
+                <MessagesSquare className="w-6 h-6 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
+                <span className="absolute -top-2 -right-2 bg-orange-400 text-white text-xs font-bold py-0.5 px-1.5 rounded-full">
+                  3
+                </span>
+              </div>
+              
             </li>
           </ul>
         </nav>
 
         {/* Join Us Button and Chat Icon (Large Screens) */}
         <div className="hidden md:flex gap-5 items-center space-x-4">
-          <a
-            href="#"
-            className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200"
-          >
-            Join Us
-          </a>
+          <div className="relative">
+            <MessagesSquare className="w-7 h-7 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
+            <span className="absolute -top-2 -right-2 bg-red-400 text-white text-xs font-bold py-0.5 px-1.5 rounded-full">
+              3
+            </span>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -122,4 +123,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default UserHeader;
