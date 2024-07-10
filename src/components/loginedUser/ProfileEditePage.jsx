@@ -20,10 +20,10 @@ export default function EditProfile() {
           method: "GET",
           url: "/user/user-profile",
         });
-        setUserData(response.data.data);
-        setValue("name", response.data.data.name);
-        setValue("email", response.data.data.email);
-        setValue("phone", response.data.data.phone);
+        setUserData(response.data);
+        setValue("name", response.data.name);
+        setValue("email", response.data.email);
+        setValue("phone", response.data.phone);
       } catch (error) {
         toast.error("Failed to load user data");
       }
