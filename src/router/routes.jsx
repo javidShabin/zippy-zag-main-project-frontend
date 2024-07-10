@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Restaurant from "../pages/Restaurant";
 import RestDetails from "../components/RestDetails";
+import LoginPage from "../pages/LoginPage";
+import SignupPage from "../pages/SignupPage";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ export const router = createBrowserRouter([
         path: "/rest-details",
         element: <RestDetails />,
       },
+      {
+        path: "/signup-page",
+        element: <SignupPage/>
+      },
+      {
+        path: "/login-page",
+        element: <LoginPage/>
+      }
     ],
   },
 ]);
