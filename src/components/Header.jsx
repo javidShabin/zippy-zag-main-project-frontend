@@ -1,4 +1,4 @@
-import { Menu, MessagesSquare, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -39,7 +39,7 @@ const Header = () => {
 
         {/* Navigation Links */}
         <nav
-          className={`${ 
+          className={`${
             isMenuOpen ? "block" : "hidden"
           } absolute top-16 left-0 w-full backdrop-blur-xl text-black md:static md:block md:w-auto md:bg-transparent md:backdrop-blur-none`}
           aria-label="Main Navigation"
@@ -82,25 +82,21 @@ const Header = () => {
               </a>
             </li>
             {/* Chat and Join Us for Small Screens */}
-            <li className="flex flex-col items-center space-y-4 md:hidden">
-              <a
-            href="#"
-            className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200"
-          >
-            Join Us
-          </a>
-            </li>
+            <Link to={"/signup-page"}>
+              <li className="flex flex-col items-center space-y-4 md:hidden bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
+                Join Us
+              </li>
+            </Link>
           </ul>
         </nav>
 
         {/* Join Us Button and Chat Icon (Large Screens) */}
         <div className="hidden md:flex gap-5 items-center space-x-4">
-          <a
-            href="#"
-            className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200"
-          >
-            Join Us
-          </a>
+          <Link to={"/signup-page"}>
+            <div className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
+              Join Us
+            </div>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
