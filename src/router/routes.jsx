@@ -12,6 +12,7 @@ import ChatPage from "../pages/loginesUser/ChatPage";
 import CartPage from "../pages/loginesUser/CartPage";
 import PaymentSuccess from "../components/loginedUser/PaymentSuccess";
 import ProfileDashbord from "../pages/loginesUser/ProfileDashbord";
+import EditProfile from "../components/loginedUser/ProfileEditePage";
 
 export const router = createBrowserRouter([
   {
@@ -71,7 +72,10 @@ export const router = createBrowserRouter([
                 path: "profile-page",
                 element: <ProfilePage />
               },
-              
+              {
+                path: "edite-profile",
+                element: <EditProfile />
+              }
             ]
           }
         ],
