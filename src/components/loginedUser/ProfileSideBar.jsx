@@ -11,7 +11,7 @@ const ProfileSideBar = () => {
         <li>
           <Link
             to={"/user/profile/profile-page"}
-            className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-400 hover:text-orange-500 transition"
+            className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-200 hover:text-white transition"
           >
             Your Profile
           </Link>
@@ -19,7 +19,7 @@ const ProfileSideBar = () => {
         <li>
           <Link
             to={"/user/profile/edite-profile"}
-            className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-400 hover:text-orange-500 transition"
+            className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-200 hover:text-white transition"
           >
             Edite Profile
           </Link>
@@ -27,7 +27,7 @@ const ProfileSideBar = () => {
         <li>
           <Link
             to={"/user/profile/forgot-pass"}
-            className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-400 hover:text-orange-500 transition"
+            className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-200 hover:text-white transition"
           >
             Forgot Password
           </Link>
@@ -36,7 +36,7 @@ const ProfileSideBar = () => {
         <li>
           <Link
             to={"/user/profile/user-address"}
-            className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-400 hover:text-orange-500 transition"
+            className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-200 hover:text-white transition"
           >
             Address
           </Link>
