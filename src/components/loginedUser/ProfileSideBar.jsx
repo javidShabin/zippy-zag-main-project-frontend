@@ -13,24 +13,36 @@ const ProfileSideBar = () => {
             to={"/user/profile/profile-page"}
             className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-purple-200 hover:text-orange-700 transition"
           >
-            Profile Address
+            Your Profile
           </Link>
         </li>
         <li>
           <Link
-            
+            to={"/user/profile/edite-profile"}
+            className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-purple-200 hover:text-orange-700 transition"
+          >
+            Edite Profile
+          </Link>
+        </li>
+        <li>
+          <Link
+            to={"/user/profile/forgot-pass"}
             className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-purple-200 hover:text-orange-700 transition"
           >
             Forgot Password
           </Link>
         </li>
+
         <li>
-          <a
-            href="#edit-profile"
+          <Link
+            to={"/user/profile/user-address"}
             className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-purple-200 hover:text-orange-700 transition"
           >
-            Edit Profile
-          </a>
+            Address
+          </Link>
+        </li>
+        <li className="block px-4 py-2 rounded-lg text-gray-700 bg-orange-400 hover:text-white transition">
+          Log Out
         </li>
       </ul>
     </div>
