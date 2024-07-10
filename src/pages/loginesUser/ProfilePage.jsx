@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
   // State for user profile management
@@ -55,9 +56,11 @@ const ProfilePage = () => {
         </div>
 
         <div className="mt-6 w-full">
-          <button className="w-full py-2 px-4 bg-orange-400 text-white rounded-md hover:bg-orange-500 transition duration-300">
-            Edit Profile
-          </button>
+          <Link to={"/user/profile/edite-profile"}>
+            <button className="w-full py-2 px-4 bg-orange-400 text-white rounded-md hover:bg-orange-500 transition duration-300">
+              Edit Profile
+            </button>
+          </Link>
         </div>
       </div>
     </div>
