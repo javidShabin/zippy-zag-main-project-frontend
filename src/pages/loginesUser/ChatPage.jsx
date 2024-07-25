@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
 
 const Restaurant = () => {
-  const [restData, setRestData] = useState([]);
+  const [restData, setRestData] = useState([]); // Default as empty array
   const navigate = useNavigate();
 
   const getRestaurants = async () => {
@@ -12,9 +12,11 @@ const Restaurant = () => {
         method: "GET",
         url: "/restaurant/all-restaurants",
       });
-      setRestData(response.data.restaurants || []);  // Ensure restData is always an array
+      // Safely assign the restaurants data or fallback to empty array
+      setRestData(response.data?.restaurants || []);
     } catch (error) {
       console.log(error);
+      setRestData([]); // In case of error, ensure it's an empty array
     }
   };
 
@@ -28,7 +30,8 @@ const Restaurant = () => {
         Our <span className="text-[#eb97f1]">Restaurants</span>
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {Array.isArray(restData) && restData.length > 0 ? (
+        {/* Ensure restData is an array before mapping */}
+        {restData && Array.isArray(restData) && restData.length > 0 ? (
           restData.map((restaurant) => (
             <div
               onClick={() => {
