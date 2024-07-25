@@ -4,6 +4,8 @@ import { axiosInstance } from "../config/axiosInstance";
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const getRestaurants = async () => {
@@ -12,9 +14,16 @@ const Restaurant = () => {
         method: "GET",
         url: "/restaurant/all-restaurants",
       });
-      setRestData(response.data.restaurants);
+      // Validate the response and ensure restaurants is an array
+      const restaurants = Array.isArray(response.data.restaurants)
+        ? response.data.restaurants
+        : [];
+      setRestData(restaurants);
     } catch (error) {
-      console.log(error);
+      setError("Failed to load restaurants. Please try again later.");
+      console.error("Error fetching restaurants:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -27,16 +36,26 @@ const Restaurant = () => {
       <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
         Our <span className="text-[#eb97f1]">Restaurants</span>
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {restData.length > 0 ? (
-          restData.map((restaurant) => (
+
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <span className="loading loading-dots loading-md bg-[#cd50f0]"></span>
+          <p className="text-lg text-gray-700 ml-4">Loading restaurants...</p>
+        </div>
+      ) : error ? (
+        <div className="text-center text-red-500">{error}</div>
+      ) : restData.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {restData.map((restaurant) => (
             <div
               onClick={() => {
                 navigate(`/user/rest-details/${restaurant._id}`);
               }}
               className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
               style={{
-                backgroundImage: `url(${restaurant.image})`,
+                backgroundImage: `url(${
+                  restaurant.image || "/fallback-image.jpg"
+                })`, // Fallback image
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -52,11 +71,11 @@ const Restaurant = () => {
                 <p className="text-xs mt-2">{restaurant.description}</p>
               </div>
             </div>
-          ))
-        ) : (
-          <div className="flex justify-center items-center "><span className="loading loading-dots loading-md bg-[#cd50f0]"></span></div>
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center text-gray-600">No restaurants found.</div>
+      )}
     </main>
   );
 };
