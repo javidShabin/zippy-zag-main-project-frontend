@@ -1,68 +1,66 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../../config/axiosInstance";
 
-const ChatPage = () => {
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([
-    { text: "Hello, how can I help you today?", sender: "bot" },
-  ]);
+const Restaurant = () => {
+  const [restData, setRestData] = useState([]);
+  const navigate = useNavigate();
 
-  const handleSendMessage = () => {
-    if (message.trim()) {
-      setMessages([...messages, { text: message, sender: "user" }]);
-      setMessage("");
+  const getRestaurants = async () => {
+    try {
+      const response = await axiosInstance({
+        method: "GET",
+        url: "/restaurant/all-restaurants",
+      });
+      setRestData(response.data.restaurants || []);  // Ensure restData is always an array
+    } catch (error) {
+      console.log(error);
     }
   };
 
+  useEffect(() => {
+    getRestaurants();
+  }, []);
+
   return (
-    <div className="flex flex-col h-screen mt-32 bg-gray-100 p-4">
-      {/* Chat Header */}
-      <div className="flex items-center justify-between bg-indigo-600 text-white p-4 rounded-lg shadow-md">
-        <h2 className="text-xl font-bold">Chat Support</h2>
-        <button className="bg-red-500 text-white px-3 py-1 rounded-md">
-          End Chat
-        </button>
-      </div>
-
-      {/* Chat Messages Area */}
-      <div className="flex-1 overflow-y-auto my-4 p-4 bg-white rounded-lg shadow-md space-y-4">
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`flex ${
-              msg.sender === "user" ? "justify-end" : "justify-start"
-            }`}
-          >
+    <main className="bg-gray-100 p-6 min-h-screen mt-16">
+      <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
+        Our <span className="text-[#eb97f1]">Restaurants</span>
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {Array.isArray(restData) && restData.length > 0 ? (
+          restData.map((restaurant) => (
             <div
-              className={`max-w-xs p-3 rounded-lg ${
-                msg.sender === "user"
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-300"
-              }`}
+              onClick={() => {
+                navigate(`/user/rest-details/${restaurant._id}`);
+              }}
+              className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
+              style={{
+                backgroundImage: `url(${restaurant.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              key={restaurant._id}
             >
-              {msg.text}
-            </div>
-          </div>
-        ))}
-      </div>
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-[#0000004f] bg-opacity-40"></div>
 
-      {/* Chat Input */}
-      <div className="flex items-center space-x-2 p-4 bg-white border-t border-gray-200 rounded-lg">
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Type a message"
-          className="flex-1 p-2 border border-gray-300 rounded-lg focus:outline-none"
-        />
-        <button
-          onClick={handleSendMessage}
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg"
-        >
-          Send
-        </button>
+              {/* Content */}
+              <div className="relative z-10 p-4 flex flex-col justify-end h-full text-white">
+                <h2 className="text-lg font-semibold">{restaurant.name}</h2>
+                <p className="text-sm">{restaurant.location}</p>
+                <p className="text-xs mt-2">{restaurant.description}</p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="flex justify-center items-center w-full h-full">
+            <span className="loading loading-dots loading-md bg-[#cd50f0]"></span>
+          </div>
+        )}
       </div>
-    </div>
+    </main>
   );
 };
 
-export default ChatPage;
+export default Restaurant;
