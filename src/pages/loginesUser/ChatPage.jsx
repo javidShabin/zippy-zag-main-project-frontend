@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const ChatPage = () => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([
-    { text: 'Hello, how can I help you today?', sender: 'bot' }
+    { text: "Hello, how can I help you today?", sender: "bot" },
   ]);
 
   const handleSendMessage = () => {
     if (message.trim()) {
-      setMessages([
-        ...messages,
-        { text: message, sender: 'user' }
-      ]);
-      setMessage('');
+      setMessages([...messages, { text: message, sender: "user" }]);
+      setMessage("");
     }
   };
 
@@ -21,7 +18,9 @@ const ChatPage = () => {
       {/* Chat Header */}
       <div className="flex items-center justify-between bg-indigo-600 text-white p-4 rounded-lg shadow-md">
         <h2 className="text-xl font-bold">Chat Support</h2>
-        <button className="bg-red-500 text-white px-3 py-1 rounded-md">End Chat</button>
+        <button className="bg-red-500 text-white px-3 py-1 rounded-md">
+          End Chat
+        </button>
       </div>
 
       {/* Chat Messages Area */}
@@ -29,10 +28,16 @@ const ChatPage = () => {
         {messages.map((msg, index) => (
           <div
             key={index}
-            className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`flex ${
+              msg.sender === "user" ? "justify-end" : "justify-start"
+            }`}
           >
             <div
-              className={`max-w-xs p-3 rounded-lg ${msg.sender === 'user' ? 'bg-indigo-600 text-white' : 'bg-gray-300'}`}
+              className={`max-w-xs p-3 rounded-lg ${
+                msg.sender === "user"
+                  ? "bg-indigo-600 text-white"
+                  : "bg-gray-300"
+              }`}
             >
               {msg.text}
             </div>

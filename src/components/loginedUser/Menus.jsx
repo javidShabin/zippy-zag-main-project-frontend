@@ -18,6 +18,7 @@ const Menus = ({ restaurantId }) => {
     }
   };
 
+
   const handleAddToCart = (menu) => {
     // Handle the action when the "Add" button is clicked (e.g., adding to cart)
     console.log(`Added ${menu.name} to the cart!`);
