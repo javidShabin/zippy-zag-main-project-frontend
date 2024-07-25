@@ -12,8 +12,12 @@ const Restaurant = () => {
         method: "GET",
         url: "/restaurant/all-restaurants",
       });
-      // Safely assign the restaurants data or fallback to empty array
-      setRestData(response.data?.restaurants || []);
+      // Ensure response.data and response.data.restaurants exist, fallback to empty array if not
+      setRestData(
+        Array.isArray(response.data?.restaurants)
+          ? response.data.restaurants
+          : []
+      );
     } catch (error) {
       console.log(error);
       setRestData([]); // In case of error, ensure it's an empty array
@@ -31,7 +35,7 @@ const Restaurant = () => {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {/* Ensure restData is an array before mapping */}
-        {restData && Array.isArray(restData) && restData.length > 0 ? (
+        {Array.isArray(restData) && restData.length > 0 ? (
           restData.map((restaurant) => (
             <div
               onClick={() => {
