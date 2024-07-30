@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Outlet, Navigate, useLocation } from "react-router-dom";
-import ProfileSideBar from "../../components/loginedUser/profile/ProfileSideBar";
+import ProfileSideBar from "../../components/loginedUser/ProfileSideBar";
 
 const ProfileDashbord = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
