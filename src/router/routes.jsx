@@ -11,6 +11,7 @@ import ProfilePage from "../pages/loginesUser/ProfilePage";
 import ChatPage from "../pages/loginesUser/ChatPage";
 import CartPage from "../pages/loginesUser/CartPage";
 import PaymentSuccess from "../components/loginedUser/PaymentSuccess";
+import ProfileDashbord from "../pages/loginesUser/ProfileDashbord";
 
 export const router = createBrowserRouter([
   {
@@ -49,10 +50,6 @@ export const router = createBrowserRouter([
             element: <RestDetails />,
           },
           {
-            path: "profile-page",
-            element: <ProfilePage />,
-          },
-          {
             path: "chat-page",
             element: <ChatPage />,
           },
@@ -63,6 +60,19 @@ export const router = createBrowserRouter([
           {
             path: "payment/success",
             element: <PaymentSuccess/>
+          },
+
+          {
+            path: "profile",
+            element: <ProfileDashbord />,
+
+            children: [
+              {
+                path: "profile-page",
+                element: <ProfilePage />
+              },
+              
+            ]
           }
         ],
       },
