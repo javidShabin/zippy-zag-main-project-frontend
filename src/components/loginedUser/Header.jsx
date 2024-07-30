@@ -84,7 +84,7 @@ const UserHeader = () => {
                 </Link>
               </div>
               <div className="py-1 sm:py-2 px-4 sm:px-6 bg-[#ffa100] text-white font-semibold rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 mt-4 text-xs sm:text-base">
-                <Link to={"/user/profile-page"}>
+                <Link to={"/user/profile"}>
                   {" "}
                   <UserPen className="w-7 h-7 text-whit " />
                 </Link>
@@ -106,7 +106,7 @@ const UserHeader = () => {
             </Link>
           </div>
           <div className="bg-[#ffa100] py-2 px-4 shadow-sm shadow-[#ffa100] hover:shadow-lg hover:shadow-[#ffb300] rounded-full font-medium transition duration-200">
-            <Link to={"/user/profile-page"}>
+            <Link to={"/user/profile"}>
               {" "}
               <UserPen className="w-7 h-7 text-white " />
             </Link>
