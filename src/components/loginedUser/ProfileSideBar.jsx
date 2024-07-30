@@ -18,7 +18,7 @@ const ProfileSideBar = () => {
         </li>
         <li>
           <Link
-            to={"/user/profile/forgot-pass"}
+            
             className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-purple-200 hover:text-orange-700 transition"
           >
             Forgot Password
