@@ -35,7 +35,7 @@ const UserLayout = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <span className="loading loading-spinner text-warning"></span>
+        <span className="loading loading-dots loading-md bg-[#cd50f0]"></span>
       </div>
     ); // Optionally show a loading indicator
   }

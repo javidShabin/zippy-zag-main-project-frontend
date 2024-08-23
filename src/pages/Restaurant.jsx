@@ -54,7 +54,7 @@ const Restaurant = () => {
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-700">Loading...</p>
+          <div className="flex justify-center items-center "><span className="loading loading-dots loading-md bg-[#cd50f0]"></span></div>
         )}
       </div>
     </main>
