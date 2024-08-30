@@ -14,6 +14,7 @@ import tomato1Image from "./tomato1.png";
 import tomatoImage from "./tomato.png";
 import chilly1Image from "./chilly1.png";
 import chillyImage from "./chilly.png";
+import loginImage from "./login.png";
 
 export {
   heroImage,
@@ -31,5 +32,6 @@ export {
   tomatoImage,
   tomato1Image,
   chillyImage,
-  chilly1Image
+  chilly1Image,
+  loginImage
 };
