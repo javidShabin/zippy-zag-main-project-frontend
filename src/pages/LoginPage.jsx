@@ -4,13 +4,6 @@ import { clearUser, saveUser } from "../redux/features/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../config/axiosInstance";
-import {
-  heroImage,
-  loginImage,
-  mintImage,
-  tomatoImage,
-  chillyImage,
-} from "../assets";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -112,7 +105,7 @@ export default function LoginPage() {
               New user?{" "}
               <Link
                 to="/signup-page"
-                className="text-orange-500 hover:underline"
+                className="text-[#dd63ff] hover:underline"
               >
                 Signup
               </Link>
@@ -121,7 +114,7 @@ export default function LoginPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-[400px] bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 focus:outline-none transition"
+              className="w-[400px] bg-[#dd63ff] text-white py-2 rounded-lg hover:bg-purple-600 focus:outline-none transition"
             >
               Login
             </button>
