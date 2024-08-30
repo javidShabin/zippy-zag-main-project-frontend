@@ -18,7 +18,7 @@ const UserLayout = () => {
         method: "GET",
         url: "/user/check-user",
       });
-      
+
       dispatch(saveUser());
     } catch (error) {
       dispatch(clearUser());
@@ -35,14 +35,14 @@ const UserLayout = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <span className="loading loading-dots loading-md bg-[#cd50f0]"></span>
+        <span className="loading loading-dots loading-lg bg-orange-400"></span>
       </div>
-    ); // Optionally show a loading indicator
+    );
   }
 
   return (
     <div>
-      {isUserExist ? <UserHeader/> : <Header />}
+      {isUserExist ? <UserHeader /> : <Header />}
       <Outlet />
     </div>
   );
