@@ -4,7 +4,13 @@ import { clearUser, saveUser } from "../redux/features/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../config/axiosInstance";
-import { chillyImage, heroImage, loginImage, mintImage, tomatoImage } from "../assets";
+import {
+  chillyImage,
+  heroImage,
+  loginImage,
+  mintImage,
+  tomatoImage,
+} from "../assets";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -73,6 +79,18 @@ export default function LoginPage() {
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-6 max-w-md w-full"
           >
+            {/* Name Field */}
+            <div>
+              <input
+                type="text"
+                placeholder="Your Name"
+                {...register("name", { required: true })}
+                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-[#dd63ff] focus:outline-none"
+              />
+              {errors.name && (
+                <span className="text-red-500 text-sm">Name is required</span>
+              )}
+            </div>
             {/* Email Field */}
             <div>
               <input
