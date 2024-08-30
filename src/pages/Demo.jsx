@@ -8,7 +8,7 @@ const Demo = () => {
         <div className="container w-[90%] md:w-[80%] lg:w-[70%]">
           <div className="text-center">
             <h1 className="text-[28px] sm:text-[32px] md:text-[36px] font-bold mt-5 text-black">
-              How It <span className="text-[#eb97f1]">Works</span>
+              How It <span className="text-orange-500">Works</span>
             </h1>
           </div>
           {/* Horizontal Scroll Section */}

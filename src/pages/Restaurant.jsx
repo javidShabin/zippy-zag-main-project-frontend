@@ -42,7 +42,7 @@ const Restaurant = () => {
   return (
     <main className="bg-white p-6 h-[100vh] mt-16">
       <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
-        Our <span className="text-[#eb97f1]">Restaurants</span>
+        Our <span className="text-orange-500">Restaurants</span>
       </h1>
 
       {restData.length > 0 ? (
