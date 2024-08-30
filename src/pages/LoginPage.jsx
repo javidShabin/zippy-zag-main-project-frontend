@@ -4,6 +4,13 @@ import { clearUser, saveUser } from "../redux/features/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../config/axiosInstance";
+import {
+  heroImage,
+  loginImage,
+  mintImage,
+  tomatoImage,
+  chillyImage,
+} from "../assets";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -32,42 +39,53 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white shadow-2xl shadow-[#dd63ff] rounded-xl w-full max-w-md">
-        {/* Top Image */}
-        <div
-          className="h-40 bg-cover bg-center rounded-t-xl"
-          style={{
-            backgroundImage: `url('https://source.unsplash.com/800x600/?restaurant-food')`,
-          }}
-        ></div>
+    <section
+      className="relative w-full min-h-screen flex items-center justify-center px-4"
+      style={{
+        backgroundImage: `url(${heroImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Decorative Images */}
+      <img
+        src={mintImage}
+        className="absolute top-1 left-52 w-12 sm:w-28 "
+        alt="Decorative mint"
+      />
+      <img
+        src={tomatoImage}
+        className="absolute bottom-1 right-52 w-12 sm:w-28 "
+        alt="Decorative tomato"
+      />
+      <img
+        src={chillyImage}
+        className="absolute top-1 right-52 w-12 sm:w-28 "
+        alt="Decorative chili"
+      />
 
-        {/* Form Section */}
-        <div className="p-6">
-          <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-            Welcome Back to Zippyzag!
-          </h2>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            {/* Name Field */}
-            <div className="mb-4">
-              <input
-                type="text"
-                placeholder="Your Name"
-                {...register("name", { required: true })}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-[#dd63ff]"
-              />
-              {errors.name && (
-                <span className="text-red-500 text-sm">Name is required</span>
-              )}
-            </div>
-
+      {/* Main Card */}
+      <div className="backdrop-blur-[10px] shadow-lg rounded-lg p-6 md:p-8 w-[80%] border-w">
+        <h2 className="text-2xl font-bold text-white text-center mb-6">
+          Welcome Back to Zippyzag!
+        </h2>
+        <div className="flex justify-between items-center py-8 px-6">
+          <img
+            src={loginImage}
+            alt="Login Illustration"
+            className="mb-6 w-[450px] h-auto object-contain"
+          />
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="space-y-6 max-w-md w-full"
+          >
             {/* Email Field */}
-            <div className="mb-4">
+            <div>
               <input
                 type="email"
                 placeholder="Your Email"
                 {...register("email", { required: true })}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-[#dd63ff]"
+                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-[#dd63ff] focus:outline-none"
               />
               {errors.email && (
                 <span className="text-red-500 text-sm">Email is required</span>
@@ -75,12 +93,12 @@ export default function LoginPage() {
             </div>
 
             {/* Password Field */}
-            <div className="mb-4">
+            <div>
               <input
                 type="password"
                 placeholder="Password"
                 {...register("password", { required: true })}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-[#dd63ff]"
+                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-[#dd63ff] focus:outline-none"
               />
               {errors.password && (
                 <span className="text-red-500 text-sm">
@@ -89,28 +107,27 @@ export default function LoginPage() {
               )}
             </div>
 
-            {/* Error Message */}
-            {errors.exampleRequired && (
-              <span className="text-red-500 mb-4">This field is required</span>
-            )}
-
-            <p className="text-sm text-gray-500 mb-6 text-center">
+            {/* Redirect to Signup */}
+            <p className="text-sm text-gray-500 text-center">
               New user?{" "}
-              <Link to={"/signup-page"}>
-                <span className="text-[#dd63ff] hover:underline">Signup</span>
+              <Link
+                to="/signup-page"
+                className="text-orange-500 hover:underline"
+              >
+                Signup
               </Link>
             </p>
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-[#dd63ff] text-white py-3 rounded-lg hover:bg-purple-600 transition"
+              className="w-[400px] bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 focus:outline-none transition"
             >
               Login
             </button>
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
