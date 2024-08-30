@@ -32,7 +32,7 @@ const Home = () => {
         />
         <img
           src={chilly1Image}
-          className="w-[90px] sm:w-[150px] absolute bottom-20 sm:bottom-60 left-0 animate-pulse transition duration-700"
+          className="w-[90px] sm:w-[150px] absolute bottom-20 sm:bottom-60 left-0 animate-slideRight"
         />
         <div className="container flex flex-col md:flex-row justify-between items-center rounded-lg px-4 sm:px-8 lg:px-12 w-11/12 h-[80vh] sm:h-[70vh]">
           {/* Text Section */}
