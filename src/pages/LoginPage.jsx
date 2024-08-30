@@ -4,6 +4,7 @@ import { clearUser, saveUser } from "../redux/features/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../config/axiosInstance";
+import { chillyImage, loginImage, mintImage, tomatoImage } from "../assets";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
