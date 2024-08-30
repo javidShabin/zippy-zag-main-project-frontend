@@ -85,7 +85,7 @@ export default function LoginPage() {
                 type="text"
                 placeholder="Your Name"
                 {...register("name", { required: true })}
-                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-[#dd63ff] focus:outline-none"
+                className="w-[400px] p-2 border border-gray-300 rounded-lg focus:ring-4 focus:ring-orange-500 focus:outline-none"
               />
               {errors.name && (
                 <span className="text-red-500 text-sm">Name is required</span>
@@ -97,7 +97,7 @@ export default function LoginPage() {
                 type="email"
                 placeholder="Your Email"
                 {...register("email", { required: true })}
-                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-[#dd63ff] focus:outline-none"
+                className="w-[400px] p-2 border border-gray-300 rounded-lg focus:ring-4 focus:ring-orange-500 focus:outline-none"
               />
               {errors.email && (
                 <span className="text-red-500 text-sm">Email is required</span>
@@ -110,7 +110,7 @@ export default function LoginPage() {
                 type="password"
                 placeholder="Password"
                 {...register("password", { required: true })}
-                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-[#dd63ff] focus:outline-none"
+                className="w-[400px] p-2 border border-gray-300 rounded-lg focus:ring-4 focus:ring-orange-500 focus:outline-none"
               />
               {errors.password && (
                 <span className="text-red-500 text-sm">
@@ -133,7 +133,7 @@ export default function LoginPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-[400px] bg-[#dd63ff] text-white py-2 rounded-lg hover:bg-purple-600 focus:outline-none transition"
+              className="w-[400px] bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 focus:outline-none transition"
             >
               Login
             </button>
