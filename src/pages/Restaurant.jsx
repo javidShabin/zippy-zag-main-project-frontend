@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../config/axiosInstance";
+import { filterData } from "../components/filterData/FilterData";
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
@@ -39,6 +40,31 @@ const Restaurant = () => {
 
   return (
     <main className="bg-white p-6 min-h-screen mt-16">
+      <div>
+        <h3 className="font-bold text-[22px] mb-10 text-[#2d2d2d]">
+          What's on your mind
+        </h3>
+        <div className="flex justify-start sm:justify-center items-center gap-5 mb-8 overflow-x-auto">
+          {filterData.map((item, index) => (
+            <div
+              key={index}
+              className="text-center mb-2 py-5 px-7 shadow-xl rounded-lg min-w-[180px]"
+            >
+              <img
+                onClick={() => {
+                  getRestaurantByMenu({ name: item.name });
+                }}
+                src={item.image}
+                alt={item.category}
+                className="w-16 h-16 object-cover mx-auto mb-2"
+              />
+              <p className="text-sm font-medium text-gray-600">
+                {item.category}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
       <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
         Our <span className="text-orange-500">Restaurants</span>
       </h1>
