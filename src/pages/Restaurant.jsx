@@ -26,6 +26,18 @@ const Restaurant = () => {
     }
   };
 
+  const getRestaurantByMenu = async ({ name }) => {
+    try {
+      const response = await axiosInstance({
+        method: "GET",
+        url: `/restaurant/rest-details/menuItem/${name}`,
+      });
+      setRestData(response.data.restaurants);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getRestaurants();
   }, []);
