@@ -1,6 +1,5 @@
 import React from "react";
 import { bannerImage, heroImage } from "../assets";
-import About from "./About";
 
 const Home = () => {
   return (
@@ -15,10 +14,15 @@ const Home = () => {
       >
         <div className="container flex flex-col md:flex-row justify-between items-center rounded-lg px-6 sm:px-10 w-11/12 h-[70vh]">
           {/* Text Section */}
-          <div className="text-white text-center md:text-left px-6 py-4 sm:py-6">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              Feast Your Senses
+          <div className="text-[#0e092e] text-center md:text-left px-6 py-4 sm:py-6 ">
+            <h1 className="text-3xl sm:text-4xl lg:text-[65px] font-black ">
+              Delight in Every Bite,
             </h1>
+            <h2 className="text-3xl sm:text-4xl lg:text-[60px] font-black mt-5 ">
+              Delivered Right
+            </h2>
+            <p className="leading-tight mt-3">www.zippyzag.com</p>
+            <button className="py-3 px-6 border-none rounded-full shadow-lg shadow-[#dd63ff] mt-5">Scroll Down</button>
           </div>
 
           {/* Image Section */}
@@ -31,7 +35,6 @@ const Home = () => {
           </div>
         </div>
       </main>
-      <About />
     </>
   );
 };

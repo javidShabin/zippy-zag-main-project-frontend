@@ -1,5 +1,6 @@
 import { Menu, MessagesSquare, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,22 +49,16 @@ const Header = () => {
           aria-label="Main Navigation"
         >
           <ul className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-6">
-            <li>
-              <a
-                href="#"
-                className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
-              >
+            <Link to={"/"}>
+              <li className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white">
                 Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
-              >
+              </li>
+            </Link>
+            <Link to={"/about"}>
+              <li className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white">
                 About
-              </a>
-            </li>
+              </li>
+            </Link>
             <li>
               <a
                 href="#"
