@@ -25,7 +25,7 @@ const Restaurant = () => {
   return (
     <main className="bg-gray-100 p-6 min-h-screen mt-16">
       <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
-        Restaurants
+        Our <span className="text-[#eb97f1]">Restaurants</span>
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {restData.length > 0 ? (
