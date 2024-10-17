@@ -8,4 +8,14 @@ import place from "./place.png";
 import joinBanner1 from "./joinBanner1.png";
 import joinBanner2 from "./joinBanner2.png";
 
-export { heroImage, bannerImage, orderImage, deliveredImage, order, food, place, joinBanner1, joinBanner2 };
+export {
+  heroImage,
+  bannerImage,
+  orderImage,
+  deliveredImage,
+  order,
+  food,
+  place,
+  joinBanner1,
+  joinBanner2,
+};
