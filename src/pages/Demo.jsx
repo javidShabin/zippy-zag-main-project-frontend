@@ -1,5 +1,5 @@
 import React from "react";
-import { food, joinBanner1, order, place } from "../assets";
+import { food, joinBanner1, joinBanner2, order, place } from "../assets";
 
 const Demo = () => {
   return (
@@ -13,7 +13,7 @@ const Demo = () => {
           </div>
 
           {/* Horizontal Scroll Section */}
-          <div className="flex overflow-x-auto gap-5 mt-8 px-4 py-6">
+          <div className="flex justify-center overflow-x-auto gap-14 mt-8 px-4 py-6">
             {/* Article 1 */}
             <article className="bg-[#ffffff] w-[250px] sm:w-[300px] flex flex-col justify-center items-center rounded-lg shadow-lg p-5 transition-transform duration-300 hover:scale-105 hover:shadow-xl">
               <img src={order} alt="Order" className="w-[150px] mb-4" />
@@ -41,12 +41,64 @@ const Demo = () => {
         </div>
       </div>
       {/* Join us banner section */}
-      <div style={{
-                  backgroundImage: `url(${joinBanner1})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }} className="container">
+      <div className="container mx-auto px-4 py-8 text-center">
+        <h2 className="text-3xl font-bold mb-6 text-gray-800">Join With Us</h2>
+        <p className="text-gray-600 text-lg max-w-3xl mx-auto mb-8">
+          Join us and be part of an exciting journey toward innovation and
+          growth. Whether you're a business looking to expand your reach or an
+          individual seeking to explore new opportunities, we offer a platform
+          designed to empower and inspire. Let's work together to create
+          meaningful connections and achieve greater success.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 px-4 py-8">
+          {/* First banner */}
+          <div
+            className="relative w-full max-w-[500px] h-64 sm:h-72 rounded-lg shadow-lg overflow-hidden bg-gray-200 transform transition-transform duration-300 hover:scale-105"
+            style={{
+              backgroundImage: `url(${joinBanner1})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end text-left px-6 py-4">
+              <div>
+                <p className="text-orange-500 text-lg font-medium">
+                  Signup as a Rider
+                </p>
+                <h3 className="text-white text-2xl font-bold mt-2">
+                  Ride With Us
+                </h3>
+                <button className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-md shadow-md hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/50 transition duration-300">
+                  Get Started
+                </button>
+              </div>
+            </div>
+          </div>
 
+          {/* Second banner */}
+          <div
+            className="relative w-full max-w-[500px] h-64 sm:h-72 rounded-lg shadow-lg overflow-hidden bg-gray-200 transform transition-transform duration-300 hover:scale-105"
+            style={{
+              backgroundImage: `url(${joinBanner2})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end text-left px-6 py-4">
+              <div>
+                <p className="text-orange-500 text-lg font-medium">
+                  Signup as a Business
+                </p>
+                <h3 className="text-white text-2xl font-bold mt-2">
+                  Partner With Us
+                </h3>
+                <button className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-md shadow-md hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/50 transition duration-300">
+                  Get Started
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );
