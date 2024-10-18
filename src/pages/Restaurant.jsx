@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstants } from "../config/axiosInstents";
+import { Link } from "react-router-dom";
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
@@ -29,25 +30,27 @@ const Restaurant = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {restData.length > 0 ? (
           restData.map((restaurant) => (
-            <div
-              className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
-              style={{
-                backgroundImage: `url(${restaurant.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-              key={restaurant._id}
-            >
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+            <Link to={"/rest-details"}>
+              <div
+                className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
+                style={{
+                  backgroundImage: `url(${restaurant.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                key={restaurant._id}
+              >
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black bg-opacity-40"></div>
 
-              {/* Content */}
-              <div className="relative z-10 p-4 flex flex-col justify-end h-full text-white">
-                <h2 className="text-lg font-semibold">{restaurant.name}</h2>
-                <p className="text-sm">{restaurant.location}</p>
-                <p className="text-xs mt-2">{restaurant.description}</p>
+                {/* Content */}
+                <div className="relative z-10 p-4 flex flex-col justify-end h-full text-white">
+                  <h2 className="text-lg font-semibold">{restaurant.name}</h2>
+                  <p className="text-sm">{restaurant.location}</p>
+                  <p className="text-xs mt-2">{restaurant.description}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <p className="text-center text-gray-700">Loading...</p>
