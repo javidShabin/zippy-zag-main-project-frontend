@@ -5,7 +5,6 @@ import { axiosInstance } from "../config/axiosInstance";
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const getRestaurants = async () => {
@@ -20,7 +19,6 @@ const Restaurant = () => {
         : [];
       setRestData(restaurants);
     } catch (error) {
-      setError("Failed to load restaurants. Please try again later.");
       console.error("Error fetching restaurants:", error);
     } finally {
       setLoading(false);

@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 
 const Menus = ({ restaurantId }) => {
   const [menus, setMenu] = useState([]);
-  console.log(menus);
 
   const getMenuForRestaurant = async () => {
     try {

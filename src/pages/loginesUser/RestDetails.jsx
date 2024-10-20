@@ -13,7 +13,6 @@ const RestDetails = () => {
         method: "GET",
         url: `/restaurant/rest-details/${id}`,
       });
-      console.log(response.data);
       setRestDetails(response.data);
     } catch (error) {
       console.error(error);

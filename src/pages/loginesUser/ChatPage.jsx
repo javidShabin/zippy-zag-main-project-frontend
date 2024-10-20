@@ -44,7 +44,6 @@ const ChatPage = () => {
         ...prevMessages,
         response.data.data.message, // Add new message to the state
       ]);
-      console.log(response);
     } catch (error) {
       console.error(error);
     }

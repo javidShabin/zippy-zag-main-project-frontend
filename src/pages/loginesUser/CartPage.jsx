@@ -6,7 +6,6 @@ import { Trash2 } from "lucide-react";
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  console.log(cartItems, totalPrice);
 
   // Delivery initializing
   let deliveryCharge = 50;
@@ -26,7 +25,6 @@ const CartPage = () => {
   // Update the cart item quantity
   const updateCartItemQuantity = async (menuItemId, newQuantity) => {
     try {
-      console.log(menuItemId, newQuantity);
       if (newQuantity < 1) return;
       const response = await axiosInstance({
         method: "PUT",
@@ -37,8 +35,9 @@ const CartPage = () => {
       });
       setCartItems(response.data.items);
       setTotalPrice(response.data.totalPrice);
-      console.log(response);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   // Revome the item from cart

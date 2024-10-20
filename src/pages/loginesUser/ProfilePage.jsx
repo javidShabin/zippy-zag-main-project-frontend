@@ -33,7 +33,6 @@ const ProfilePage = () => {
         method: "POST",
         url: "/user/logout",
       });
-      console.log(response);
       toast.success("User logged out successfully");
 
       // Clear user session data (if applicable)

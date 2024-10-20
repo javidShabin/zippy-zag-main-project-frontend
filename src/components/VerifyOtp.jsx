@@ -43,7 +43,7 @@ const VerifyOtp = () => {
           type="email"
           placeholder="Enter your email"
           {...register("email", { required: "Email is required" })}
-          className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
         {errors.email && (
           <span className="text-red-500 text-sm">{errors.email.message}</span>
@@ -56,7 +56,7 @@ const VerifyOtp = () => {
           type="number"
           placeholder="Enter OTP"
           {...register("otp", { required: "OTP is required" })}
-          className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
         />
         {errors.otp && (
           <span className="text-red-500 text-sm">{errors.otp.message}</span>
@@ -66,7 +66,7 @@ const VerifyOtp = () => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition"
+        className="w-full bg-orange-400 text-white py-3 rounded hover:bg-orange-500 transition"
       >
         Verify
       </button>
