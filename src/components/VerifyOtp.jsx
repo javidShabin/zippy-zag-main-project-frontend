@@ -6,27 +6,37 @@ import { clearUser, saveUser } from "../redux/features/userSlice";
 import { axiosInstance } from "../config/axiosInstance";
 
 const VerifyOtp = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (formData) => {
+    // Debug log for form data
+    console.log("Submitted Form Data:", formData);
+
     try {
       const response = await axiosInstance({
         method: "POST",
         url: "/user/otpVerify",
-        data,
+        data: formData, // Passing formData to the API
       });
+
       toast.success(response.data.message);
-      dispatch(saveUser())
-      
+
+      // Dispatch user data to the Redux store
+      dispatch(saveUser(response.data.user));
     } catch (error) {
-      dispatch(clearUser())
-      console.log(error.response?.data?.message || "Something went wrong");
+      // Handle errors properly
+      console.error(
+        "Error during OTP verification:",
+        error.response?.data?.message || error.message
+      );
+
       toast.error(error.response?.data?.message || "OTP verification failed");
+      dispatch(clearUser());
     }
   };
 
