@@ -19,6 +19,7 @@ import {
 
 const SignupPage = () => {
   const [showOtpForm, setShowOtpForm] = useState(false);
+  const [userData, setUserData] = useState(null);
   const dispatch = useDispatch();
   const {
     register,
@@ -34,6 +35,7 @@ const SignupPage = () => {
         data,
       });
       toast.success(response.data.message);
+      setUserData(data);
       dispatch(saveUser());
       setShowOtpForm(true);
     } catch (error) {
@@ -176,10 +178,10 @@ const SignupPage = () => {
       </div>
 
       {/* OTP Verification Section */}
-      {showOtpForm && (
+      {showOtpForm && userData && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-800 bg-opacity-70 z-10">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full">
-            <VerifyOtp email={data.email} />
+            <VerifyOtp email={userData.email} />
           </div>
         </div>
       )}
