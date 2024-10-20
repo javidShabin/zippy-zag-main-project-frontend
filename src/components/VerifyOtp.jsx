@@ -4,10 +4,12 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
 import { axiosInstance } from "../config/axiosInstance";
+import { useNavigate } from "react-router-dom";
 
 const VerifyOtp = ({email}) => {
-  console.log(email)
+
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -23,7 +25,7 @@ const VerifyOtp = ({email}) => {
       });
       toast.success(response.data.message);
       dispatch(saveUser())
-      
+      navigate("/")
     } catch (error) {
       dispatch(clearUser())
       console.log(error.response?.data?.message || "Something went wrong");
