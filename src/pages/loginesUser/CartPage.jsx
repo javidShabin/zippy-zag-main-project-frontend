@@ -19,7 +19,6 @@ const CartPage = () => {
         url: "/cart/getCart",
       });
       setCartItems(response.data.items);
-      console.log(response, "===response");
       setTotalPrice(response.data.totalPrice);
     } catch (error) {}
   };
@@ -42,6 +41,21 @@ const CartPage = () => {
     } catch (error) {}
   };
 
+  // Revome the item from cart
+  const removeCartItem = async (menuItemId) => {
+    try {
+      const response = await axiosInstance({
+        method: "DELETE",
+        url: "/cart/remove",
+        data: { menuItem: menuItemId },
+      });
+      setCartItems(response.data.items);
+      setTotalPrice(response.data.totalPrice);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // Payment function
   const makePayment = async () => {
     try {
@@ -54,7 +68,6 @@ const CartPage = () => {
         url: "/payment/create-checkout-session",
         data: { products: cartItems },
       });
-      console.log(session, "====session");
       const result = stripe.redirectToCheckout({
         sessionId: session.data.sessionId,
       });
@@ -129,7 +142,12 @@ const CartPage = () => {
                     <td className="py-4 px-6">₹{item.price}</td>
                     <td className="py-4 px-6">₹{item.price * item.quantity}</td>
                     <td className="py-4 px-6 text-right">
-                      <Trash2 className="text-orange-500" />
+                      <Trash2
+                        onClick={() => {
+                          removeCartItem(item.menuItem);
+                        }}
+                        className="text-orange-500"
+                      />
                     </td>
                   </tr>
                 ))}
