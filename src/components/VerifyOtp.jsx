@@ -5,7 +5,8 @@ import { useDispatch } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
 import { axiosInstance } from "../config/axiosInstance";
 
-const VerifyOtp = ({emial}) => {
+const VerifyOtp = ({email}) => {
+  console.log(email)
   const dispatch = useDispatch()
   const {
     register,
@@ -20,7 +21,7 @@ const VerifyOtp = ({emial}) => {
         url: "/user/otpVerify",
         data,
       });
-      toast.success(response.data.message);
+      toast.success(response);
       dispatch(saveUser())
       
     } catch (error) {
@@ -41,7 +42,7 @@ const VerifyOtp = ({emial}) => {
       <div className="mb-4">
         <input
           type="email"
-          value={emial}
+          value={email}
           placeholder="Enter your email"
           {...register("email", { required: "Email is required" })}
           className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
