@@ -11,7 +11,6 @@ const Demo = () => {
               How It <span className="text-[#eb97f1]">Works</span>
             </h1>
           </div>
-
           {/* Horizontal Scroll Section */}
           <div className="flex justify-center overflow-x-auto gap-14 mt-8 px-4 py-6">
             {/* Article 1 */}
