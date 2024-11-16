@@ -8,8 +8,12 @@ import place from "./place.png";
 import joinBanner1 from "./joinBanner1.png";
 import joinBanner2 from "./joinBanner2.png";
 import logo from "./logo.png";
-import mintLeav from "./mint.png";
+import mintImage from "./mint.png";
+import mint1Image from "./mint1.png";
 import tomato1Image from "./tomato1.png";
+import tomatoImage from "./tomato.png";
+import chilly1Image from "./chilly1.png";
+import chillyImage from "./chilly.png";
 
 export {
   heroImage,
@@ -22,6 +26,10 @@ export {
   joinBanner1,
   joinBanner2,
   logo,
-  mintLeav,
-  tomato1Image
+  mintImage,
+  mint1Image,
+  tomatoImage,
+  tomato1Image,
+  chillyImage,
+  chilly1Image
 };

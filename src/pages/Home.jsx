@@ -1,5 +1,5 @@
 import React from "react";
-import { bannerImage, heroImage, mintLeav, tomato1Image } from "../assets";
+import { bannerImage, chilly1Image, chillyImage, heroImage, mint1Image, mintImage, tomato1Image, tomatoImage, } from "../assets";
 import Demo from "./Demo";
 import Restaurant from "./Restaurant";
 
@@ -14,12 +14,12 @@ const Home = () => {
           backgroundPosition: "center",
         }}
       >
-        <img src={mintLeav} className="w-[70px] absolute bottom-7 left-72 animate-bounce transition duration-300 " />
-        <img src={mintLeav} className="w-[70px] absolute bottom-7 right-72 animate-bounce transition duration-300 " />
-        <img src={mintLeav} className="w-[70px] absolute top-42 right-0 animate-bounce transition duration-300 " />
-        <img src={mintLeav} className="w-[70px] absolute top-8 right-36 animate-bounce transition duration-300 " />
-        <img src={tomato1Image} className="w-[150px] absolute top-28 left-52 animate-bounce transition duration-300 " />
-        <img src={mintLeav} className="w-[100px] absolute top-64 left-0 animate-bounce transition duration-300 " />
+        <img src={mintImage} className="w-[100px] absolute top-20 right-56 animate-pulse transition duration-700 "/>
+        <img src={tomatoImage} className="w-[100px] absolute bottom-5 right-80 animate-pulse transition duration-700 "/>
+        <img src={mint1Image} className="w-[150px] absolute bottom-5 left-80 animate-pulse transition duration-700 "/>
+        <img src={tomato1Image} className="w-[250px] absolute top-10 left-56 animate-pulse transition duration-700 "/>
+        <img src={chillyImage} className="w-[140px] absolute bottom-60 right-0 animate-pulse transition duration-700 "/>
+        <img src={chilly1Image} className="w-[180px] absolute bottom-60 left-0 animate-pulse transition duration-700 "/>
         <div className="container flex flex-col md:flex-row justify-between items-center rounded-lg px-6 sm:px-10 w-11/12 h-[80vh] sm:h-[70vh]">
           {/* Text Section */}
           <div className="text-center md:text-left px-6 py-4 sm:py-6">
