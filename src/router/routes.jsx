@@ -9,6 +9,7 @@ import AuthUser from "./protectedRoutes/AuthUser";
 import RestDetails from "../pages/loginesUser/RestDetails";
 import ProfilePage from "../pages/loginesUser/ProfilePage";
 import ChatPage from "../pages/loginesUser/ChatPage";
+import CartPage from "../pages/loginesUser/CartPage";
 
 export const router = createBrowserRouter([
   {
@@ -52,8 +53,12 @@ export const router = createBrowserRouter([
           },
           {
             path: "chat-page",
-            element: <ChatPage/>
-          }
+            element: <ChatPage />,
+          },
+          {
+            path: "cart-page",
+            element: <CartPage />,
+          },
         ],
       },
     ],
