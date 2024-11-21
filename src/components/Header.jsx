@@ -1,24 +1,19 @@
+import { Menu, MessagesSquare, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
-import { Menu, X, MessagesSquare } from "lucide-react"; // Import Lucide icons
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle mobile menu
-  const [isChatActive, setIsChatActive] = useState(false); // State to track if chat is active
-  const [isScrolled, setIsScrolled] = useState(false); // State to track if user scrolled
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // Toggle chat active state
-  const handleChatClick = () => {
-    setIsChatActive(!isChatActive);
+  // Toggle the menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
-  // Add or remove header styles on scroll
+  // Handle scroll to change header color
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -29,78 +24,111 @@ const Header = () => {
 
   return (
     <header
-      className={`w-full py-5 sticky top-0 left-0 z-50 transition-all ${
-        isScrolled
-          ? "bg-transparent shadow-lg backdrop-blur-md"
-          : "bg-transparent shadow-none"
-      }`}
+      className={`fixed top-0 w-full z-50 ${
+        isScrolled ? "bg-[#3d3d3db3] backdrop-blur-sm" : "bg-[#ffffff80]"
+      } text-white transition duration-300`}
     >
-      <div className="container w-[95%] mx-auto px-4 flex justify-between items-center">
+      <div className="container mx-auto flex items-center justify-between py-4 px-6 md:px-10">
         {/* Logo */}
         <div className="logo">
-          <h1 className="text-2xl font-bold text-[#FC8A06]">ZippyZag</h1>
+          <h1
+            className={`text-2xl font-bold tracking-wide cursor-pointer ${
+              isScrolled ? "text-white" : "text-black"
+            }`}
+          >
+            ZippyZag
+          </h1>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex">
-          <ul className="flex items-center gap-6 text-gray-800">
-            <li className="hover:text-[#FC8A06] cursor-pointer">Home</li>
-            <li className="hover:text-[#FC8A06] cursor-pointer">About</li>
-            <li className="hover:text-[#FC8A06] cursor-pointer">Restaurants</li>
-            <li className="hover:text-[#FC8A06] cursor-pointer">Contact</li>
-          </ul>
-        </nav>
-
-        {/* Right Section with Icon and Join Us Button */}
-        <div className="hidden md:flex items-center gap-4">
-          <MessagesSquare
-            onClick={handleChatClick} // Handle click to toggle active state
-            className={`w-6 h-6 cursor-pointer transition-all ${
-              isChatActive
-                ? "text-[#fc8a33]" // Highlight when active
-                : "text-[#FC8A06]"
-            } hover:text-[#FC8A06]`} // Hover effect
-          />
-          <span className="px-4 py-2 bg-[#FC8A06] text-white rounded-lg cursor-pointer hover:bg-[#fc8a33]">
-            Join Us
-          </span>
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          className="block md:hidden text-gray-800"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        {/* Navigation Links */}
+        <nav
+          className={`${
+            isMenuOpen ? "block" : "hidden"
+          } absolute top-16 left-0 w-full bg-[#ffffff64] backdrop-blur-md text-black md:static md:block md:w-auto md:bg-transparent md:backdrop-blur-none`}
+          aria-label="Main Navigation"
         >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <nav className="md:hidden backdrop-blur-md bg-[#ffffff66]">
-          <ul className="flex flex-col items-center gap-4 py-4 text-gray-800">
-            <li className="hover:text-orange-600 cursor-pointer">Home</li>
-            <li className="hover:text-orange-600 cursor-pointer">About</li>
-            <li className="hover:text-orange-600 cursor-pointer">Restaurants</li>
-            <li className="hover:text-orange-600 cursor-pointer">Contact</li>
+          <ul className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-6">
             <li>
-              <MessagesSquare
-                onClick={handleChatClick} // Toggle active state on click
-                className={`w-6 h-6 cursor-pointer transition-all ${
-                  isChatActive
-                    ? "text-orange-700"
-                    : "text-orange-600"
-                } hover:text-orange-700`} // Active and hover effect
-              />
+              <a
+                href="#"
+                className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
+              >
+                Home
+              </a>
             </li>
             <li>
-              <span className="px-4 py-2 bg-orange-600 text-white rounded-lg cursor-pointer hover:bg-orange-700">
+              <a
+                href="#"
+                className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
+              >
+                Restaurants
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block py-1 px-3 rounded-full transition duration-300 hover:bg-orange-400 hover:text-white"
+              >
+                Contact
+              </a>
+            </li>
+            {/* Chat and Join Us for Small Screens */}
+            <li className="flex flex-col items-center space-y-4 md:hidden">
+              <div className="relative">
+                <MessagesSquare className="w-6 h-6 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
+                <span className="absolute -top-2 -right-2 bg-orange-400 text-white text-xs font-bold py-0.5 px-1.5 rounded-full">
+                  3
+                </span>
+              </div>
+              <a
+                href="#"
+                className="bg-orange-400 text-black py-2 px-4 rounded-md font-medium transition duration-300 hover:bg-black hover:text-white"
+              >
                 Join Us
-              </span>
+              </a>
             </li>
           </ul>
         </nav>
-      )}
+
+        {/* Join Us Button and Chat Icon (Large Screens) */}
+        <div className="hidden md:flex gap-5 items-center space-x-4">
+          <div className="relative">
+            <MessagesSquare className="w-7 h-7 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
+            <span className="absolute -top-2 -right-2 bg-orange-400 text-white text-xs font-bold py-0.5 px-1.5 rounded-full">
+              3
+            </span>
+          </div>
+          <a
+            href="#"
+            className="bg-orange-400 text-black py-2 px-4 rounded-md font-medium transition duration-300 hover:bg-black hover:text-white"
+          >
+            Join Us
+          </a>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={toggleMenu}
+            className="text-black focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+      </div>
     </header>
   );
 };
