@@ -5,14 +5,14 @@ import About from "./About";
 const Home = () => {
   return (
     <>
-      <main className="w-full h-[90vh] flex justify-center items-center bg-gray-100">
-        <div
-          className="container flex flex-col md:flex-row justify-around items-center rounded-lg px-10 w-[95%] h-[70vh] shadow-lg"
-          style={{
+      <main className="w-full h-[100vh] flex justify-center items-center" style={{
             backgroundImage: `url(${heroImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-          }}
+          }}>
+        <div
+          className="container flex flex-col md:flex-row justify-around items-center rounded-lg px-10 w-[95%] h-[70vh] shadow-lg"
+          
         >
           {/* Text Section */}
           <div className="text-white px-6 py-4 sm:px-10 sm:py-6 bg-black bg-opacity-50 rounded-lg max-w-[90%] md:max-w-[40%]">
