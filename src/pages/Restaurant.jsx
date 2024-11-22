@@ -1,11 +1,60 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { axiosInstants } from "../config/axiosInstents";
 
 const Restaurant = () => {
-  return (
-    <main>
-      
-    </main>
-  )
-}
+  const [restData, setRestData] = useState([]);
 
-export default Restaurant
+  const getRestaurants = async () => {
+    try {
+      const response = await axiosInstants({
+        method: "GET",
+        url: "/restaurant/all-restaurants",
+      });
+      console.log(response.data.restaurants);
+      setRestData(response.data.restaurants);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getRestaurants();
+  }, []);
+
+  return (
+    <main className="bg-gray-100 p-6 min-h-screen mt-16">
+      <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
+        Restaurants
+      </h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {restData.length > 0 ? (
+          restData.map((restaurant) => (
+            <div
+              className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
+              style={{
+                backgroundImage: `url(${restaurant.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              key={restaurant._id}
+            >
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+
+              {/* Content */}
+              <div className="relative z-10 p-4 flex flex-col justify-end h-full text-white">
+                <h2 className="text-lg font-semibold">{restaurant.name}</h2>
+                <p className="text-sm">{restaurant.location}</p>
+                <p className="text-xs mt-2">{restaurant.description}</p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="text-center text-gray-700">Loading...</p>
+        )}
+      </div>
+    </main>
+  );
+};
+
+export default Restaurant;

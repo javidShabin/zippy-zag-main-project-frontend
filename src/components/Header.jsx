@@ -39,16 +39,16 @@ const Header = () => {
 
         {/* Navigation Links */}
         <nav
-          className={`${
+          className={`${ 
             isMenuOpen ? "block" : "hidden"
-          } absolute top-16 left-0 w-full bg-[#ffffffc7] backdrop-blur-xl text-black md:static md:block md:w-auto md:bg-transparent md:backdrop-blur-none`}
+          } absolute top-16 left-0 w-full backdrop-blur-xl text-black md:static md:block md:w-auto md:bg-transparent md:backdrop-blur-none`}
           aria-label="Main Navigation"
         >
           <ul className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-6">
             <Link to={"/"}>
               <li
                 onClick={toggleMenu}
-                className="block font-semibold py-1 px-3 rounded-full relative overflow-hidden group"
+                className="block font-semibold py-1 px-3 relative overflow-hidden group"
               >
                 Home
                 <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
@@ -57,21 +57,21 @@ const Header = () => {
             <Link to={"/about"}>
               <li
                 onClick={toggleMenu}
-                className="block font-semibold py-1 px-3 rounded-full relative overflow-hidden group"
+                className="block font-semibold py-1 px-3 relative overflow-hidden group"
               >
                 About
                 <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </li>
             </Link>
-            <li onClick={toggleMenu} className="relative overflow-hidden group">
-              <a
-                href="#"
-                className="block font-semibold py-1 px-3 rounded-full"
+            <Link to={"/restaurant"}>
+              <li
+                onClick={toggleMenu}
+                className="block font-semibold py-1 px-3 relative overflow-hidden group"
               >
                 Restaurants
                 <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
-              </a>
-            </li>
+              </li>
+            </Link>
             <li onClick={toggleMenu} className="relative overflow-hidden group">
               <a
                 href="#"
@@ -90,11 +90,11 @@ const Header = () => {
                 </span>
               </div>
               <a
-                href="#"
-                className="bg-orange-400 text-black py-2 px-4 rounded-md font-medium transition duration-300 hover:bg-[#dd63ff] hover:text-white"
-              >
-                Join Us
-              </a>
+            href="#"
+            className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200"
+          >
+            Join Us
+          </a>
             </li>
           </ul>
         </nav>
