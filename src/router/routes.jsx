@@ -7,6 +7,7 @@ import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 import AuthUser from "./protectedRoutes/AuthUser";
 import RestDetails from "../pages/loginesUser/RestDetails";
+import ProfilePage from "../pages/loginesUser/ProfilePage";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
             path: "rest-details/:id", // Relative path
             element: <RestDetails />,
           },
+          {
+            path: "profile-page",
+            element: <ProfilePage/>
+          }
         ],
       },
     ],
