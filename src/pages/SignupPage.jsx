@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import React from "react";
+import { axiosInstants } from "../config/axiosInstents";
+import toast from "react-hot-toast";
 
 const SignupPage = () => {
   const {
@@ -8,7 +10,20 @@ const SignupPage = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data)
+    try {
+      const response = await axiosInstants({
+        method: "POST",
+        url: "/user/register",
+        data,
+      })
+      toast.success(response.data.message)
+    } catch (error) {
+      console.log(error.response.data.message);
+      toast.error(error.response.data.message);
+    }
+  }
 
   return (
     <form
