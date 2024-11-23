@@ -3,6 +3,7 @@ import { axiosInstants } from "../config/axiosInstents";
 import { useDispatch } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -22,9 +23,11 @@ export default function LoginPage() {
         data,
       });
       dispatch(saveUser());
+      toast.success("User logged in successfully");
       navigate("/");
     } catch (error) {
       dispatch(clearUser());
+      toast.error("Login failed. Please try again!");
       console.log(error);
     }
   };
