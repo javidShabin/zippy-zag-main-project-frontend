@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { axiosInstants } from "../config/axiosInstents";
 import { useDispatch } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { axiosInstance } from "../config/axiosInstance";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export default function LoginPage() {
 
   const onSubmit = async (data) => {
     try {
-      await axiosInstants({
+      await axiosInstance({
         method: "POST",
         url: "/user/login",
         data,

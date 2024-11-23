@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { axiosInstants } from "../../config/axiosInstents";
+import { axiosInstance } from "../../config/axiosInstance";
 
 const RestDetails = () => {
   const { id } = useParams();
@@ -8,10 +8,11 @@ const RestDetails = () => {
 
   const getRestaurantById = async () => {
     try {
-      const response = await axiosInstants({
+      const response = await axiosInstance({
         method: "GET",
         url: `/restaurant/rest-details/${id}`,
       });
+      console.log(response.data);
       setRestDetails(response.data);
     } catch (error) {
       console.error(error);
@@ -41,17 +42,29 @@ const RestDetails = () => {
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0000009b] to-transparent opacity-100">
-        <div>
-          <h1>{restDetails.name}</h1>
+        <div className="absolute flex justify-between items-center px-11 inset-0 bg-gradient-to-t from-[#000000aa] to-[#0000008d] opacity-100">
+          <div>
+            <h1 className="text-[35px] font-bold text-white">
+              {restDetails.name}
+            </h1>
+            <h2 className="text-lg font-bold">{restDetails.location}</h2>
+            <p className="text-gray-600">{restDetails.cuisine}</p>
+            <p
+              className={`text-sm font-medium ${
+                restDetails.isOpen ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {restDetails.isOpen ? "Open Now" : "Closed"}
+            </p>
+          </div>
+          <div>
+            <img
+              className="w-[500px] rounded-xl opacity-90"
+              src={restDetails.image}
+              alt=""
+            />
+          </div>
         </div>
-        <div>
-          <img className="w-[500px]" src={restDetails.image} alt="" />
-        </div>
-        </div>
-        
-        
-        
       </div>
     </main>
   );

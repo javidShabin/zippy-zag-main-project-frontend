@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import React from "react";
-import { axiosInstants } from "../config/axiosInstents";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
+import { axiosInstance } from "../config/axiosInstance";
 
 const VerifyOtp = () => {
   const dispatch = useDispatch()
@@ -15,7 +15,7 @@ const VerifyOtp = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstants({
+      const response = await axiosInstance({
         method: "POST",
         url: "/user/otpVerify",
         data,

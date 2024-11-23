@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { axiosInstants } from "../config/axiosInstents";
 import { useNavigate } from "react-router-dom";
+import { axiosInstance } from "../config/axiosInstance";
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
@@ -8,7 +8,7 @@ const Restaurant = () => {
 
   const getRestaurants = async () => {
     try {
-      const response = await axiosInstants({
+      const response = await axiosInstance({
         method: "GET",
         url: "/restaurant/all-restaurants",
       });

@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
-import { axiosInstants } from "../config/axiosInstents";
 import toast from "react-hot-toast";
 import VerifyOtp from "../components/VerifyOtp";
 import { useDispatch } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
 import { Link } from "react-router-dom";
+import { axiosInstance } from "../config/axiosInstance";
 
 const SignupPage = () => {
   const [showOtpForm, setShowOtpForm] = useState(false);
@@ -18,7 +18,7 @@ const SignupPage = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosInstants({
+      const response = await axiosInstance({
         method: "POST",
         url: "/user/register",
         data,

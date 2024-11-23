@@ -4,7 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import UserHeader from "../components/loginedUser/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
-import { axiosInstants } from "../config/axiosInstents";
+import { axiosInstance } from "../config/axiosInstance";
 
 const UserLayout = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const UserLayout = () => {
 
   const checkUser = async () => {
     try {
-      await axiosInstants({
+      await axiosInstance({
         method: "GET",
         url: "/user/check-user",
       });
