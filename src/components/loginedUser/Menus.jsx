@@ -18,10 +18,26 @@ const Menus = ({ restaurantId }) => {
     }
   };
 
-
-  const handleAddToCart = (menu) => {
-    // Handle the action when the "Add" button is clicked (e.g., adding to cart)
-    console.log(`Added ${menu.name} to the cart!`);
+  const handleAddToCart = async (menuItem) => {
+    try {
+      const response = await axiosInstance({
+        method: "POST",
+        url: "/cart/addCart",
+        data: {
+          items: [
+            {
+              menuItem: menuItem,
+              quantity: 1,
+            },
+          ],
+        },
+      });
+      const successMessage = response.data.message;
+      toast.success(successMessage);
+    } catch (error) {
+      let erorrMessage = error.response.data.message;
+      toast.error(erorrMessage);
+    }
   };
 
   useEffect(() => {
@@ -86,7 +102,7 @@ const Menus = ({ restaurantId }) => {
                   2
                 )}`}</p>
                 <button
-                  onClick={() => handleAddToCart(menu)}
+                  onClick={() => handleAddToCart(menu._id)}
                   className="w-full py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 >
                   Add to Cart
