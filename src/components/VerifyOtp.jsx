@@ -22,6 +22,7 @@ const VerifyOtp = () => {
       });
       toast.success(response.data.message);
       dispatch(saveUser())
+      
     } catch (error) {
       dispatch(clearUser())
       console.log(error.response?.data?.message || "Something went wrong");
