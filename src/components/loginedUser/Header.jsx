@@ -84,10 +84,9 @@ const UserHeader = () => {
             {/* Chat and Join Us for Small Screens */}
             <li className="flex flex-col items-center space-y-4 md:hidden">
               <div className="relative">
-                <MessagesSquare className="w-6 h-6 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
-                <span className="absolute -top-2 -right-2 bg-orange-400 text-white text-xs font-bold py-0.5 px-1.5 rounded-full">
-                  3
-                </span>
+                <Link to={"/user/chat-page"}>
+                  <MessagesSquare className="w-6 h-6 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
+                </Link>
               </div>
               <div className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
                 <UserPen className="w-7 h-7 text-orange-400 " />
@@ -99,15 +98,11 @@ const UserHeader = () => {
         {/* Join Us Button and Chat Icon (Large Screens) */}
         <div className="hidden md:flex gap-5 items-center space-x-4">
           <div className="relative">
-            <MessagesSquare className="w-7 h-7 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
-            <span className="absolute -top-2 -right-2 bg-red-400 text-white text-xs font-bold py-0.5 px-1.5 rounded-full">
-              3
-            </span>
+            <Link to={"/user/chat-page"}>
+              <MessagesSquare className="w-7 h-7 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
+            </Link>
           </div>
-          <div
-    
-            className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200"
-          >
+          <div className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
             <UserPen className="w-7 h-7 text-orange-400 " />
           </div>
         </div>
