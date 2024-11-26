@@ -8,7 +8,6 @@ import SignupPage from "../pages/SignupPage";
 import AuthUser from "./protectedRoutes/AuthUser";
 import RestDetails from "../pages/loginesUser/RestDetails";
 import ProfilePage from "../pages/loginesUser/ProfilePage";
-import ShortProfile from "../components/loginedUser/ShortProfile";
 import ChatPage from "../pages/loginesUser/ChatPage";
 
 export const router = createBrowserRouter([
@@ -50,10 +49,6 @@ export const router = createBrowserRouter([
           {
             path: "profile-page",
             element: <ProfilePage />,
-          },
-          {
-            path: "short-profile",
-            element: <ShortProfile />,
           },
           {
             path: "chat-page",
