@@ -1,73 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { axiosInstance } from "../../config/axiosInstance";
+import React from "react";
 
-const Restaurant = () => {
-  const [restData, setRestData] = useState([]); // Default as empty array
-  const navigate = useNavigate();
-
-  const getRestaurants = async () => {
-    try {
-      const response = await axiosInstance({
-        method: "GET",
-        url: "/restaurant/all-restaurants",
-      });
-      // Ensure response.data and response.data.restaurants exist, fallback to empty array if not
-      setRestData(
-        Array.isArray(response.data?.restaurants)
-          ? response.data.restaurants
-          : []
-      );
-    } catch (error) {
-      console.log(error);
-      setRestData([]); // In case of error, ensure it's an empty array
-    }
-  };
-
-  useEffect(() => {
-    getRestaurants();
-  }, []);
-
+const ChatPage = () => {
   return (
-    <main className="bg-gray-100 p-6 min-h-screen mt-16">
-      <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
-        Our <span className="text-[#eb97f1]">Restaurants</span>
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {/* Ensure restData is an array before mapping */}
-        {Array.isArray(restData) && restData.length > 0 ? (
-          restData.map((restaurant) => (
-            <div
-              onClick={() => {
-                navigate(`/user/rest-details/${restaurant._id}`);
-              }}
-              className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
-              style={{
-                backgroundImage: `url(${restaurant.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-              key={restaurant._id}
-            >
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-[#0000004f] bg-opacity-40"></div>
-
-              {/* Content */}
-              <div className="relative z-10 p-4 flex flex-col justify-end h-full text-white">
-                <h2 className="text-lg font-semibold">{restaurant.name}</h2>
-                <p className="text-sm">{restaurant.location}</p>
-                <p className="text-xs mt-2">{restaurant.description}</p>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div className="flex justify-center items-center w-full h-full">
-            <span className="loading loading-dots loading-md bg-[#cd50f0]"></span>
-          </div>
-        )}
+    <div className="flex flex-col h-screen p-5 bg-gray-100">
+      {/* Chat Header */}
+      <div className="bg-gray-800 text-white py-3 text-center text-xl">
+        Chat
       </div>
-    </main>
+
+      {/* Chat Container */}
+      <div className="flex-1 flex flex-col gap-4 p-4 overflow-y-scroll bg-white rounded-lg shadow-lg">
+        {/* Messages */}
+        <div className="bg-purple-600 text-white p-3 rounded-xl max-w-[70%] self-start">
+          Hello! How can I help you today?
+        </div>
+        <div className="bg-purple-600 text-white p-3 rounded-xl max-w-[70%] self-start">
+          I need assistance with my order.
+        </div>
+      </div>
+
+      {/* Message Input */}
+      <input
+        type="text"
+        className="p-3 rounded-full border border-gray-300 mt-4 text-lg"
+        placeholder="Type your message..."
+      />
+    </div>
   );
 };
 
-export default Restaurant;
+export default ChatPage;
