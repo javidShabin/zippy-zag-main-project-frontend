@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
+import Menus from "../../components/loginedUser/Menus";
 
 const RestDetails = () => {
   const { id } = useParams();
@@ -65,6 +66,9 @@ const RestDetails = () => {
             />
           </div>
         </div>
+      </div>
+      <div>
+        <Menus restaurantId={id}/>
       </div>
     </main>
   );
