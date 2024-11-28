@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
 import { SearchIcon } from "lucide-react";
+import toast from "react-hot-toast";
 
 const Menus = ({ restaurantId }) => {
   const [menus, setMenu] = useState([]);
