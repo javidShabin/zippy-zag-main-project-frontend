@@ -1,4 +1,4 @@
-import { Menu, MessagesSquare, UserPen, X } from "lucide-react";
+import { Menu, MessagesSquare, ShoppingCart, UserPen, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -104,6 +104,9 @@ const UserHeader = () => {
             <Link to={"/user/chat-page"}>
               <MessagesSquare className="w-7 h-7 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
             </Link>
+          </div>
+          <div>
+          <ShoppingCart className="w-7 h-7 text-orange-400 cursor-pointer " />
           </div>
           <div className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
             <Link to={"/user/profile-page"}>
