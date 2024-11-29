@@ -78,21 +78,6 @@ const Header = () => {
                 Contact
               </a>
             </li>
-            {/* Chat and Join Us for Small Screens */}
-            <li className="flex flex-col items-center space-y-4 md:hidden">
-              <div className="relative">
-                <Link to={"/user/chat-page"}>
-                  <MessagesSquare className="w-6 h-6 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
-                </Link>
-              </div>
-              <div className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
-                <Link to={"/user/profile-page"}>
-                  {" "}
-                  <UserPen className="w-7 h-7 text-orange-400 " />
-                </Link>
-              </div>
-            </li>
-          </ul>
         </nav>
 
         {/* Join Us Button and Chat Icon (Large Screens) */}
