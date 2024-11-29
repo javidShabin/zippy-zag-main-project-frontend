@@ -30,10 +30,10 @@ const UserHeader = () => {
         isScrolled ? "bg-[#ffffff70] shadow-md backdrop-blur-lg" : ""
       } text-white transition duration-300`}
     >
-      <div className="container mx-auto flex items-center justify-between py-4 px-6 md:px-10">
+      <div className="container flex items-center justify-between px-6 md:px-10">
         {/* Logo */}
         <div className="logo">
-          <h1>
+          <h1 >
             <img src={logo} className="w-[70px] lg:w-[80px] " />
           </h1>
         </div>
@@ -73,7 +73,7 @@ const UserHeader = () => {
             <li onClick={toggleMenu} className="relative overflow-hidden group">
               <a
                 href="#"
-                className="block font-semibold py-1 px-3 rounded-full"
+                className="text-white block font-semibold py-1 px-3 rounded-full"
               >
                 Contact
               </a>
