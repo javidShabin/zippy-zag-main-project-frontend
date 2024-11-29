@@ -78,6 +78,7 @@ const Header = () => {
                 Contact
               </a>
             </li>
+          </ul>
         </nav>
 
         {/* Join Us Button and Chat Icon (Large Screens) */}
