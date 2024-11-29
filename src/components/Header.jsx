@@ -73,7 +73,7 @@ const Header = () => {
             <li onClick={toggleMenu} className="relative overflow-hidden group">
               <a
                 href="#"
-                className="block font-semibold py-1 px-3 rounded-full"
+                className="text-white block font-semibold py-1 px-3 relative overflow-hidden group"
               >
                 Contact
               </a>
