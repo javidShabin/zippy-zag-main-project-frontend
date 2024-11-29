@@ -16,11 +16,11 @@ const Home = () => {
       >
         <div className="container flex flex-col md:flex-row justify-between items-center rounded-lg px-6 sm:px-10 w-11/12 h-[80vh] sm:h-[70vh]">
           {/* Text Section */}
-          <div className="text-[#0e092e] text-center md:text-left px-6 py-4 sm:py-6">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[65px] font-black">
+          <div className="text-center md:text-left px-6 py-4 sm:py-6">
+          <h1 className="text-[#ffff]  text-3xl sm:text-4xl md:text-5xl lg:text-[75px] font-black">
               Delight in Every Bite,
             </h1>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-black mt-5">
+            <h2 className="text-[#ffa100] text-3xl sm:text-4xl md:text-5xl lg:text-[70px] font-black mt-5">
               Delivered Right
             </h2>
             <p className="leading-tight mt-3 text-sm sm:text-base lg:text-lg">
