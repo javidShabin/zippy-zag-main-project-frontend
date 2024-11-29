@@ -1,5 +1,5 @@
 import React from "react";
-import { bannerImage, heroImage } from "../assets";
+import { bannerImage, heroImage, mintLeav } from "../assets";
 import Demo from "./Demo";
 import Restaurant from "./Restaurant";
 
@@ -14,6 +14,12 @@ const Home = () => {
           backgroundPosition: "center",
         }}
       >
+        <img src={mintLeav} className="w-[70px] absolute bottom-7 left-72 animate-bounce transition duration-300 " />
+        <img src={mintLeav} className="w-[70px] absolute bottom-7 right-72 animate-bounce transition duration-300 " />
+        <img src={mintLeav} className="w-[70px] absolute top-42 right-0 animate-bounce transition duration-300 " />
+        <img src={mintLeav} className="w-[70px] absolute top-8 right-36 animate-bounce transition duration-300 " />
+        <img src={mintLeav} className="w-[100px] absolute top-7 left-72 animate-bounce transition duration-300 " />
+        <img src={mintLeav} className="w-[100px] absolute top-64 left-0 animate-bounce transition duration-300 " />
         <div className="container flex flex-col md:flex-row justify-between items-center rounded-lg px-6 sm:px-10 w-11/12 h-[80vh] sm:h-[70vh]">
           {/* Text Section */}
           <div className="text-center md:text-left px-6 py-4 sm:py-6">
