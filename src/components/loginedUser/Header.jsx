@@ -32,8 +32,8 @@ const UserHeader = () => {
       <div className="container mx-auto flex items-center justify-between py-4 px-6 md:px-10">
         {/* Logo */}
         <div className="logo">
-          <h1 className="text-2xl font-bold tracking-wide cursor-pointer text-black">
-            ZippyZag
+          <h1>
+            <img src={logo} className="w-[70px] lg:w-[80px] " />
           </h1>
         </div>
 
@@ -48,28 +48,25 @@ const UserHeader = () => {
             <Link to={"/"}>
               <li
                 onClick={toggleMenu}
-                className="block font-semibold py-1 px-3 relative overflow-hidden group"
+                className="text-white block font-semibold py-1 px-3 relative overflow-hidden group"
               >
                 Home
-                <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </li>
             </Link>
             <Link to={"/about"}>
               <li
                 onClick={toggleMenu}
-                className="block font-semibold py-1 px-3 relative overflow-hidden group"
+                className="text-white block font-semibold py-1 px-3 relative overflow-hidden group"
               >
                 About
-                <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </li>
             </Link>
             <Link to={"/restaurant"}>
               <li
                 onClick={toggleMenu}
-                className="block font-semibold py-1 px-3 relative overflow-hidden group"
+                className="text-white block font-semibold py-1 px-3 relative overflow-hidden group"
               >
                 Restaurants
-                <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </li>
             </Link>
             <li onClick={toggleMenu} className="relative overflow-hidden group">
@@ -78,7 +75,6 @@ const UserHeader = () => {
                 className="block font-semibold py-1 px-3 rounded-full"
               >
                 Contact
-                <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#dd63ff] transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </a>
             </li>
             {/* Chat and Join Us for Small Screens */}

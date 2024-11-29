@@ -7,6 +7,7 @@ import food from "./food.png";
 import place from "./place.png";
 import joinBanner1 from "./joinBanner1.png";
 import joinBanner2 from "./joinBanner2.png";
+import logo from "./logo.png";
 
 export {
   heroImage,
@@ -18,4 +19,5 @@ export {
   place,
   joinBanner1,
   joinBanner2,
+  logo
 };
