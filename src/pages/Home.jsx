@@ -29,10 +29,10 @@ const Home = () => {
             <h2 className="text-[#ffa100] text-3xl sm:text-4xl md:text-5xl lg:text-[70px] font-black mt-5">
               Delivered Right
             </h2>
-            <p className="leading-tight mt-3 text-sm sm:text-base lg:text-lg">
+            <p className="leading-tight text-[#717171] mt-3 text-sm sm:text-base lg:text-lg">
               www.zippyzag.com
             </p>
-            <button className="py-3 px-6 border-none rounded-full shadow-lg shadow-[#dd63ff] mt-5 text-sm sm:text-base">
+            <button className="py-3 px-6 border-none bg-[#ffa100] font-semibold rounded-full shadow-lg shadow-[#ffa100] mt-5 text-sm sm:text-base">
               Scroll Down
             </button>
           </div>
