@@ -9,6 +9,7 @@ import joinBanner1 from "./joinBanner1.png";
 import joinBanner2 from "./joinBanner2.png";
 import logo from "./logo.png";
 import mintLeav from "./mint.png";
+import tomato1Image from "./tomato1.png";
 
 export {
   heroImage,
@@ -21,5 +22,6 @@ export {
   joinBanner1,
   joinBanner2,
   logo,
-  mintLeav
+  mintLeav,
+  tomato1Image
 };
