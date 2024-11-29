@@ -1,6 +1,7 @@
 import { Menu, MessagesSquare, ShoppingCart, UserPen, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { logo } from "../../assets";
 
 const UserHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
