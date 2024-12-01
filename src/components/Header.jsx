@@ -84,7 +84,7 @@ const Header = () => {
         {/* Join Us Button and Chat Icon (Large Screens) */}
         <div className="hidden md:flex gap-5 items-center space-x-4">
           <Link to={"/signup-page"}>
-            <div className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
+            <div className="py-2 sm:py-3 px-4 sm:px-6 bg-[#ffa100] text-white font-semibold rounded-full shadow-lg shadow-[#ffa100] mt-4 text-xs sm:text-base">
               Join Us
             </div>
           </Link>
