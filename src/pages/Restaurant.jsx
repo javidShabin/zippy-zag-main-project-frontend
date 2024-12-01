@@ -31,19 +31,21 @@ const Restaurant = () => {
     getRestaurants();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-dots loading-lg bg-orange-400"></span>
+      </div>
+    );
+  }
+
   return (
     <main className="bg-white p-6 h-[100vh] mt-16">
       <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
         Our <span className="text-[#eb97f1]">Restaurants</span>
       </h1>
 
-      {loading ? (
-        <div className="flex justify-center items-center">
-          <span className="loading loading-dots loading-lg bg-orange-400"></span>
-        </div>
-      ) : error ? (
-        <div className="text-center text-red-500">{error}</div>
-      ) : restData.length > 0 ? (
+      {restData.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {restData.map((restaurant) => (
             <div
