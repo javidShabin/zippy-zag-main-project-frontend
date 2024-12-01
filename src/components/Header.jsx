@@ -30,7 +30,7 @@ const Header = () => {
         isScrolled ? "bg-[#ffffff70] shadow-md backdrop-blur-lg" : ""
       } text-white transition duration-300`}
     >
-      <div className="container mx-auto flex items-center justify-between py-4 px-6 md:px-10">
+      <div className="container mx-auto flex items-center justify-between px-6 md:px-10">
         {/* Logo */}
         <div className="logo">
           <h1>
