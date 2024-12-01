@@ -32,7 +32,7 @@ const Restaurant = () => {
   }, []);
 
   return (
-    <main className="bg-gray-100 p-6 min-h-screen mt-16">
+    <main className="bg-white p-6 min-h-screen mt-16">
       <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
         Our <span className="text-[#eb97f1]">Restaurants</span>
       </h1>
