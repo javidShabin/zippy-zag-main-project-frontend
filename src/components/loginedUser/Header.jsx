@@ -33,7 +33,7 @@ const UserHeader = () => {
       <div className="container flex items-center justify-between px-6 md:px-10">
         {/* Logo */}
         <div className="logo">
-          <h1 >
+          <h1>
             <img src={logo} className="w-[70px] lg:w-[80px] " />
           </h1>
         </div>
@@ -70,13 +70,11 @@ const UserHeader = () => {
                 Restaurants
               </li>
             </Link>
-            <li onClick={toggleMenu} className="relative overflow-hidden group">
-              <a
-                href="#"
-                className="text-white block font-semibold py-1 px-3 rounded-full"
-              >
-                Contact
-              </a>
+            <li
+              onClick={toggleMenu}
+              className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 relative overflow-hidden group"
+            >
+              Contact
             </li>
             {/* Chat and Join Us for Small Screens */}
             <li className="flex flex-col items-center space-y-4 md:hidden">
