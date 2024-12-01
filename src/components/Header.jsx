@@ -49,7 +49,7 @@ const Header = () => {
             <Link to={"/"}>
               <li
                 onClick={toggleMenu}
-                className="text-white block font-semibold py-1 px-3 relative overflow-hidden group"
+                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg shadow-[#ffa100] relative overflow-hidden group"
               >
                 Home
               </li>
@@ -57,7 +57,7 @@ const Header = () => {
             <Link to={"/about"}>
               <li
                 onClick={toggleMenu}
-                className="text-white block font-semibold py-1 px-3 relative overflow-hidden group"
+                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg shadow-[#ffa100] relative overflow-hidden group"
               >
                 About
               </li>
@@ -65,19 +65,19 @@ const Header = () => {
             <Link to={"/restaurant"}>
               <li
                 onClick={toggleMenu}
-                className="text-white block font-semibold py-1 px-3 relative overflow-hidden group"
+                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg shadow-[#ffa100] relative overflow-hidden group"
               >
                 Restaurants
               </li>
             </Link>
-            <li onClick={toggleMenu} className="relative overflow-hidden group">
-              <a
-                href="#"
-                className="text-white block font-semibold py-1 px-3 relative overflow-hidden group"
+            <Link>
+              <li
+                onClick={toggleMenu}
+                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg shadow-[#ffa100] relative overflow-hidden group"
               >
                 Contact
-              </a>
-            </li>
+              </li>
+            </Link>
           </ul>
         </nav>
 
