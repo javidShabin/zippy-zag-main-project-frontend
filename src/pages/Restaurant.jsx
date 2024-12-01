@@ -38,7 +38,9 @@ const Restaurant = () => {
       </h1>
 
       {loading ? (
-        <span className="loading loading-dots loading-lg bg-orange-400"></span>
+        <div className="flex justify-center items-center">
+          <span className="loading loading-dots loading-lg bg-orange-400"></span>
+        </div>
       ) : error ? (
         <div className="text-center text-red-500">{error}</div>
       ) : restData.length > 0 ? (
