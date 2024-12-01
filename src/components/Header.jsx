@@ -49,7 +49,7 @@ const Header = () => {
             <Link to={"/"}>
               <li
                 onClick={toggleMenu}
-                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg shadow-[#ffa100] relative overflow-hidden group"
+                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 relative overflow-hidden group"
               >
                 Home
               </li>
@@ -57,7 +57,7 @@ const Header = () => {
             <Link to={"/about"}>
               <li
                 onClick={toggleMenu}
-                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg shadow-[#ffa100] relative overflow-hidden group"
+                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 relative overflow-hidden group"
               >
                 About
               </li>
@@ -65,7 +65,7 @@ const Header = () => {
             <Link to={"/restaurant"}>
               <li
                 onClick={toggleMenu}
-                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg shadow-[#ffa100] relative overflow-hidden group"
+                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 relative overflow-hidden group"
               >
                 Restaurants
               </li>
@@ -73,7 +73,7 @@ const Header = () => {
             <Link>
               <li
                 onClick={toggleMenu}
-                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg shadow-[#ffa100] relative overflow-hidden group"
+                className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 relative overflow-hidden group"
               >
                 Contact
               </li>
