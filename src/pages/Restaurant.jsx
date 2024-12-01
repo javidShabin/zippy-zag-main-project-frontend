@@ -38,7 +38,7 @@ const Restaurant = () => {
       </h1>
 
       {loading ? (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mx-auto">
           <span className="loading loading-dots loading-lg bg-orange-400"></span>
         </div>
       ) : error ? (
