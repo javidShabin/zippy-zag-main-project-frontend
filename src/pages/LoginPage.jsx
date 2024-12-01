@@ -124,7 +124,7 @@ export default function LoginPage() {
               New user?{" "}
               <Link
                 to="/signup-page"
-                className="text-[#dd63ff] hover:underline"
+                className="text-orange-500 hover:underline"
               >
                 Signup
               </Link>
