@@ -57,18 +57,22 @@ const CartPage = () => {
                       <span className="font-medium">{item.ItemName}</span>
                     </td>
                     <td className="py-4 px-6">
-                      <div>
-                        <button className="py-1 px-3 rounded-full bg-orange-400">-</button>
+                      <div className="border-2 border-black w-52 flex items-center justify-between p-2">
+                        <button className="py-1 px-3 rounded-full bg-orange-400">
+                          -
+                        </button>
                         <span className="px-4 text-lg font-semibold">
                           {item.quantity}
                         </span>
-                        <button className="py-1 px-3 rounded-full bg-orange-400">+</button>
+                        <button className="py-1 px-3 rounded-full bg-orange-400">
+                          +
+                        </button>
                       </div>
                     </td>
                     <td className="py-4 px-6">₹{item.price}</td>
                     <td className="py-4 px-6">₹{item.price * item.quantity}</td>
                     <td className="py-4 px-6 text-right">
-                    <Trash2 className="text-orange-500" />
+                      <Trash2 className="text-orange-500" />
                     </td>
                   </tr>
                 ))}
@@ -77,26 +81,25 @@ const CartPage = () => {
           </div>
           {/* The total and check out section */}
           <div className="mb-5 flex justify-between">
-        <div className="shadow-xl w-full max-w-sm py-8 px-6 leading-8 bg-white rounded-lg">
-          <h2 className="text-lg text-gray-700">Total Price: ₹{totalPrice}</h2>
-          <hr className="mt-5" />
-          <h2 className="text-lg text-gray-700 mt-5">
-            Delivery charge: ₹{deliveryCharge}
-          </h2>
-          <hr className="mt-5" />
-          <h2 className="text-2xl font-bold text-gray-900 mt-4">
-            Grand Total: ₹{totalPrice > 0 ? totalPrice + deliveryCharge : 0}
-          </h2>
-          <button
-              className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-2 "
-            >
-              Check out
-            </button>
-        </div>
-      </div>
+            <div className="shadow-xl w-full max-w-sm py-8 px-6 leading-8 bg-white rounded-lg">
+              <h2 className="text-lg text-gray-700">
+                Total Price: ₹{totalPrice}
+              </h2>
+              <hr className="mt-5" />
+              <h2 className="text-lg text-gray-700 mt-5">
+                Delivery charge: ₹{deliveryCharge}
+              </h2>
+              <hr className="mt-5" />
+              <h2 className="text-2xl font-bold text-gray-900 mt-4">
+                Grand Total: ₹{totalPrice > 0 ? totalPrice + deliveryCharge : 0}
+              </h2>
+              <button className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-2 ">
+                Check out
+              </button>
+            </div>
+          </div>
         </div>
       </section>
-      
     </main>
   );
 };
