@@ -58,11 +58,11 @@ const CartPage = () => {
                     </td>
                     <td className="py-4 px-6">
                       <div>
-                        <button className="p-3 rounded-full bg-orange-400">-</button>
+                        <button className="py-1 px-3 rounded-full bg-orange-400">-</button>
                         <span className="px-4 text-lg font-semibold">
                           {item.quantity}
                         </span>
-                        <button>+</button>
+                        <button className="py-1 px-3 rounded-full bg-orange-400">+</button>
                       </div>
                     </td>
                     <td className="py-4 px-6">₹{item.price}</td>
