@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
+import { Trash2 } from "lucide-react";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -57,7 +58,7 @@ const CartPage = () => {
                     </td>
                     <td className="py-4 px-6">
                       <div>
-                        <button>-</button>
+                        <button className="p-3 rounded-full">-</button>
                         <span className="px-4 text-lg font-semibold">
                           {item.quantity}
                         </span>
@@ -67,7 +68,7 @@ const CartPage = () => {
                     <td className="py-4 px-6">₹{item.price}</td>
                     <td className="py-4 px-6">₹{item.price * item.quantity}</td>
                     <td className="py-4 px-6 text-right">
-                      <button>Remove</button>
+                    <Trash2 className="text-orange-500" />
                     </td>
                   </tr>
                 ))}
