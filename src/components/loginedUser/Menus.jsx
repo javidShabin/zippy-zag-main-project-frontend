@@ -102,7 +102,7 @@ const Menus = ({ restaurantId }) => {
                   {menu.name}
                 </h3>
                 <p className="text-gray-700 text-sm mb-4">{menu.description}</p>
-                <p className="text-xl font-bold text-orange-600 mb-4">{`$${menu.price.toFixed(
+                <p className="text-xl font-bold text-orange-600 mb-4">{`Rs:${menu.price.toFixed(
                   2
                 )}`}</p>
                 <button
