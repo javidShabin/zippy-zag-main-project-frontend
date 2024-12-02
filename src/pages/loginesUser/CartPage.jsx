@@ -58,7 +58,7 @@ const CartPage = () => {
                     </td>
                     <td className="py-4 px-6">
                       <div>
-                        <button className="p-3 rounded-full">-</button>
+                        <button className="p-3 rounded-full bg-orange-400">-</button>
                         <span className="px-4 text-lg font-semibold">
                           {item.quantity}
                         </span>
