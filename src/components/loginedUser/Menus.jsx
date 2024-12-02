@@ -56,7 +56,7 @@ const Menus = ({ restaurantId }) => {
             <div
               tabIndex={0}
               role="button"
-              className="btn m-1 bg-purple-600 text-white hover:bg-purple-700"
+              className="btn m-1 bg-[#ffa100] text-white"
             >
               Hover
             </div>
@@ -65,10 +65,13 @@ const Menus = ({ restaurantId }) => {
               className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow-xl"
             >
               <li>
-                <a>Item 1</a>
+                <a>price</a>
               </li>
               <li>
-                <a>Item 2</a>
+                <a>price</a>
+              </li>
+              <li>
+                <a>price</a>
               </li>
             </ul>
           </div>
@@ -76,7 +79,7 @@ const Menus = ({ restaurantId }) => {
             <input
               type="text"
               placeholder="Search your favorite..."
-              className="pl-10 pr-4 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="pl-10 pr-4 py-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
             <SearchIcon className="absolute left-3 top-2.5 text-gray-500" />
           </div>
@@ -99,12 +102,12 @@ const Menus = ({ restaurantId }) => {
                   {menu.name}
                 </h3>
                 <p className="text-gray-700 text-sm mb-4">{menu.description}</p>
-                <p className="text-xl font-bold text-purple-600 mb-4">{`$${menu.price.toFixed(
+                <p className="text-xl font-bold text-orange-600 mb-4">{`$${menu.price.toFixed(
                   2
                 )}`}</p>
                 <button
                   onClick={() => handleAddToCart(menu._id)}
-                  className="w-full py-2 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full py-2 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 >
                   Add to Cart
                 </button>
