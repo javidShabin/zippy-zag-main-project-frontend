@@ -30,7 +30,7 @@ const UserHeader = () => {
         isScrolled ? "bg-[#ffffff70] shadow-md backdrop-blur-lg" : ""
       } text-white transition duration-300`}
     >
-      <div className="container flex items-center justify-between px-6 md:px-10">
+      <div className="container text-center flex items-center justify-between px-6 md:px-10">
         {/* Logo */}
         <div className="logo">
           <h1>
