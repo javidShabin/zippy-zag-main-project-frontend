@@ -83,10 +83,10 @@ const UserHeader = () => {
                   <MessagesSquare className="w-6 h-6 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
                 </Link>
               </div>
-              <div className="bg-white text-black py-2 px-4 shadow-sm shadow-[#dd63ff] hover:shadow-lg hover:shadow-[#dd63ffd2] rounded-full font-medium transition duration-200">
+              <div className="py-1 sm:py-2 px-4 sm:px-6 bg-[#ffa100] text-white font-semibold rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 mt-4 text-xs sm:text-base">
                 <Link to={"/user/profile-page"}>
                   {" "}
-                  <UserPen className="w-7 h-7 text-orange-400 " />
+                  <UserPen className="w-7 h-7 text-black " />
                 </Link>
               </div>
             </li>
