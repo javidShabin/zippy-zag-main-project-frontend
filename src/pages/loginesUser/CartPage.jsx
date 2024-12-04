@@ -22,6 +22,24 @@ const CartPage = () => {
       setTotalPrice(response.data.totalPrice);
     } catch (error) {}
   };
+
+  // Update the cart item quantity
+  const updateCartItemQuantity = async (menuItemId, newQuantity) => {
+    try {
+      console.log(menuItemId, newQuantity);
+      if (newQuantity < 1) return;
+      const response = await axiosInstance({
+        method: "PUT",
+        url: "/cart/update",
+        data: {
+          items: [{ menuItem: menuItemId, quantity: newQuantity }],
+        },
+      });
+      setCartItems(response.data.items);
+      setTotalPrice(response.data.totalPrice);
+      console.log(response);
+    } catch (error) {}
+  };
   useEffect(() => {
     getCartItmes();
   }, []);
@@ -58,13 +76,29 @@ const CartPage = () => {
                     </td>
                     <td className="py-4 px-6">
                       <div className="flex items-center">
-                        <button className="text-lg font-bold text-gray-700 bg-orange-300 hover:shadow-lg hover:shadow-orange-400 rounded-lg w-8 h-8 flex items-center justify-center duration-300">
+                        <button
+                          onClick={() => {
+                            updateCartItemQuantity(
+                              item.menuItem,
+                              item.quantity - 1
+                            );
+                          }}
+                          className="text-lg font-bold text-gray-700 bg-orange-300 hover:shadow-lg hover:shadow-orange-400 rounded-lg w-8 h-8 flex items-center justify-center duration-300"
+                        >
                           -
                         </button>
                         <span className="mx-5 text-xl font-semibold text-gray-800">
                           {item.quantity}
                         </span>
-                        <button className="text-lg font-bold text-gray-700 bg-orange-300 hover:shadow-lg hover:shadow-orange-400 rounded-lg w-8 h-8 flex items-center justify-center duration-300">
+                        <button
+                          onClick={() => {
+                            updateCartItemQuantity(
+                              item.menuItem,
+                              item.quantity + 1
+                            );
+                          }}
+                          className="text-lg font-bold text-gray-700 bg-orange-300 hover:shadow-lg hover:shadow-orange-400 rounded-lg w-8 h-8 flex items-center justify-center duration-300"
+                        >
                           +
                         </button>
                       </div>
