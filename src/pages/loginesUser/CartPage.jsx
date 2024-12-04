@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
+import { loadStripe } from "@stripe/stripe-js";
 import { Trash2 } from "lucide-react";
 
 const CartPage = () => {
