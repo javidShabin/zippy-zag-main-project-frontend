@@ -51,9 +51,6 @@ const PaymentSuccess = () => {
               </button>
             </div>
           </div>
-          <div>
-            <Review/>
-          </div>
         </main>
       );
 }
