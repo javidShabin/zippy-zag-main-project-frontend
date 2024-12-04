@@ -40,6 +40,28 @@ const CartPage = () => {
       console.log(response);
     } catch (error) {}
   };
+
+  // Payment function
+  const makePayment = async () => {
+    try {
+      const stripe = await loadStripe(
+        import.meta.env.VITE_STRIPE_publisheble_key
+      );
+
+      const session = await axiosInstants({
+        method: "POST",
+        url: "/payment/create-checkout-session",
+        data: { products: cartItems },
+      });
+      console.log(session, "====session");
+      const result = stripe.redirectToCheckout({
+        sessionId: session.data.sessionId,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getCartItmes();
   }, []);
@@ -127,7 +149,10 @@ const CartPage = () => {
               <h2 className="text-2xl font-bold text-gray-900 mt-4">
                 Grand Total: ₹{totalPrice > 0 ? totalPrice + deliveryCharge : 0}
               </h2>
-              <button className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-2 ">
+              <button
+                onClick={makePayment}
+                className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-2 "
+              >
                 Check out
               </button>
             </div>
