@@ -10,6 +10,7 @@ import RestDetails from "../pages/loginesUser/RestDetails";
 import ProfilePage from "../pages/loginesUser/ProfilePage";
 import ChatPage from "../pages/loginesUser/ChatPage";
 import CartPage from "../pages/loginesUser/CartPage";
+import PaymentSuccess from "../components/loginedUser/PaymentSuccess";
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
             path: "cart-page",
             element: <CartPage />,
           },
+          {
+            path: "payment/success",
+            element: <PaymentSuccess/>
+          }
         ],
       },
     ],
