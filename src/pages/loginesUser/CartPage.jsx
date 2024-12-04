@@ -49,7 +49,7 @@ const CartPage = () => {
         import.meta.env.VITE_STRIPE_publisheble_key
       );
 
-      const session = await axiosInstants({
+      const session = await axiosInstance({
         method: "POST",
         url: "/payment/create-checkout-session",
         data: { products: cartItems },
