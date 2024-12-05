@@ -21,7 +21,7 @@ const VerifyOtp = ({email}) => {
         url: "/user/otpVerify",
         data,
       });
-      toast.success(response);
+      toast.success(response.data.message);
       dispatch(saveUser())
       
     } catch (error) {
