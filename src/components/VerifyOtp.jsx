@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { clearUser, saveUser } from "../redux/features/userSlice";
 import { axiosInstance } from "../config/axiosInstance";
 
-const VerifyOtp = () => {
+const VerifyOtp = ({emial}) => {
   const dispatch = useDispatch()
   const {
     register,
@@ -41,6 +41,7 @@ const VerifyOtp = () => {
       <div className="mb-4">
         <input
           type="email"
+          value={emial}
           placeholder="Enter your email"
           {...register("email", { required: "Email is required" })}
           className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
