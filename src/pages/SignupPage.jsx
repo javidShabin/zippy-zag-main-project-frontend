@@ -92,7 +92,7 @@ const SignupPage = () => {
                 type="text"
                 placeholder="Your Name"
                 {...register("name", { required: true })}
-                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-orange-400 focus:outline-none"
+                className="w-[400px] p-2 border border-gray-300 rounded-lg focus:ring-4 focus:ring-orange-500 focus:outline-none"
               />
               {errors.name && (
                 <span className="text-red-500 text-sm">Name is required</span>
@@ -105,7 +105,7 @@ const SignupPage = () => {
                 type="email"
                 placeholder="Your Email"
                 {...register("email", { required: true })}
-                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-orange-400 focus:outline-none"
+                className="w-[400px] p-2 border border-gray-300 rounded-lg focus:ring-4 focus:ring-orange-500 focus:outline-none"
               />
               {errors.email && (
                 <span className="text-red-500 text-sm">Email is required</span>
@@ -118,7 +118,7 @@ const SignupPage = () => {
                 type="password"
                 placeholder="Password"
                 {...register("password", { required: true })}
-                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-orange-400 focus:outline-none"
+                className="w-[400px] p-2 border border-gray-300 rounded-lg focus:ring-4 focus:ring-orange-500 focus:outline-none"
               />
               {errors.password && (
                 <span className="text-red-500 text-sm">
@@ -131,7 +131,7 @@ const SignupPage = () => {
                 type="password"
                 placeholder="Confirm Password"
                 {...register("conformPassword", { required: true })}
-                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-orange-400 focus:outline-none"
+                className="w-[400px] p-2 border border-gray-300 rounded-lg focus:ring-4 focus:ring-orange-500 focus:outline-none"
               />
               {errors.confirmPassword && (
                 <span className="text-red-500 text-sm">
@@ -146,7 +146,7 @@ const SignupPage = () => {
                 type="tel"
                 placeholder="Phone Number"
                 {...register("phone", { required: true })}
-                className="w-[400px] p-2 border border-gray-300 opacity-[70%] rounded-lg focus:ring-4 focus:ring-orange-400 focus:outline-none"
+                className="w-[400px] p-2 border border-gray-300 rounded-lg focus:ring-4 focus:ring-orange-500 focus:outline-none"
               />
               {errors.phone && (
                 <span className="text-red-500 text-sm">
