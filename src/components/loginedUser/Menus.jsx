@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
 import { SearchIcon } from "lucide-react";
 import toast from "react-hot-toast";
+import { filterData } from "../filterData/FilterData";
 
 const Menus = ({ restaurantId }) => {
   const [menus, setMenu] = useState([]);
@@ -50,6 +51,27 @@ const Menus = ({ restaurantId }) => {
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
           Explore Our Delicious Menus
         </h2>
+        {/* Filter Data Section */}
+        <div className="flex justify-center items-center gap-11 mb-8">
+          {filterData.map((item, index) => (
+            <div
+              key={index}
+              className="text-center py-5 px-7 shadow-xl rounded-lg"
+            >
+              <img
+                onClick={() => {
+                  handleCategory({ category: item.category });
+                }}
+                src={item.image}
+                alt={item.category}
+                className="w-16 h-16 object-cover mx-auto mb-2"
+              />
+              <p className="text-sm font-medium text-gray-600">
+                {item.category}
+              </p>
+            </div>
+          ))}
+        </div>
         <div className="flex justify-between items-center mb-8">
           <div className="dropdown dropdown-hover">
             <div
