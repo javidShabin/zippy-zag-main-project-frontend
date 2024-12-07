@@ -16,6 +16,13 @@ import chilly1Image from "./chilly1.png";
 import chillyImage from "./chilly.png";
 import loginImage from "./login.png";
 import chatImage from "./chat.jpg";
+import biriyani from "./biryani.png";
+import burger from "./burger.png";
+import sandwich from "./sandwich.png";
+import juice from "./juices.png";
+import pasta from "./pasta.png";
+import mojito from "./mojito.png";
+import iceCream from "./ice-cream.png";
 
 export {
   heroImage,
@@ -35,5 +42,12 @@ export {
   chillyImage,
   chilly1Image,
   loginImage,
-  chatImage
+  chatImage,
+  biriyani,
+  burger,
+  sandwich,
+  mojito,
+  pasta,
+  juice,
+  iceCream
 };
