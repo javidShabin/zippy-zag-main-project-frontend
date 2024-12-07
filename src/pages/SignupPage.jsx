@@ -72,7 +72,7 @@ const SignupPage = () => {
       />
 
       {/* Main Card */}
-      <div className="backdrop-blur-[10px] shadow-lg rounded-lg p-6 md:p-8 w-[80%] border-w">
+      <div className="bg-gray-800 bg-opacity-70 backdrop-blur-lg rounded-3xl p-6 md:p-8 w-[80%] border-w">
         <h2 className="text-2xl font-bold text-white text-center mb-6">
           Join Zippyzag Today!
         </h2>
