@@ -7,6 +7,7 @@ import { filterData } from "../filterData/FilterData";
 const Menus = ({ restaurantId }) => {
   const [menus, setMenu] = useState([]);
 
+  // Get the menus for the restaurant
   const getMenuForRestaurant = async () => {
     try {
       const response = await axiosInstance({
@@ -19,6 +20,7 @@ const Menus = ({ restaurantId }) => {
     }
   };
 
+  // Add the food items to the cart
   const handleAddToCart = async (menuItem) => {
     try {
       const response = await axiosInstance({
@@ -38,6 +40,19 @@ const Menus = ({ restaurantId }) => {
     } catch (error) {
       let erorrMessage = error.response.data.message;
       toast.error(erorrMessage);
+    }
+  };
+
+  // Get the menus by category
+  const handleCategory = async ({ category }) => {
+    try {
+      const response = await axiosInstance({
+        method: "GET",
+        url: `/menu/${restaurantId}/category/${category}`,
+      });
+      console.log(response, "====response");
+    } catch (error) {
+      console.log(error)
     }
   };
 
