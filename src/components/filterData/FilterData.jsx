@@ -4,6 +4,7 @@ import {
   iceCream,
   juice,
   mojito,
+  pasta,
   sandwich,
 } from "../../assets";
 
