@@ -73,29 +73,28 @@ const Menus = ({ restaurantId }) => {
           ))}
         </div>
         <div className="flex justify-between items-center mb-8">
-          <div className="dropdown dropdown-hover">
+          {/* The drop down code */}
+          <div className="dropdown">
             <div
               tabIndex={0}
               role="button"
               className="btn m-1 bg-[#ffa100] text-white"
             >
-              Hover
+              Click
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow-xl"
+              className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
             >
               <li>
-                <a>price</a>
+                <a>Item 1</a>
               </li>
               <li>
-                <a>price</a>
-              </li>
-              <li>
-                <a>price</a>
+                <a>Item 2</a>
               </li>
             </ul>
           </div>
+
           <div className="relative">
             <input
               type="text"
