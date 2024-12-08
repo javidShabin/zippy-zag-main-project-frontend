@@ -53,7 +53,7 @@ const Menus = ({ restaurantId }) => {
       setMenu(response.data.menus);
     } catch (error) {
       console.error("Error fetching category menus", error);
-      toast.error("Failed to filter menus.");
+      toast.error("The menu item not available.");
     }
   };
 
