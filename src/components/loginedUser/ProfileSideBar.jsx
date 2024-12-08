@@ -1,16 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
+import toast from "react-hot-toast";
 
 const ProfileSideBar = () => {
+  const navigation = useNavigate();
   const handleLogout = async () => {
     try {
       const response = await axiosInstance({
         method: "POST",
         url: "/user/logout",
       });
-      console.log(response);
-    } catch (error) {}
+      toast.success("Logout success");
+      navigation("/login-page");
+    } catch (error) {
+      console.log(error);
+      toast.error("filed");
+    }
   };
   return (
     <div className="w-64 bg-gray-100 h-screen p-4">
