@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../../config/axiosInstance";
 
+
 export default function EditProfile() {
   const [userData, setUserData] = useState(null); // Store the user's current data
   const {
@@ -11,16 +12,16 @@ export default function EditProfile() {
     formState: { errors },
     setValue,
   } = useForm();
-
   // Fetch the user's current profile data
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await axiosInstance({
           method: "GET",
-          url: "/user/user-profile",
+          url: "/user/user-profile", // Ensure correct endpoint
         });
-        setUserData(response.data);
+        setUserData(response.data.data); // Assuming your backend sends user data in the `data` key
+        // Pre-fill form with the user's existing data
         setValue("name", response.data.name);
         setValue("email", response.data.email);
         setValue("phone", response.data.phone);
@@ -30,7 +31,6 @@ export default function EditProfile() {
     };
     fetchUserData();
   }, [setValue]);
-
   // Handle form submission for profile update
   const onSubmit = async (formData) => {
     try {
@@ -38,35 +38,28 @@ export default function EditProfile() {
       updateData.append("name", formData.name);
       updateData.append("email", formData.email);
       updateData.append("phone", formData.phone);
-
-      // Append the image file only if a file is selected
-      if (formData.image?.length > 0) {
-        updateData.append("image", formData.image[0]);
-      }
-
+      if (formData.image?.[0]) updateData.append("image", formData.image[0]); // Handle file upload, check if image exists
       // Send the updated profile data to the backend
       await axiosInstance({
         method: "PUT",
         url: "/user/update-profile",
-        data: updateData,
+        data: updateData, // Corrected the parameter to 'data'
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-
       toast.success("Profile updated successfully!");
     } catch (error) {
       toast.error("Failed to update profile");
-      console.error("Update Error:", error.response?.data || error.message);
+      console.error(error);
     }
   };
-
   return (
     <div className="flex justify-center items-center h-[87vh]">
       {userData && (
         <div className="flex flex-col items-center mb-6">
           <img
-            src={userData.image || "/default-avatar.png"}
+            src={userData.image || "/default-avatar.png"} // Show current profile image or a default one
             alt="Profile"
             className="w-24 h-24 rounded-full mb-4"
           />
@@ -112,12 +105,7 @@ export default function EditProfile() {
         )}
 
         <label className="mb-1 font-medium text-gray-700">Profile Image</label>
-        <input
-          type="file"
-          className="mb-4"
-          {...register("image")}
-          accept="image/*"
-        />
+        <input type="file" className="mb-4" {...register("image")} />
 
         <input
           type="submit"
