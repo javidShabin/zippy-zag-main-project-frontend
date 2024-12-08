@@ -83,12 +83,12 @@ const UserHeader = () => {
                   <MessagesSquare className="w-6 h-6 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
                 </Link>
               </div>
-              <div className="py-1 sm:py-2 px-4 sm:px-6 bg-[#ffa100] text-white font-semibold rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 mt-4 text-xs sm:text-base">
-                <Link to={"/user/profile"}>
+              <Link to={"/user/profile"}>
+                <div className="py-1 sm:py-2 px-4 sm:px-6 bg-[#ffa100] text-white font-semibold rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 mt-4 text-xs sm:text-base">
                   {" "}
                   <UserPen className="w-7 h-7 text-whit " />
-                </Link>
-              </div>
+                </div>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -105,12 +105,12 @@ const UserHeader = () => {
               <ShoppingCart className="w-7 h-7 text-orange-400 cursor-pointer " />
             </Link>
           </div>
-          <div className="bg-[#ffa100] py-2 px-4 shadow-sm shadow-[#ffa100] hover:shadow-lg hover:shadow-[#ffb300] rounded-full font-medium transition duration-200">
-            <Link to={"/user/profile"}>
+          <Link to={"/user/profile"}>
+            <div className="bg-[#ffa100] py-2 px-4 shadow-sm shadow-[#ffa100] hover:shadow-lg hover:shadow-[#ffb300] rounded-full font-medium transition duration-200">
               {" "}
               <UserPen className="w-7 h-7 text-white " />
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
