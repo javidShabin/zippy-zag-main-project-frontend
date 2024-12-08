@@ -50,9 +50,10 @@ const Menus = ({ restaurantId }) => {
         method: "GET",
         url: `/menu/${restaurantId}/category/${category}`,
       });
-      console.log(response, "====response");
+      setMenus(response.data.menus);
     } catch (error) {
-      console.log(error)
+      console.error("Error fetching category menus", error);
+      toast.error("Failed to filter menus.");
     }
   };
 
