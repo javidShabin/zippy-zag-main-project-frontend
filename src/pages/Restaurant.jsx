@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../config/axiosInstance";
 import { filterData } from "../components/filterData/FilterData";
+import toast from "react-hot-toast";
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
@@ -34,6 +35,7 @@ const Restaurant = () => {
       });
       setRestData(response.data.restaurants);
     } catch (error) {
+      toast.error("The item not available")
       console.log(error);
     }
   };
