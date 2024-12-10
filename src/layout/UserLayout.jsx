@@ -15,10 +15,11 @@ const UserLayout = () => {
 
   const checkUser = async () => {
     try {
-      await axiosInstance({
+      const responsre = await axiosInstance({
         method: "GET",
         url: "/user/check-user",
       });
+    console.log(responsre)
       dispatch(saveUser());
     } catch (error) {
       dispatch(clearUser());
