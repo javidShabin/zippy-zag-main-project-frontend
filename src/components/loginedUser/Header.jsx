@@ -2,10 +2,12 @@ import { Menu, MessagesSquare, ShoppingCart, UserPen, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { logo } from "../../assets";
+import { useSelector } from "react-redux";
 
 const UserHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   // Toggle the menu
   const toggleMenu = () => {
@@ -103,6 +105,11 @@ const UserHeader = () => {
           <div>
             <Link to={"/user/cart-page"}>
               <ShoppingCart className="w-7 h-7 text-orange-400 cursor-pointer " />
+              {totalQuantity > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                {totalQuantity}
+              </span>
+            )}
             </Link>
           </div>
           <Link to={"/user/profile"}>
