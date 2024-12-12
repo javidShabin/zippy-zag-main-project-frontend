@@ -117,9 +117,12 @@ const UserHeader = () => {
             </Link>
           </div>
           <Link to={"/user/profile"}>
-            <div className="bg-[#ffa100] py-2 px-4 shadow-sm shadow-[#ffa100] hover:shadow-lg hover:shadow-[#ffb300] rounded-full font-medium transition duration-200">
-              {" "}
-              <UserPen className="w-7 h-7 text-white " />
+            <div className="w-[40px] h-[40px]">
+              <img
+                src={profileImage} // Add a fallback image here
+                className="rounded-full w-full h-full object-cover"
+                alt="Profile"
+              />
             </div>
           </Link>
         </div>
