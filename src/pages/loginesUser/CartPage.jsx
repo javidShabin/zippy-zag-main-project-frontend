@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
 import { loadStripe } from "@stripe/stripe-js";
 import { Trash2 } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { decrement } from "../../redux/features/cartSlice";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const dispatch = useDispatch()
 
   // Delivery initializing
   let deliveryCharge = 50;
@@ -50,6 +53,7 @@ const CartPage = () => {
       });
       setCartItems(response.data.items);
       setTotalPrice(response.data.totalPrice);
+      dispatch(decrement());
     } catch (error) {
       console.log(error);
     }

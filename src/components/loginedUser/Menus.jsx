@@ -3,9 +3,12 @@ import { axiosInstance } from "../../config/axiosInstance";
 import { SearchIcon } from "lucide-react";
 import toast from "react-hot-toast";
 import { filterData } from "../filterData/FilterData";
+import { useDispatch } from "react-redux";
+import { increment } from "../../redux/features/cartSlice";
 
 const Menus = ({ restaurantId }) => {
   const [menus, setMenu] = useState([]);
+  const dispatch = useDispatch()
 
   // Get the menus for the restaurant
   const getMenuForRestaurant = async () => {
@@ -37,6 +40,7 @@ const Menus = ({ restaurantId }) => {
       });
       const successMessage = response.data.message;
       toast.success(successMessage);
+      dispatch(increment())
     } catch (error) {
       let erorrMessage = error.response.data.message;
       toast.error(erorrMessage);
