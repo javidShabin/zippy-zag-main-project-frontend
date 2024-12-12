@@ -3,10 +3,13 @@ import { axiosInstance } from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import Address from "../../components/loginedUser/Address";
+import { useDispatch } from "react-redux";
+import { setProfileImage } from "../../redux/features/profileSlice";
 
 const ProfilePage = () => {
   // State for user profile management
   const [isUser, setIsuser] = useState({});
+  const dispatch = useDispatch()
 
   // Fetch user profile data
   const fetchUserProfile = async () => {
@@ -16,6 +19,7 @@ const ProfilePage = () => {
         url: "/user/user-profile",
       });
       setIsuser(response.data);
+      dispatch(setProfileImage(response.data.image))
     } catch (error) {
       toast.error("Failed to fetch user profile");
     }

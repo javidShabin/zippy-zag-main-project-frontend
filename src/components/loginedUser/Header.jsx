@@ -1,4 +1,4 @@
-import { Menu, MessagesSquare, ShoppingCart, UserPen, X } from "lucide-react";
+import { Menu, MessagesSquare, ShoppingCart, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { logo } from "../../assets";
@@ -8,6 +8,7 @@ const UserHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const profileImage = useSelector((state) => state.profile.image);
 
   // Toggle the menu
   const toggleMenu = () => {
@@ -86,9 +87,12 @@ const UserHeader = () => {
                 </Link>
               </div>
               <Link to={"/user/profile"}>
-                <div className="py-1 sm:py-2 px-4 sm:px-6 bg-[#ffa100] text-white font-semibold rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 mt-4 text-xs sm:text-base">
-                  {" "}
-                  <UserPen className="w-7 h-7 text-whit " />
+                <div className="w-[40px] h-[40px]">
+                  <img
+                    src={profileImage} // Add a fallback image here
+                    className="rounded-full w-full h-full object-cover"
+                    alt="Profile"
+                  />
                 </div>
               </Link>
             </li>
