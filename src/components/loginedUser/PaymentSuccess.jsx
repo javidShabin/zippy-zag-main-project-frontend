@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { axiosInstance } from '../../config/axiosInstance'
 
 const PaymentSuccess = () => {
+  const handleClearCart = async () => {
+    try {
+      await axiosInstance.delete("/cart/clear")
+    } catch (error) {
+      
+    }
+  }
+  useEffect(()=>{
+    handleClearCart()
+  },[])
   return (
     <main>
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-6">
