@@ -2,19 +2,20 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
 import { chatImage } from "../../assets";
 import { useForm } from "react-hook-form";
-import { Send } from "lucide-react"; // Importing the Send icon from Lucide Icons
+import { Send } from "lucide-react";
 
 const ChatPage = () => {
   const [userDetails, setUserDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [getMessages, setGetMessages] = useState([]);
-  const [lastFetchedTimestamp, setLastFetchedTimestamp] = useState(null); // New state for the timestamp
-  const intervalRef = useRef(null); // Ref to store the interval ID
+  const [lastFetchedTimestamp, setLastFetchedTimestamp] = useState(null);
+  const intervalRef = useRef(null);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset, // Reset form after submission
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -28,6 +29,7 @@ const ChatPage = () => {
         ...prevMessages,
         { ...response.data, sender: "user" },
       ]);
+      reset(); // Clear input after submission
     } catch (error) {
       console.error("Error sending message:", error);
     }
@@ -54,16 +56,13 @@ const ChatPage = () => {
       const response = await axiosInstance.get(
         `/chat/getchat/${userDetails._id}`
       );
-
-      // Avoid fetching messages that have already been retrieved
       const newMessages = response.data;
+
       if (newMessages.length > 0) {
         const latestTimestamp = newMessages[0].createdAt;
-        
-        // If the last message is newer than the last fetched timestamp, update the messages
         if (latestTimestamp !== lastFetchedTimestamp) {
           setGetMessages(newMessages);
-          setLastFetchedTimestamp(latestTimestamp); // Update the timestamp
+          setLastFetchedTimestamp(latestTimestamp);
         }
       }
     } catch (error) {
@@ -77,11 +76,14 @@ const ChatPage = () => {
 
   useEffect(() => {
     if (!isLoading && userDetails?._id) {
-      getAllMessages(); // Fetch messages initially
-      intervalRef.current;  // Start polling every 2 seconds
+      getAllMessages();
+
+      intervalRef.current = setInterval(() => {
+        getAllMessages();
+      }, 1000); // Refresh messages every 1 second
 
       return () => {
-        clearInterval(intervalRef.current); // Cleanup interval on component unmount or dependency change
+        clearInterval(intervalRef.current); // Cleanup on unmount
       };
     }
   }, [userDetails, isLoading]);
@@ -91,11 +93,15 @@ const ChatPage = () => {
       getMessages.map((message, index) => (
         <div
           key={index}
-          className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+          className={`flex ${
+            message.sender === "user" ? "justify-end" : "justify-start"
+          }`}
         >
           <div
             className={`max-w-[80%] md:max-w-[75%] p-3 md:p-4 rounded-lg shadow chat-bubble ${
-              message.sender === "user" ? "bg-[#ffb62e] text-black" : "bg-white text-black"
+              message.sender === "user"
+                ? "bg-[#ffb62e] text-black"
+                : "bg-white text-black"
             }`}
           >
             <p className="text-xs md:text-sm">{message.message}</p>
@@ -117,20 +123,22 @@ const ChatPage = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className="w-full md:w-11/12 h-5/6 p-6 space-y-6 overflow-y-auto bg-gray-800 bg-opacity-70 backdrop-blur-lg rounded-3xl shadow-lg">
+      <div className="w-full md:w-11/12 h-5/6 p-6 bg-gray-800 bg-opacity-70 backdrop-blur-lg rounded-3xl shadow-lg">
         {isLoading ? (
           <p className="text-center text-white">Loading...</p>
         ) : (
           <>
-            <h1 className="text-2xl font-semibold text-white">
+            <h1 className="text-2xl font-semibold text-white mb-4">
               Welcome {userDetails?.name}
             </h1>
-            <div className="space-y-4">{renderedMessages}</div>
+            <div className="space-y-4 h-[70vh] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-900">
+              {renderedMessages}
+            </div>
           </>
         )}
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="sticky bottom-0 flex items-center justify-between w-full gap-4"
+          className="sticky bottom-0 flex items-center justify-between w-full gap-4 mt-4 bg-gray-900 p-4 rounded-lg shadow-lg"
         >
           <input
             {...register("message", { required: "Message is required" })}
@@ -146,7 +154,7 @@ const ChatPage = () => {
             type="submit"
             className="px-6 py-2 text-white bg-yellow-500 rounded-full hover:bg-yellow-600"
           >
-            <Send size={20} /> {/* Send icon from Lucide */}
+            <Send size={20} />
           </button>
         </form>
       </div>
