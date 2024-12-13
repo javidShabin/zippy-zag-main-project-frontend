@@ -19,7 +19,6 @@ const UserLayout = () => {
         method: "GET",
         url: "/user/check-user",
       });
-    console.log(responsre)
       dispatch(saveUser());
     } catch (error) {
       dispatch(clearUser());
