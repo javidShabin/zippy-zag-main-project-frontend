@@ -9,14 +9,15 @@ const PaymentSuccess = () => {
   useEffect(() => {
     const clearTheCart = async () => {
       try {
-        await axiosInstance.delete("/cart/clear");
+        const response = await axiosInstance.delete("/cart/clear");
+        console.log(response)
         dispatch(decrement(0))
       } catch (error) {
         console.log(error);
       }
     };
     clearTheCart();
-  }, []);
+  }, [])
   return (
     <main className="flex flex-col lg:flex-row items-center justify-between min-h-screen bg-gradient-to-r from-green-50 to-green-100 px-8 py-16">
       {/* Left Content - Timeline and Success Message */}
