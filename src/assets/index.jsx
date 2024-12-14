@@ -23,6 +23,7 @@ import juice from "./juices.png";
 import pasta from "./pasta.png";
 import mojito from "./mojito.png";
 import iceCream from "./ice-cream.png";
+import successImage from "./success.png";
 
 export {
   heroImage,
@@ -49,5 +50,6 @@ export {
   mojito,
   pasta,
   juice,
-  iceCream
+  iceCream,
+  successImage
 };
