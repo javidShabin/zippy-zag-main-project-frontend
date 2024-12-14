@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import { paymentDoneImage } from "../../assets";
 import { axiosInstance } from "../../config/axiosInstance";
+import { useDispatch } from "react-redux";
+import { decrement } from "../../redux/features/cartSlice";
 
 const PaymentSuccess = () => {
+  const dispatch = useDispatch()
   useEffect(() => {
     const clearTheCart = async () => {
       try {
         await axiosInstance.delete("/cart/clear");
+        dispatch(decrement(0))
       } catch (error) {
         console.log(error);
       }
