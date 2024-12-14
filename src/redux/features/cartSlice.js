@@ -6,9 +6,11 @@ const loadStateFromLocalStorage = () => {
   return savedCart ? JSON.parse(savedCart) : { items: [], totalQuantity: 0 };
 };
 
-// Helper function to save to localStorage
+// Helper function to save to localStorage only if totalQuantity is greater than 0
 const saveStateToLocalStorage = (state) => {
-  localStorage.setItem("cart", JSON.stringify(state));
+  if (state.totalQuantity > 0) {
+    localStorage.setItem("cart", JSON.stringify(state));
+  }
 };
 
 const initialState = loadStateFromLocalStorage();
