@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { paymentDoneImage } from "../../assets";
+import { axiosInstance } from "../../config/axiosInstance";
 
 const PaymentSuccess = () => {
+  useEffect(() => {
+    const clearTheCart = async () => {
+      try {
+        await axiosInstance.delete("/cart/clear");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    clearTheCart();
+  }, []);
   return (
     <main className="flex flex-col lg:flex-row items-center justify-between min-h-screen bg-gradient-to-r from-green-50 to-green-100 px-8 py-16">
       {/* Left Content - Timeline and Success Message */}
