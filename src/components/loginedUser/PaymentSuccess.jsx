@@ -1,5 +1,5 @@
 import React from "react";
-import {succussImage} from "../../assets/index/succussImage"
+import { paymentDoneImage } from "../../assets";
 
 const PaymentSuccess = () => {
   return (
@@ -65,7 +65,7 @@ const PaymentSuccess = () => {
       {/* Right Content */}
       <div className="lg:w-1/2 flex justify-center lg:justify-end">
         <img
-          src={succussImage}
+          src={paymentDoneImage}
           alt="Payment Successful"
           className="max-w-sm lg:max-w-lg rounded-xl"
         />
