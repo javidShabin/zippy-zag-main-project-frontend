@@ -13,7 +13,7 @@ const filterData = [
     id: 1,
     name: "Biryani",
     image: biriyani,
-    category: "Biryani",
+    category: "Biriyani",
   },
   {
     id: 2,
