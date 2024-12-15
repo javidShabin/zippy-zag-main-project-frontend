@@ -8,6 +8,7 @@ import { decrement } from "../../redux/features/cartSlice";
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [restaurantId, setRestarantId] = useState(null);
   const [userId, setUserId] = useState(null);
   const [address, setAddress] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -21,6 +22,7 @@ const CartPage = () => {
     try {
       const response = await axiosInstance.get("/cart/getCart");
       setCartItems(response.data.items);
+      setRestarantId(response.data.restaurantId);
       setTotalPrice(response.data.totalPrice);
     } catch (error) {
       console.error("Error fetching cart items:", error);
@@ -114,6 +116,7 @@ const CartPage = () => {
         "/payment/create-checkout-session",
         {
           products: cartItems,
+          restaurantId,
           userId,
           totalAmount: totalPrice + deliveryCharge,
           address,
