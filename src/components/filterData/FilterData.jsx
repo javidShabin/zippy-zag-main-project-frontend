@@ -11,9 +11,9 @@ import {
 const filterData = [
   {
     id: 1,
-    name: "Biriyani",
+    name: "Biryani",
     image: biriyani,
-    category: "Biriyani",
+    category: "Biryani",
   },
   {
     id: 2,
