@@ -8,7 +8,7 @@ const loadStateFromLocalStorage = () => {
 
 // Helper function to save to localStorage only if totalQuantity is greater than 0
 const saveStateToLocalStorage = (state) => {
-  if (state.totalQuantity > 0) {
+  if (state.totalQuantity > -1) {
     localStorage.setItem("cart", JSON.stringify(state));
   }
 };
