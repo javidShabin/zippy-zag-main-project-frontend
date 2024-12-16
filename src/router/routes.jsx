@@ -13,6 +13,7 @@ import CartPage from "../pages/loginesUser/CartPage";
 import PaymentSuccess from "../components/loginedUser/PaymentSuccess";
 import ProfileDashbord from "../pages/loginesUser/ProfileDashbord";
 import EditProfile from "../components/loginedUser/ProfileEditePage";
+import JoinUs from "../pages/loginesUser/JoinPage";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
           {
             path: "payment/success",
             element: <PaymentSuccess/>
+          },
+          {
+            path: "join-page",
+            element: <JoinUs />
           },
 
           {

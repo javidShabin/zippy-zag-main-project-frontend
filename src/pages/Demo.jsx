@@ -1,5 +1,6 @@
 import React from "react";
 import { food, joinBanner1, joinBanner2, order, place } from "../assets";
+import { Link } from "react-router-dom";
 
 const Demo = () => {
   return (
@@ -91,9 +92,11 @@ const Demo = () => {
                 <h3 className="text-white text-2xl font-bold mt-2">
                   Partner With Us
                 </h3>
-                <button className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-md shadow-md hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/50 transition duration-300">
-                  Get Started
-                </button>
+                <Link to={"/user/join-page"}>
+                  <button className="mt-4 px-6 py-2 bg-orange-500 text-white rounded-md shadow-md hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/50 transition duration-300">
+                    Get Started
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
