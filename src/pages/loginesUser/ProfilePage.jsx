@@ -62,7 +62,7 @@ const ProfilePage = () => {
       </div>
 
       <div className="mt-6 w-full">
-        <Link to={"/user/profile/edit-profile"}>
+        <Link to={"/user/profile/edite-profile"}>
           <button className="w-full py-2 px-4 bg-orange-400 text-white rounded-md hover:bg-orange-500 transition duration-300">
             Edit Profile
           </button>
