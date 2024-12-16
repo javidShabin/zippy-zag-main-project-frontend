@@ -242,7 +242,7 @@ const CartPage = () => {
               </h2>
               <hr className="mt-5" />
               <h2 className="text-2xl font-bold text-gray-900 mt-4">
-                Grand Total: ₹{totalPrice + deliveryCharge}
+                Grand Total: ₹{totalPrice > 0 ? totalPrice + deliveryCharge : 0}
               </h2>
               {isAddress ? (
                 <button
