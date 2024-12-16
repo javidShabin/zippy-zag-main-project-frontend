@@ -129,8 +129,8 @@ const SignupPage = () => {
             <div>
               <input
                 type="password"
-                placeholder="Confirm Password"
-                {...register("confirmPassword", { required: true })}
+                placeholder="Conform Password"
+                {...register("conformPassword", { required: true })}
                 className="w-full p-2 border border-gray-300 rounded-lg focus:ring-4 focus:ring-orange-500 focus:outline-none"
               />
               {errors.confirmPassword && (
