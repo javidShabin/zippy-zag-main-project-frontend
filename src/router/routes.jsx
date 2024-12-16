@@ -14,6 +14,7 @@ import PaymentSuccess from "../components/loginedUser/PaymentSuccess";
 import ProfileDashbord from "../pages/loginesUser/ProfileDashbord";
 import EditProfile from "../components/loginedUser/ProfileEditePage";
 import JoinUs from "../pages/loginesUser/JoinPage";
+import AddAddress from "../components/loginedUser/AddAddress";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
           {
             path: "join-page",
             element: <JoinUs />
+          },
+          {
+            path: "add-address",
+            element: <AddAddress />
           },
 
           {
