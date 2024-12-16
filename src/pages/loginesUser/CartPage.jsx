@@ -4,6 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Trash2 } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { decrement } from "../../redux/features/cartSlice";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -12,6 +13,7 @@ const CartPage = () => {
   const [userId, setUserId] = useState(null);
   const [address, setAddress] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isAddress, setIsAddress] = useState(false);
   const dispatch = useDispatch();
 
   const deliveryCharge = 50;
@@ -30,6 +32,21 @@ const CartPage = () => {
       setLoading(false);
     }
   };
+
+  // Check the address have or not
+  const checkAddress = async () => {
+    try {
+      const response = await axiosInstance.get("/address/get-address");
+      if (response.data[0]) {
+        setIsAddress(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    checkAddress();
+  }, []);
 
   // Optimized update for item quantity without loading state
   const updateCartItemQuantity = useCallback(
@@ -227,12 +244,20 @@ const CartPage = () => {
               <h2 className="text-2xl font-bold text-gray-900 mt-4">
                 Grand Total: ₹{totalPrice + deliveryCharge}
               </h2>
-              <button
-                onClick={makePayment}
-                className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-2"
-              >
-                Check Out
-              </button>
+              {isAddress ? (
+                <button
+                  onClick={makePayment}
+                  className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-2"
+                >
+                  Check Out
+                </button>
+              ) : (
+                <Link to={"/user/add-address"}>
+                  <button className="py-1 px-5 rounded-md bg-orange-400 font-semibold mt-2">
+                    Address
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
