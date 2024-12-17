@@ -43,9 +43,8 @@ const ProfilePage = () => {
   useEffect(() => {
     const getRequestStatus = async () => {
       try {
-        const response = await axiosInstance.get("/request/getRequestByUserId");
-        const status = response.data.requests?.[0]?.status || "N/A";
-        setRqStatus(status);
+        const response = await axiosInstance.get("/request/getRequestByUserId")
+        console.log(response, "==res")
       } catch (error) {
         console.error("API error:", error); // Log more detailed error information
         setError("Failed to fetch request status.");
