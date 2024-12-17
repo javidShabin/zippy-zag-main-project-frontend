@@ -42,7 +42,7 @@ const ProfilePage = () => {
     const getRequestStatus = async () => {
       try {
         const response = await axiosInstance.get("/request/getRequestByUserId");
-        setRqStatus(response.data.requests[0]?.status || "N/A");
+        setRqStatus(response.data.requests[0].status);
       } catch (error) {
         console.log(error);
       }
