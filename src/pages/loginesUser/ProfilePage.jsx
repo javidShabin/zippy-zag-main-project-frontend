@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { axiosInstance } from "../../config/axiosInstance";
 import { Link } from "react-router-dom";
+import { axiosInstance } from "../../config/axiosInstance";
 
 const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState(null);
