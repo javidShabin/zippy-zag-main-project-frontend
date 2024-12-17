@@ -10,6 +10,18 @@ const ProfilePage = () => {
   const [reqColor, setRqColor] = useState("");
 
   useEffect(() => {
+    if (reqStatus === "pending") {
+      setRqColor("bg-orange-500");
+    } else if (reqStatus === "approved") {
+      setRqColor("bg-green-500");
+    } else if (reqStatus === "rejected") {
+      setRqColor("bg-red-500");
+    } else {
+      setRqColor("");
+    }
+  }, [reqStatus]); // Add reqStatus as a dependency
+
+  useEffect(() => {
     const fetchUserProfile = async () => {
       try {
         const response = await axiosInstance({
@@ -26,28 +38,17 @@ const ProfilePage = () => {
     fetchUserProfile();
   }, []);
 
-  useEffect(() => {
-    if (reqStatus === "pending") {
-      setRqColor("bg-orange-500");
-    } else if (reqStatus === "approved") {
-      setRqColor("bg-green-500");
-    } else if (reqStatus === "rejected") {
-      setRqColor("bg-red-500");
-    } else {
-      setRqColor("");
-    }
-  }, [reqStatus]); // Add reqStatus as a dependency
+  
 
   useEffect(() => {
     const getRequestStatus = async () => {
       try {
         const response = await axiosInstance.get("/request/getRequestByUserId");
-        console.log(response, "==response"); // Log the full response for debugging
-        // Handle the case where requests array might be empty or missing
-        const status = response.data.requests?.[0]?.status || "N/A"; // Default to "N/A" if empty or missing
+        const status = response.data.requests?.[0]?.status || "N/A";
         setRqStatus(status);
       } catch (error) {
-        console.log(error);
+        console.error("API error:", error); // Log more detailed error information
+        setError("Failed to fetch request status.");
       }
     };
     getRequestStatus();
