@@ -43,6 +43,7 @@ const ProfilePage = () => {
       try {
         const response = await axiosInstance.get("/request/getRequestByUserId");
         setRqStatus(response.data.requests[0].status);
+        console.log(response, "==response")
       } catch (error) {
         console.log(error);
       }
