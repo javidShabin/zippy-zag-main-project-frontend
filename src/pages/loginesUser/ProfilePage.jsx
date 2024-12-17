@@ -9,7 +9,6 @@ const ProfilePage = () => {
   const [reqStatus, setRqStatus] = useState(""); // Initialize with an empty string
   const [reqColor, setRqColor] = useState("");
 
-  console.log(reqColor);
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
