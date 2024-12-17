@@ -42,8 +42,10 @@ const ProfilePage = () => {
     const getRequestStatus = async () => {
       try {
         const response = await axiosInstance.get("/request/getRequestByUserId");
-        setRqStatus(response.data.requests[0].status);
-        console.log(response, "==response")
+        console.log(response, "==response"); // Log the full response for debugging
+        // Handle the case where requests array might be empty or missing
+        const status = response.data.requests?.[0]?.status || "N/A"; // Default to "N/A" if empty or missing
+        setRqStatus(status);
       } catch (error) {
         console.log(error);
       }
@@ -88,7 +90,14 @@ const ProfilePage = () => {
                 <p className="text-gray-700">
                   Phone: {userProfile?.phone || "N/A"}
                 </p>
-                {reqStatus ? <p>Your request is: <span className={`py-1 px-2 rounded-lg font-semibold text-white ${reqColor}`}>{reqStatus}</span></p> : ""}
+                {reqStatus && (
+                  <p>
+                    Your request is:{" "}
+                    <span className={`py-1 px-2 rounded-lg font-semibold text-white ${reqColor}`}>
+                      {reqStatus}
+                    </span>
+                  </p>
+                )}
               </div>
             </div>
             {error && (
