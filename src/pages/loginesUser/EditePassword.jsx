@@ -49,7 +49,7 @@ const EditePassword = () => {
     
             <input
               type="submit"
-              value="Update Profile"
+              value="Submit"
               className="bg-orange-500 text-white font-semibold py-3 px-6 rounded-lg hover:bg-orange-600 cursor-pointer w-full transition duration-300"
             />
           </form>
