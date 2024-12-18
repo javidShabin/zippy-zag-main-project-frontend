@@ -1,4 +1,4 @@
-import React, {  useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 
 const EditeAddress = () => {
@@ -17,17 +17,6 @@ const EditeAddress = () => {
 
   return (
     <div className="flex justify-center items-center h-[87vh] px-4">
-      {userData && (
-        <div className="flex flex-col items-center mb-6">
-          <img
-            src={userData.image || "/default-avatar.png"} // Show current profile image or a default one
-            alt="Profile"
-            className="w-24 h-24 rounded-full mb-4"
-          />
-          <h2 className="text-xl font-semibold text-gray-700">Edit Profile</h2>
-        </div>
-      )}
-
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-lg p-8 bg-white rounded-lg shadow-lg flex flex-col"
