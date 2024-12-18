@@ -7,6 +7,13 @@ const EditeAddress = () => {
     const [addressId, setAddressId] = useState()
     const [userId, setUserId] = useState();
 
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        setValue
+      } = useForm();
+
     useEffect(() => {
         const fetchUserProfile = async () => {
           try {
@@ -30,7 +37,14 @@ const EditeAddress = () => {
                     url: `/address/get-address`,
                     params: { userId },
                   });
-                  console.log(response, "==res")
+                  setAddressId(response.data[0]._id, "==res")
+                  setValue(response.data[0].name)
+                  setValue(response.data[0].email)
+                  setValue(response.data[0].street)
+                  setValue(response.data[0].phone)
+                  setValue(response.data[0].county)
+                  setValue(response.data[0].postalCode)
+                  setValue(response.data[0].city)
                 } catch (error) {
                   console.log("Error fetching addresses:", error);
                 } finally {
@@ -40,17 +54,13 @@ const EditeAddress = () => {
             getTheAddress()
         },[])
   
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  
 
 
   // Handle form submission for profile update
   const onSubmit = async (data) => {
     try {
-        const response = await axiosInstance.put(`/address//update-address/:id`)
+        const response = await axiosInstance.put(`/address//update-address/${addressId}`)
     } catch (error) {
         
     }
