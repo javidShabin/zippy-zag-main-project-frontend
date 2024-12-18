@@ -3,23 +3,23 @@ import { axiosInstance } from "../../config/axiosInstance";
 
 const Address = () => {
   const [addresses, setAddresses] = useState([]);
-  const [userId, setUserId] = useState()
+  const [userId, setUserId] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-      const fetchUserProfile = async () => {
-        try {
-          const response = await axiosInstance({
-            method: "GET",
-            url: "/user/user-profile",
-          });
-          setUserId(response.data._id)
-          
-        } catch (error) {
-          console.log(error)
-        }
-      };
-      fetchUserProfile();
-    }, []);
+    const fetchUserProfile = async () => {
+      try {
+        const response = await axiosInstance({
+          method: "GET",
+          url: "/user/user-profile",
+        });
+        setUserId(response.data._id);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserProfile();
+  }, []);
 
   const getTheAddress = async () => {
     try {
@@ -30,8 +30,10 @@ const Address = () => {
       });
       setAddresses(response.data);
     } catch (error) {
-      console.log("file")
+      console.log("file");
       console.error("Error fetching addresses:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -54,6 +56,14 @@ const Address = () => {
       getTheAddress();
     }
   }, [userId]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-dots loading-lg bg-orange-400"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto">
