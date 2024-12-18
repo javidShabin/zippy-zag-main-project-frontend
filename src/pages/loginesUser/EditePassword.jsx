@@ -1,5 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import { axiosInstance } from '../../config/axiosInstance';
+import toast from 'react-hot-toast';
 
 const EditePassword = () => {
     const {
@@ -10,7 +12,12 @@ const EditePassword = () => {
     
       // Handle form submission for profile update
       const onSubmit = async (data) => {
-        
+        try {
+            const response = await axiosInstance.put("/user/forget-password", data)
+            toast.success("Updated password")
+        } catch (error) {
+            toast.error("Filed to update")
+        }
       };
     
       return (
