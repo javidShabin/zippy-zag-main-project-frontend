@@ -108,7 +108,7 @@ const ProfilePage = () => {
                 {error}
               </p>
             )}
-            <Link to="/user/profile/edit-profile">
+            <Link to={"/user/profile/edite-profile"}>
               {/* Edit Profile Button */}
               <button className="mt-6 w-full py-2 text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:outline-none transform transition duration-300 ease-in-out">
                 Edit Profile
