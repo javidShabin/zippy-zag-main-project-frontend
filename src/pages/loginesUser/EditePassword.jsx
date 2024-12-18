@@ -51,7 +51,7 @@ const EditePassword = () => {
         <label className="mb-1 font-medium text-gray-700">New Password</label>
         <input
           className="mb-4 p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-orange-500"
-          type="email"
+          type="password"
           placeholder="New Password"
           {...register("password", { required: "New Password is required" })}
         />
