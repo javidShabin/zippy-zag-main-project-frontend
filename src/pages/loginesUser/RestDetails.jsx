@@ -32,44 +32,51 @@ const RestDetails = () => {
   }
 
   return (
-    <main className="flex flex-col justify-center items-center w-[100%] mt-11 px-4 py-8">
-      {/* Cover Image with Gradient */}
-      <div
-        className="relative flex justify-between items-center px-10 w-[95%] h-[450px] rounded-lg overflow-hidden"
-        style={{
-          backgroundImage: `url(${restDetails.image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute flex justify-between items-center px-11 inset-0 bg-gradient-to-t from-[#000000aa] to-[#0000008d] opacity-100">
-          <div>
-            <h1 className="text-[35px] font-bold text-white">
-              {restDetails.name}
-            </h1>
-            <h2 className="text-lg font-bold">{restDetails.location}</h2>
-            <p className="text-gray-600">{restDetails.cuisine}</p>
-            <p
-              className={`text-sm font-medium ${
-                restDetails.isOpen ? "text-green-600" : "text-red-600"
-              }`}
-            >
-              {restDetails.isOpen ? "Open Now" : "Closed"}
-            </p>
-          </div>
-          <div>
-            <img
-              className="w-[500px] rounded-xl opacity-90"
-              src={restDetails.image}
-              alt=""
-            />
-          </div>
+    <main className="flex flex-col justify-center items-center w-full mt-11 px-4 py-8">
+    {/* Cover Image with Gradient */}
+    <div
+      className="relative flex flex-col md:flex-row justify-between items-center px-6 md:px-10 w-full max-w-7xl h-[350px] md:h-[450px] rounded-lg overflow-hidden"
+      style={{
+        backgroundImage: `url(${restDetails.image})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="absolute flex flex-col md:flex-row justify-between items-center px-6 md:px-10 inset-0 bg-gradient-to-t from-black/70 to-black/40">
+        {/* Left Section */}
+        <div className="text-center md:text-left max-w-sm md:max-w-lg">
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">
+            {restDetails.name}
+          </h1>
+          <h2 className="text-lg md:text-xl font-semibold text-gray-300 mb-1">
+            {restDetails.location}
+          </h2>
+          <p className="text-sm md:text-base text-gray-400 mb-2">
+            {restDetails.cuisine}
+          </p>
+          <p
+            className={`text-sm md:text-base font-medium ${
+              restDetails.isOpen ? "text-green-500" : "text-red-500"
+            }`}
+          >
+            {restDetails.isOpen ? "Open Now" : "Closed"}
+          </p>
+        </div>
+        {/* Right Section */}
+        <div className="hidden md:block">
+          <img
+            className="w-72 md:w-[500px] rounded-xl shadow-lg"
+            src={restDetails.image}
+            alt={`${restDetails.name}`}
+          />
         </div>
       </div>
-      <div>
-        <Menus restaurantId={id}/>
-      </div>
-    </main>
+    </div>
+    {/* Menus Section */}
+    <div className="mt-8 w-full max-w-7xl">
+      <Menus restaurantId={id} />
+    </div>
+  </main>
   );
 };
 
