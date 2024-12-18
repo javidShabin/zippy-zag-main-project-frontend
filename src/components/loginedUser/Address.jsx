@@ -120,7 +120,7 @@ const Address = () => {
                 </div>
               </div>
               <div className="flex justify-between mt-4">
-                <Link to={"/user/profile/edite-address"}>
+                <Link to={`/user/profile/edite-address`}>
                   <button
                     onClick={() => console.log("Edit button clicked")} // Placeholder for edit action
                     className="bg-yellow-500 text-white py-1 px-4 rounded"

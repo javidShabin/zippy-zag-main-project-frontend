@@ -1,7 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { axiosInstance } from "../config/axiosInstance";
 
 const EditeAddress = () => {
+
+    const [addressId, setAddressId] = useState()
+    const [userId, setUserId] = useState();
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+          try {
+            const response = await axiosInstance({
+              method: "GET",
+              url: "/user/user-profile",
+            });
+            setUserId(response.data._id);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        fetchUserProfile();
+      }, []);
+
+        useEffect(()=>{
+            const getTheAddress = async () => {
+                try {
+                  const response = await axiosInstance({
+                    method: "GET",
+                    url: `/address/get-address`,
+                    params: { userId },
+                  });
+                  console.log(response, "==res")
+                } catch (error) {
+                  console.log("Error fetching addresses:", error);
+                } finally {
+                  setLoading(false);
+                }
+              };
+            getTheAddress()
+        },[])
   
   const {
     register,
@@ -12,7 +49,11 @@ const EditeAddress = () => {
 
   // Handle form submission for profile update
   const onSubmit = async (data) => {
-    console.log(data)
+    try {
+        const response = await axiosInstance.put(`/address//update-address/:id`)
+    } catch (error) {
+        
+    }
   };
 
   return (
