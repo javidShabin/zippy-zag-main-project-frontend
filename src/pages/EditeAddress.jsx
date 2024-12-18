@@ -3,66 +3,63 @@ import { useForm } from "react-hook-form";
 import { axiosInstance } from "../config/axiosInstance";
 
 const EditeAddress = () => {
+  const [addressId, setAddressId] = useState();
+  const [userId, setUserId] = useState();
 
-    const [addressId, setAddressId] = useState()
-    const [userId, setUserId] = useState();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm();
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        setValue
-      } = useForm();
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const response = await axiosInstance({
+          method: "GET",
+          url: "/user/user-profile",
+        });
+        setUserId(response.data._id);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchUserProfile();
+  }, []);
 
-    useEffect(() => {
-        const fetchUserProfile = async () => {
-          try {
-            const response = await axiosInstance({
-              method: "GET",
-              url: "/user/user-profile",
-            });
-            setUserId(response.data._id);
-          } catch (error) {
-            console.log(error);
-          }
-        };
-        fetchUserProfile();
-      }, []);
-
-        useEffect(()=>{
-            const getTheAddress = async () => {
-                try {
-                  const response = await axiosInstance({
-                    method: "GET",
-                    url: `/address/get-address`,
-                    params: { userId },
-                  });
-                  setAddressId(response.data[0]._id, "==res")
-                  setValue(response.data[0].name)
-                  setValue(response.data[0].email)
-                  setValue(response.data[0].street)
-                  setValue(response.data[0].phone)
-                  setValue(response.data[0].county)
-                  setValue(response.data[0].postalCode)
-                  setValue(response.data[0].city)
-                } catch (error) {
-                  console.log("Error fetching addresses:", error);
-                } finally {
-                  setLoading(false);
-                }
-              };
-            getTheAddress()
-        },[])
-  
-  
-
+  useEffect(() => {
+    const getTheAddress = async () => {
+      try {
+        const response = await axiosInstance({
+          method: "GET",
+          url: `/address/get-address`,
+          params: { userId },
+        });
+        setAddressId(response.data[0]._id); // Fixing the argument issue here
+        setValue("name", response.data[0].name);
+        setValue("email", response.data[0].email);
+        setValue("street", response.data[0].street);
+        setValue("phone", response.data[0].phone);
+        setValue("county", response.data[0].county);
+        setValue("postalCode", response.data[0].postalCode);
+        setValue("city", response.data[0].city);
+      } catch (error) {
+        console.log("Error fetching addresses:", error);
+      }
+    };
+    if (userId) {
+      getTheAddress();
+    }
+  }, [userId]);
 
   // Handle form submission for profile update
   const onSubmit = async (data) => {
     try {
-        const response = await axiosInstance.put(`/address//update-address/${addressId}`)
+      const response = await axiosInstance.put(`/address/update-address/${addressId}`, data); // Send data here
+      console.log(response.data);
     } catch (error) {
-        
+      console.log("Error updating address:", error);
     }
   };
 
@@ -79,9 +76,7 @@ const EditeAddress = () => {
           placeholder="Name"
           {...register("name", { required: "Name is required" })}
         />
-        {errors.name && (
-          <span className="text-red-500">{errors.name.message}</span>
-        )}
+        {errors.name && <span className="text-red-500">{errors.name.message}</span>}
 
         <label className="mb-1 font-medium text-gray-700">Email</label>
         <input
@@ -90,9 +85,7 @@ const EditeAddress = () => {
           placeholder="Email"
           {...register("email", { required: "Email is required" })}
         />
-        {errors.email && (
-          <span className="text-red-500">{errors.email.message}</span>
-        )}
+        {errors.email && <span className="text-red-500">{errors.email.message}</span>}
 
         {/* Phone and Street on the same line */}
         <div className="flex space-x-4">
@@ -104,9 +97,7 @@ const EditeAddress = () => {
               placeholder="Phone"
               {...register("phone", { required: "Phone number is required" })}
             />
-            {errors.phone && (
-              <span className="text-red-500">{errors.phone.message}</span>
-            )}
+            {errors.phone && <span className="text-red-500">{errors.phone.message}</span>}
           </div>
 
           <div className="w-full sm:w-1/2">
@@ -117,9 +108,7 @@ const EditeAddress = () => {
               placeholder="Street"
               {...register("street", { required: "Street is required" })}
             />
-            {errors.street && (
-              <span className="text-red-500">{errors.street.message}</span>
-            )}
+            {errors.street && <span className="text-red-500">{errors.street.message}</span>}
           </div>
         </div>
 
@@ -133,9 +122,7 @@ const EditeAddress = () => {
               placeholder="County"
               {...register("county", { required: "County is required" })}
             />
-            {errors.county && (
-              <span className="text-red-500">{errors.county.message}</span>
-            )}
+            {errors.county && <span className="text-red-500">{errors.county.message}</span>}
           </div>
 
           <div className="w-full sm:w-1/2">
@@ -146,9 +133,7 @@ const EditeAddress = () => {
               placeholder="Postal Code"
               {...register("postalCode", { required: "Postal Code is required" })}
             />
-            {errors.postalCode && (
-              <span className="text-red-500">{errors.postalCode.message}</span>
-            )}
+            {errors.postalCode && <span className="text-red-500">{errors.postalCode.message}</span>}
           </div>
         </div>
 
@@ -159,9 +144,7 @@ const EditeAddress = () => {
           placeholder="City"
           {...register("city", { required: "City is required" })}
         />
-        {errors.city && (
-          <span className="text-red-500">{errors.city.message}</span>
-        )}
+        {errors.city && <span className="text-red-500">{errors.city.message}</span>}
 
         <input
           type="submit"
