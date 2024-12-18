@@ -7,16 +7,8 @@ const EditeAddress = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm();
 
-  // Fetch the user's current profile data
-  useEffect(() => {
-    const fetchUserData = async () => {
-      // Fetch user data logic
-    };
-    fetchUserData();
-  }, [setValue]);
 
   // Handle form submission for profile update
   const onSubmit = async (data) => {
