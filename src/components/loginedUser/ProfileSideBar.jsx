@@ -45,7 +45,7 @@ const ProfileSideBar = () => {
             to={"/user/profile/forgot-pass"}
             className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-200 hover:text-white transition"
           >
-            Forgot Password
+            Edite Password
           </Link>
         </li>
 
@@ -54,7 +54,7 @@ const ProfileSideBar = () => {
             to={"/user/profile/address-page"}
             className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-200 hover:text-white transition"
           >
-            Address
+            Address add orders
           </Link>
         </li>
         <li
