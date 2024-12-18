@@ -17,6 +17,7 @@ import JoinUs from "../pages/loginesUser/JoinPage";
 import AddAddress from "../components/loginedUser/AddAddress";
 import Address from "../components/loginedUser/Address";
 import EditeAddress from "../pages/EditeAddress";
+import EditePassword from "../pages/loginesUser/EditePassword";
 
 export const router = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ export const router = createBrowserRouter([
               {
                 path: "edite-address",
                 element: <EditeAddress />
+              },
+              {
+                path: "edite-password",
+                element: <EditePassword />
               }
             ]
           }

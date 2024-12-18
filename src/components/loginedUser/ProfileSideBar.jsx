@@ -42,7 +42,7 @@ const ProfileSideBar = () => {
         </li>
         <li>
           <Link
-            to={"/user/profile/forgot-pass"}
+            to={"/user/profile/edite-password"}
             className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-200 hover:text-white transition"
           >
             Edite Password
