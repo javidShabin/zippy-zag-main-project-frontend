@@ -41,7 +41,7 @@ const EditeAddress = () => {
         setValue("email", response.data[0].email);
         setValue("street", response.data[0].street);
         setValue("phone", response.data[0].phone);
-        setValue("county", response.data[0].county);
+        setValue("county", response.data[0].country);
         setValue("postalCode", response.data[0].postalCode);
         setValue("city", response.data[0].city);
       } catch (error) {
