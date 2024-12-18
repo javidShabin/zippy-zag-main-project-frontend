@@ -1,8 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
 
-const Address = ({ userId }) => {
+const Address = () => {
   const [addresses, setAddresses] = useState([]);
+  const [userId, setUserId] = useState()
+
+  useEffect(() => {
+      const fetchUserProfile = async () => {
+        try {
+          const response = await axiosInstance({
+            method: "GET",
+            url: "/user/user-profile",
+          });
+          setUserId(response.data._id)
+          
+        } catch (error) {
+          console.log(error)
+        }
+      };
+      fetchUserProfile();
+    }, []);
 
   const getTheAddress = async () => {
     try {
@@ -13,6 +30,7 @@ const Address = ({ userId }) => {
       });
       setAddresses(response.data);
     } catch (error) {
+      console.log("file")
       console.error("Error fetching addresses:", error);
     }
   };
