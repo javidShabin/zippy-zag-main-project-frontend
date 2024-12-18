@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
-import { SearchIcon } from "lucide-react";
+import { SearchIcon, ShoppingBasket } from "lucide-react";
 import toast from "react-hot-toast";
 import { filterData } from "../filterData/FilterData";
 import { useDispatch } from "react-redux";
