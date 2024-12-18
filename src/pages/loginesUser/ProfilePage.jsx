@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../../config/axiosInstance";
+import { useDispatch } from "react-redux";
+import { setProfileImage } from "../../redux/features/profileSlice";
 
 const ProfilePage = () => {
   const [userProfile, setUserProfile] = useState(null);
@@ -8,6 +10,7 @@ const ProfilePage = () => {
   const [error, setError] = useState(null);
   const [reqStatus, setRqStatus] = useState(""); // Initialize with an empty string
   const [reqColor, setRqColor] = useState("");
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (reqStatus === "pending") {
@@ -29,6 +32,7 @@ const ProfilePage = () => {
           url: "/user/user-profile",
         });
         setUserProfile(response.data);
+        dispatch(setProfileImage(response.data.image))
         setLoading(false);
       } catch (error) {
         setError("Failed to fetch profile.");
