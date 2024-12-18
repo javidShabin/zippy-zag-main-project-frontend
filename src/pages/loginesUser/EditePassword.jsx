@@ -1,4 +1,5 @@
 import React from 'react'
+import { useForm } from 'react-hook-form';
 
 const EditePassword = () => {
     const {
@@ -6,10 +7,6 @@ const EditePassword = () => {
         handleSubmit,
         formState: { errors },
       } = useForm();
-    
-      
-    
-      
     
       // Handle form submission for profile update
       const onSubmit = async (data) => {
