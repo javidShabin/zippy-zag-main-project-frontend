@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { axiosInstance } from "../config/axiosInstance";
+import toast from "react-hot-toast";
 
 const EditeAddress = () => {
   const [addressId, setAddressId] = useState();
@@ -57,9 +58,10 @@ const EditeAddress = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axiosInstance.put(`/address/update-address/${addressId}`, data); // Send data here
-      console.log(response.data);
+      toast.success("Update the address")
     } catch (error) {
       console.log("Error updating address:", error);
+      toast.error("updating filed")
     }
   };
 
