@@ -16,6 +16,7 @@ import EditProfile from "../components/loginedUser/ProfileEditePage";
 import JoinUs from "../pages/loginesUser/JoinPage";
 import AddAddress from "../components/loginedUser/AddAddress";
 import Address from "../components/loginedUser/Address";
+import EditeAddress from "../pages/EditeAddress";
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ export const router = createBrowserRouter([
               {
                 path: "address-page",
                 element: <Address />
+              },
+              {
+                path: "edite-address",
+                element: <EditeAddress />
               }
             ]
           }
