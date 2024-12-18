@@ -51,7 +51,7 @@ const ProfileSideBar = () => {
 
         <li>
           <Link
-            to={"/user/profile/user-address"}
+            to={"/user/profile/address-page"}
             className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-orange-200 hover:text-white transition"
           >
             Address
