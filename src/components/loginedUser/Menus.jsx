@@ -109,7 +109,7 @@ const Menus = ({ restaurantId }) => {
 
     {/* Search and Dropdown Section */}
     <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
-      <div className="relative">
+      {/* <div className="relative">
         <div
           tabIndex={0}
           role="button"
@@ -128,7 +128,7 @@ const Menus = ({ restaurantId }) => {
             <a>Item 2</a>
           </li>
         </ul>
-      </div>
+      </div> */}
 
       <div className="relative w-full sm:w-auto">
         <input
