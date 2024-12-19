@@ -70,14 +70,14 @@ const Header = () => {
                 Restaurants
               </li>
             </Link>
-            <Link>
+            {/* <Link>
               <li
                 onClick={toggleMenu}
                 className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 relative overflow-hidden group"
               >
                 Contact
               </li>
-            </Link>
+            </Link> */}
           </ul>
         </nav>
 
