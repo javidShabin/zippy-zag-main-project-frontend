@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../../config/axiosInstance";
 import { Link } from "react-router-dom";
+import OrdersPage from "./OrderPage";
 
 const Address = () => {
   const [addresses, setAddresses] = useState([]);
@@ -71,7 +72,8 @@ const Address = () => {
   }
 
   return (
-    <div className="container mx-auto">
+    <main>
+      <div className="container mx-auto">
       <h1 className="text-2xl font-bold text-center mb-3 text-gray-800">
         Your Addresses
       </h1>
@@ -173,6 +175,8 @@ const Address = () => {
         </div>
       )}
     </div>
+    <OrdersPage />
+    </main>
   );
 };
 
