@@ -6,6 +6,7 @@ import { filterData } from "../components/filterData/FilterData"; // Ensure this
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
+  const [allRestaurants, setAllRestaurants] = useState([]); // Store the original restaurant data
   const [loading, setLoading] = useState(true);
   const [filterLoading, setFilterLoading] = useState(false); // Loading state for filtered data
   const [error, setError] = useState(""); // Error message state
@@ -21,7 +22,8 @@ const Restaurant = () => {
       const restaurants = Array.isArray(response.data.restaurants)
         ? response.data.restaurants
         : [];
-      setRestData(restaurants);
+      setRestData(restaurants);  // Set the restData
+      setAllRestaurants(restaurants); // Store the original data for fallback
     } catch (error) {
       console.error("Error fetching restaurants:", error);
     } finally {
@@ -39,8 +41,9 @@ const Restaurant = () => {
       });
 
       if (response?.data?.restaurants?.length > 0) {
-        setRestData(response.data.restaurants);
+        setRestData(response.data.restaurants); // Set the filtered restaurants
       } else {
+        setRestData(allRestaurants); // If no filter matches, reset to all restaurants
         setError("No restaurants found for this filter");
       }
     } catch (error) {
