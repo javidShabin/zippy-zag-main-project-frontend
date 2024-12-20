@@ -37,6 +37,7 @@ const Restaurant = () => {
         method: "GET",
         url: `/restaurant/rest-details/menuItem/${name}`,
       });
+
       if (response?.data?.restaurants?.length > 0) {
         setRestData(response.data.restaurants);
       } else {
