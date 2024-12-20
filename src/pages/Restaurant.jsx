@@ -8,6 +8,7 @@ const Restaurant = () => {
   const [restData, setRestData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterLoading, setFilterLoading] = useState(false); // Loading state for filtered data
+  const [error, setError] = useState(""); // Error message state
   const navigate = useNavigate();
 
   const getRestaurants = async () => {
@@ -30,19 +31,21 @@ const Restaurant = () => {
 
   const getRestaurantByMenu = async ({ name }) => {
     setFilterLoading(true); // Start loading when filtering
+    setError(""); // Clear any previous error message
     try {
       const response = await axiosInstance({
         method: "GET",
         url: `/restaurant/rest-details/menuItem/${name}`,
       });
-      if (response?.data?.restaurants) {
+      if (response?.data?.restaurants?.length > 0) {
         setRestData(response.data.restaurants);
       } else {
-        toast.error("No restaurants found for this item");
+        setError("No restaurants found for this filter");
       }
     } catch (error) {
       toast.error("The item is not available");
       console.error("Error fetching filtered restaurants:", error);
+      setError("Error occurred while fetching the filtered data");
     } finally {
       setFilterLoading(false); // Stop loading after fetching
     }
@@ -86,6 +89,12 @@ const Restaurant = () => {
       <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
         Our <span className="text-orange-500">Restaurants</span>
       </h1>
+
+      {error && (
+        <div className="text-center text-red-500 mb-4">
+          {error}
+        </div>
+      )}
 
       {restData.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
