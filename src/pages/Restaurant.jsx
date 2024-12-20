@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { axiosInstance } from "../config/axiosInstance";
 import toast from "react-hot-toast";
-import { filterData } from "../components/filterData/FilterData";
+import { filterData } from "../components/filterData/FilterData"; // Ensure this import is correct
 
 const Restaurant = () => {
   const [restData, setRestData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filterLoading, setFilterLoading] = useState(false); // Loading state for filtered data
   const navigate = useNavigate();
 
   const getRestaurants = async () => {
@@ -28,15 +29,22 @@ const Restaurant = () => {
   };
 
   const getRestaurantByMenu = async ({ name }) => {
+    setFilterLoading(true); // Start loading when filtering
     try {
       const response = await axiosInstance({
         method: "GET",
         url: `/restaurant/rest-details/menuItem/${name}`,
       });
-      setRestData(response.data.restaurants);
+      if (response?.data?.restaurants) {
+        setRestData(response.data.restaurants);
+      } else {
+        toast.error("No restaurants found for this item");
+      }
     } catch (error) {
       toast.error("The item is not available");
       console.error("Error fetching filtered restaurants:", error);
+    } finally {
+      setFilterLoading(false); // Stop loading after fetching
     }
   };
 
@@ -44,7 +52,7 @@ const Restaurant = () => {
     getRestaurants();
   }, []);
 
-  if (loading) {
+  if (loading || filterLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
         <span className="loading loading-dots loading-lg bg-orange-400"></span>
@@ -65,16 +73,12 @@ const Restaurant = () => {
               className="text-center mb-2 py-5 px-7 shadow-xl rounded-lg min-w-[180px]"
             >
               <img
-                onClick={() => {
-                  getRestaurantByMenu({ name: item.name });
-                }}
+                onClick={() => getRestaurantByMenu({ name: item.name })}
                 src={item.imageSrc}
                 alt={item.category}
                 className="w-16 h-16 object-cover mx-auto mb-2"
               />
-              <p className="text-sm font-medium text-gray-600">
-                {item.category}
-              </p>
+              <p className="text-sm font-medium text-gray-600">{item.category}</p>
             </div>
           ))}
         </div>
@@ -85,38 +89,44 @@ const Restaurant = () => {
 
       {restData.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {restData.map((restaurant) => (
-            <div
-              onClick={() => {
-                navigate(`/user/rest-details/${restaurant._id}`);
-              }}
-              className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
-              style={{
-                backgroundImage: `url(${
-                  restaurant?.image ? restaurant.image : "/fallback-image.jpg"
-                })`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-              key={restaurant._id}
-            >
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-[#0000004f] bg-opacity-40"></div>
+          {restData.map((restaurant) => {
+            if (!restaurant) return null; // Skip any null or undefined restaurants
 
-              {/* Content */}
-              <div className="relative z-10 p-4 flex flex-col justify-end h-full text-white">
-                <h2 className="text-lg font-semibold">
-                  {restaurant?.name || "Unknown Restaurant"}
-                </h2>
-                <p className="text-sm">
-                  {restaurant?.location || "Location not available"}
-                </p>
-                <p className="text-xs mt-2">
-                  {restaurant?.description || "No description available"}
-                </p>
+            return (
+              <div
+                onClick={() => {
+                  if (restaurant._id) {
+                    navigate(`/user/rest-details/${restaurant._id}`);
+                  }
+                }}
+                className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
+                style={{
+                  backgroundImage: `url(${
+                    restaurant?.image ? restaurant.image : "/fallback-image.jpg"
+                  })`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                key={restaurant._id}
+              >
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-[#0000004f] bg-opacity-40"></div>
+
+                {/* Content */}
+                <div className="relative z-10 p-4 flex flex-col justify-end h-full text-white">
+                  <h2 className="text-lg font-semibold">
+                    {restaurant?.name || "Unknown Restaurant"}
+                  </h2>
+                  <p className="text-sm">
+                    {restaurant?.location || "Location not available"}
+                  </p>
+                  <p className="text-xs mt-2">
+                    {restaurant?.description || "No description available"}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       ) : (
         <div className="text-center text-gray-600">No restaurants found.</div>
