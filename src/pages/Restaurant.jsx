@@ -35,8 +35,8 @@ const Restaurant = () => {
       });
       setRestData(response.data.restaurants);
     } catch (error) {
-      toast.error("The item not available")
-      console.log(error);
+      toast.error("The item is not available");
+      console.error("Error fetching filtered restaurants:", error);
     }
   };
 
@@ -93,8 +93,8 @@ const Restaurant = () => {
               className="relative w-full h-[250px] rounded-lg shadow-lg overflow-hidden bg-gray-200"
               style={{
                 backgroundImage: `url(${
-                  restaurant.image || "/fallback-image.jpg"
-                })`, // Fallback image
+                  restaurant?.image ? restaurant.image : "/fallback-image.jpg"
+                })`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -105,9 +105,15 @@ const Restaurant = () => {
 
               {/* Content */}
               <div className="relative z-10 p-4 flex flex-col justify-end h-full text-white">
-                <h2 className="text-lg font-semibold">{restaurant.name}</h2>
-                <p className="text-sm">{restaurant.location}</p>
-                <p className="text-xs mt-2">{restaurant.description}</p>
+                <h2 className="text-lg font-semibold">
+                  {restaurant?.name || "Unknown Restaurant"}
+                </h2>
+                <p className="text-sm">
+                  {restaurant?.location || "Location not available"}
+                </p>
+                <p className="text-xs mt-2">
+                  {restaurant?.description || "No description available"}
+                </p>
               </div>
             </div>
           ))}
