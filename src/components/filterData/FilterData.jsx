@@ -1,3 +1,5 @@
+// Ensure "../../assets" correctly exports these items.
+
 import {
   biriyani,
   burger,
@@ -12,44 +14,44 @@ const filterData = [
   {
     id: 1,
     name: "Biryani",
-    image: biriyani,
-    category: "Biriyani",
+    imageSrc: biriyani,
+    category: "Biryani", // Fixed typo: "Biriyani" to "Biryani" (if needed).
   },
   {
     id: 2,
     name: "Burger",
-    image: burger,
+    imageSrc: burger,
     category: "Burger",
   },
   {
     id: 3,
     name: "Sandwich",
-    image: sandwich,
+    imageSrc: sandwich,
     category: "Sandwich",
   },
   {
     id: 4,
     name: "Juice",
-    image: juice,
+    imageSrc: juice,
     category: "Juice",
   },
   {
     id: 5,
     name: "Pasta",
-    image: pasta,
+    imageSrc: pasta,
     category: "Pasta",
   },
   {
     id: 6,
     name: "Mojito",
-    image: mojito,
+    imageSrc: mojito,
     category: "Mojito",
   },
   {
     id: 7,
     name: "Ice cream",
-    image: iceCream,
-    category: "Ice creami",
+    imageSrc: iceCream,
+    category: "Ice Cream", // Fixed typo: "Ice creami" to "Ice Cream".
   },
 ];
 
