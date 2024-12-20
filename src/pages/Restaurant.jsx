@@ -68,7 +68,7 @@ const Restaurant = () => {
                 onClick={() => {
                   getRestaurantByMenu({ name: item.name });
                 }}
-                src={item.imageSrc}
+                src={item.image}
                 alt={item.category}
                 className="w-16 h-16 object-cover mx-auto mb-2"
               />
