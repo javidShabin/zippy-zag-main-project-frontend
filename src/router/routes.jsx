@@ -8,7 +8,6 @@ import SignupPage from "../pages/SignupPage";
 import AuthUser from "./protectedRoutes/AuthUser";
 import RestDetails from "../pages/loginesUser/RestDetails";
 import ProfilePage from "../pages/loginesUser/ProfilePage";
-import ChatPage from "../pages/loginesUser/ChatPage";
 import CartPage from "../pages/loginesUser/CartPage";
 import PaymentSuccess from "../components/loginedUser/PaymentSuccess";
 import ProfileDashbord from "../pages/loginesUser/ProfileDashbord";
@@ -54,10 +53,6 @@ export const router = createBrowserRouter([
           {
             path: "rest-details/:id", // Relative path
             element: <RestDetails />,
-          },
-          {
-            path: "chat-page",
-            element: <ChatPage />,
           },
           {
             path: "cart-page",
