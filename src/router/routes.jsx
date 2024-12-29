@@ -17,6 +17,7 @@ import AddAddress from "../components/loginedUser/AddAddress";
 import Address from "../components/loginedUser/Address";
 import EditeAddress from "../pages/EditeAddress";
 import EditePassword from "../pages/loginesUser/EditePassword";
+import ChatPage from "../pages/loginesUser/ChatPage";
 
 export const router = createBrowserRouter([
   {
@@ -55,20 +56,24 @@ export const router = createBrowserRouter([
             element: <RestDetails />,
           },
           {
+            path: "chat-page",
+            element: <ChatPage />,
+          },
+          {
             path: "cart-page",
             element: <CartPage />,
           },
           {
             path: "payment/success",
-            element: <PaymentSuccess/>
+            element: <PaymentSuccess />,
           },
           {
             path: "join-page",
-            element: <JoinUs />
+            element: <JoinUs />,
           },
           {
             path: "add-address",
-            element: <AddAddress />
+            element: <AddAddress />,
           },
 
           {
@@ -78,26 +83,26 @@ export const router = createBrowserRouter([
             children: [
               {
                 path: "profile-page",
-                element: <ProfilePage />
+                element: <ProfilePage />,
               },
               {
                 path: "edite-profile",
-                element: <EditProfile />
+                element: <EditProfile />,
               },
               {
                 path: "address-page",
-                element: <Address />
+                element: <Address />,
               },
               {
                 path: "edite-address",
-                element: <EditeAddress />
+                element: <EditeAddress />,
               },
               {
                 path: "edite-password",
-                element: <EditePassword />
-              }
-            ]
-          }
+                element: <EditePassword />,
+              },
+            ],
+          },
         ],
       },
     ],
