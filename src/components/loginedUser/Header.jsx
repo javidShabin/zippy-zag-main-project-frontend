@@ -73,8 +73,19 @@ const UserHeader = () => {
                 Restaurants
               </li>
             </Link>
+            <li
+              onClick={toggleMenu}
+              className="block font-semibold py-1 px-3 bg-[#ffa100] text-white rounded-full shadow-lg hover:shadow-[#ffa100] transition duration-300 relative overflow-hidden group"
+            >
+              Contact
+            </li>
             {/* Chat and Join Us for Small Screens */}
             <li className="flex flex-col items-center space-y-4 md:hidden">
+              <div className="relative">
+                <Link to={"/user/chat-page"}>
+                  <MessagesSquare className="w-6 h-6 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
+                </Link>
+              </div>
               <Link to={"/user/profile"}>
                 <div className="w-[40px] h-[40px]">
                   <img
@@ -90,6 +101,11 @@ const UserHeader = () => {
 
         {/* Join Us Button and Chat Icon (Large Screens) */}
         <div className="hidden md:flex gap-5 items-center space-x-4">
+          <div className="relative">
+            <Link to={"/user/chat-page"}>
+              <MessagesSquare className="w-7 h-7 text-orange-400 animate-bounce cursor-pointer transition duration-300" />
+            </Link>
+          </div>
           <div className="relative">
             <Link to={"/user/cart-page"}>
               <ShoppingCart className="w-7 h-7 text-orange-400 cursor-pointer" />
