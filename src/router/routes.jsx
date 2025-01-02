@@ -18,6 +18,7 @@ import Address from "../components/loginedUser/Address";
 import EditeAddress from "../pages/EditeAddress";
 import EditePassword from "../pages/loginesUser/EditePassword";
 import ChatPage from "../pages/loginesUser/ChatPage";
+import OrderDetails from "../components/loginedUser/OrderDetails";
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ export const router = createBrowserRouter([
           {
             path: "add-address",
             element: <AddAddress />,
+          },
+          {
+            path: "order-details/:id",
+            element: <OrderDetails />,
           },
 
           {
