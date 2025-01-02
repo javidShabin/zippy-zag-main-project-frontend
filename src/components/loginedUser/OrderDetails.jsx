@@ -23,7 +23,7 @@ const OrderDetails = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4 sm:p-6">
+    <div className="container mt-6 mx-auto p-4 sm:p-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">Order Details</h1>
 
       {/* Shipping Address */}
