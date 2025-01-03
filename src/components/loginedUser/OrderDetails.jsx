@@ -144,7 +144,7 @@ const OrderDetails = () => {
             {orderedItems.map((item, index) => (
               <li
                 key={index}
-                className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-200"
+                className="flex items-center justify-between p-4 w-[280px] bg-gray-50 rounded-lg border border-gray-200"
               >
                 <img
                   src={item.image || "https://via.placeholder.com/50"}
@@ -153,7 +153,7 @@ const OrderDetails = () => {
                 />
                 <div className="flex-1 ml-4">
                   <span className="block text-gray-700 font-medium">
-                    {item.itemName}
+                    {item.ItemName}
                   </span>
                   <span className="text-sm text-gray-500">
                     Qty: {item.quantity}
