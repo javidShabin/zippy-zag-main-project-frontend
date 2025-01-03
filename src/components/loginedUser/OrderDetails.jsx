@@ -6,8 +6,17 @@ const OrderDetails = () => {
   const { id } = useParams();
   const [orderAddress, setOrderAddress] = useState({});
   const [orderedItems, setOrderedItems] = useState([]);
+  const [orderStatus, setOrderStatus] = useState("");
+
 
   const orderId = id;
+
+  const timelineSteps = [
+    { id: "Progress", label: "Processing" },
+    { id: "Transit", label: "In Transit" },
+    { id: "Out for delivery", label: "Out for Delivery" },
+    { id: "Delivered", label: "Delivered" },
+  ];
 
   useEffect(() => {
     const getTheOrderDetails = async () => {
@@ -15,12 +24,23 @@ const OrderDetails = () => {
         const response = await axiosInstance.get(`/payment/orders/${orderId}`);
         setOrderAddress(response.data.order.address);
         setOrderedItems(response.data.order.products);
+        setOrderStatus(response.data.order.orderStatus);
       } catch (error) {
         console.log(error);
       }
     };
     getTheOrderDetails();
-  }, []);
+  }, [orderId]);
+
+  const getStepStatus = (step) => {
+    const currentIndex = timelineSteps.findIndex(
+      (s) => s.id === orderStatus
+    );
+    const stepIndex = timelineSteps.findIndex((s) => s.id === step);
+    if (stepIndex < currentIndex) return "completed";
+    if (stepIndex === currentIndex) return "active";
+    return "inactive";
+  };
 
   return (
     <div className="container mt-6 mx-auto p-4 sm:p-6">
@@ -58,6 +78,60 @@ const OrderDetails = () => {
         ) : (
           <p className="text-gray-500 italic">Loading address...</p>
         )}
+      </div>
+
+      {/* Timeline */}
+      <div className="bg-white shadow rounded-lg p-6 mb-6">
+        <h2 className="text-xl font-semibold text-gray-700 mb-4">
+          Order Timeline
+        </h2>
+        <div className="relative">
+          <div className="absolute inset-0 flex justify-between w-full items-center h-1 bg-gray-200" />
+          <ul className="flex justify-between relative z-10">
+            {timelineSteps.map((step) => (
+              <li
+                key={step.id}
+                className={`flex flex-col items-center text-center w-1/4 ${
+                  getStepStatus(step.id) === "completed"
+                    ? "text-green-600"
+                    : getStepStatus(step.id) === "active"
+                    ? "text-blue-600"
+                    : "text-gray-400"
+                }`}
+              >
+                <div
+                  className={`w-8 h-8 flex items-center justify-center rounded-full mb-2 ${
+                    getStepStatus(step.id) === "completed"
+                      ? "bg-green-500 text-white"
+                      : getStepStatus(step.id) === "active"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-300"
+                  }`}
+                >
+                  {getStepStatus(step.id) === "completed" ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  ) : (
+                    <span>{timelineSteps.indexOf(step) + 1}</span>
+                  )}
+                </div>
+                <span>{step.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Ordered Items */}
