@@ -19,6 +19,7 @@ import EditeAddress from "../pages/EditeAddress";
 import EditePassword from "../pages/loginesUser/EditePassword";
 import ChatPage from "../pages/loginesUser/ChatPage";
 import OrderDetails from "../components/loginedUser/OrderDetails";
+import ComingSoon from "../components/loginedUser/ComingSoon";
 
 export const router = createBrowserRouter([
   {
@@ -79,6 +80,9 @@ export const router = createBrowserRouter([
           {
             path: "order-details/:id",
             element: <OrderDetails />,
+          },{
+            path: "coming-soon",
+            element: <ComingSoon />
           },
 
           {
