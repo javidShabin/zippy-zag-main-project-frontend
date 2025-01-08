@@ -15,13 +15,9 @@ const ComingSoon = () => {
           Notify Me
         </button>
       </div>
-      <div className="mt-10">
-        <img
-          src="https://via.placeholder.com/400x300"
-          alt="Coming Soon Illustration"
-          className="w-full max-w-md rounded-lg shadow-lg"
-        />
-      </div>
+      <footer className="mt-10 text-sm text-white/70">
+        © 2025 YourCompany. All rights reserved.
+      </footer>
     </div>
   );
 };
