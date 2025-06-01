@@ -17,7 +17,7 @@ const Demo = () => {
             {/* Article 1 */}
             <article className="bg-[#ffffff] w-[250px] sm:w-[300px] flex flex-col justify-center items-center rounded-lg shadow-lg p-5 transition-transform duration-300 hover:scale-105 hover:shadow-xl">
               <img src={order} alt="Order" className="w-[150px] mb-4" />
-              <h3 className="text-lg font-semibold text-[#8e44ad]">
+              <h3 className="text-lg font-semibold text-[#000]">
                 Select Restaurant
               </h3>
             </article>
